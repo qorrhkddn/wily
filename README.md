@@ -1,4 +1,4 @@
-wily is a mp3 player for your phone. It has panache, and offline storage.
+wily is a mp3 player for your phone. It has style, and offline storage.
 
 ## Future Ideas
 
