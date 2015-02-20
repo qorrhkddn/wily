@@ -82,6 +82,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="playProgressView" destination="NGG-uo-p72" id="0Hl-oE-6ik"/>
                         <outlet property="wallPaperImageView" destination="OwN-m9-EVv" id="1y6-WJ-u72"/>
                     </connections>
                 </viewController>

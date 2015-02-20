@@ -3,6 +3,7 @@
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *wallPaperImageView;
+@property (weak, nonatomic) IBOutlet UIProgressView *playProgressView;
 
 @end
 
@@ -11,6 +12,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self changeWallPaper];
+  self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
 }
 
 - (void)changeWallPaper {
