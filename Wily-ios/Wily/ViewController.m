@@ -68,6 +68,9 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.searchResultsDisplayController setActive:NO animated:YES];
     if (videoIdentifier != nil) {
+      if (self.player.isPlaying) {
+        [self.player unloadVideo];
+      }
       [self playVideoWithIdentifier:videoIdentifier];
     }
   }];
