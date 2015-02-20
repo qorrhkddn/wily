@@ -60,4 +60,8 @@
   [moviePlayer play];
 }
 
+- (void)pause {
+  [self.videoPlayerViewController.moviePlayer pause];
+}
+
 @end
