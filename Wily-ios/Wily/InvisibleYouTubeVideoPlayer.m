@@ -2,12 +2,15 @@
 #import <AVFoundation/AVFoundation.h>
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
 #import "MPMoviePlayerController+BackgroundPlayback.h"
+#import "PlayerEventLogger.h"
 
 @interface InvisibleYouTubeVideoPlayer ()
+@property (nonatomic, readonly) PlayerEventLogger *playerEventLogger;
 @property (nonatomic, weak) UIView *containerView;
 @property (nonatomic) UIView *videoContainerView;
 @property (nonatomic) XCDYouTubeVideoPlayerViewController *videoPlayerViewController;
 @property (getter = isPlaying) BOOL playing;
+@property (nonatomic) NSString *videoIdentifier;
 @end
 
 @implementation InvisibleYouTubeVideoPlayer
@@ -16,6 +19,11 @@
                       videoIdentifier:(NSString *)videoIdentifier {
   self = [super init];
   if (self) {
+    _playerEventLogger = [[PlayerEventLogger alloc] init];
+    _playerEventLogger.enabled = YES;
+
+    _videoIdentifier = videoIdentifier;
+
     _containerView = containerView;
     _videoContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
     _videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:videoIdentifier];
@@ -31,6 +39,7 @@
 }
 
 - (void)reallyPlay {
+  NSLog(@"Initiating playback [Video Identifier = %@]", self.videoIdentifier);
   [self.containerView addSubview:self.videoContainerView];
   self.videoContainerView.hidden = YES;
 
