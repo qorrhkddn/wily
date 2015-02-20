@@ -53,11 +53,8 @@
   NSLog(@"Initiating playback [Video Identifier = %@]", self.videoIdentifier);
   [self.videoPlayerViewController presentInView:self.videoContainerView];
 
-  MPMoviePlayerController *moviePlayer = self.videoPlayerViewController.moviePlayer;
-  [moviePlayer prepareToPlay];
-  moviePlayer.backgroundPlaybackEnabled = YES;
-  moviePlayer.shouldAutoplay = YES;
-  [moviePlayer play];
+  self.videoPlayerViewController.moviePlayer.backgroundPlaybackEnabled = YES;
+  [self.videoPlayerViewController.moviePlayer play];
 }
 
 - (void)pause {
