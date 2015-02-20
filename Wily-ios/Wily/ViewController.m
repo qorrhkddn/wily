@@ -3,6 +3,8 @@
 
 static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 
+static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
+
 @interface ViewController () <UITableViewDataSource>
 
 @property (nonatomic) InvisibleYouTubeVideoPlayer *player;
@@ -12,6 +14,7 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 @property (weak, nonatomic) IBOutlet UIImageView *wallPaperImageView;
 @property (weak, nonatomic) IBOutlet UIProgressView *playProgressView;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (strong, nonatomic) IBOutlet UISearchDisplayController *searchResultsDisplayController;
 
 @end
 
@@ -23,6 +26,11 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 
   [self changeWallPaper];
   self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
+
+  UITableView *tableView = self.searchResultsDisplayController.searchResultsTableView;
+  tableView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+  tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  [tableView registerNib:[UINib nibWithNibName:@"SearchResultTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:SearchResultCellIdentifier];
 }
 
 - (IBAction)play:(id)sender {
@@ -53,14 +61,11 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  tableView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
-  tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-  [tableView registerNib:[UINib nibWithNibName:@"SearchResultTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SearchResultCell"];
   return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchResultCell" forIndexPath:indexPath];
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier forIndexPath:indexPath];
   cell.textLabel.text = @"Text";
   return cell;
 }

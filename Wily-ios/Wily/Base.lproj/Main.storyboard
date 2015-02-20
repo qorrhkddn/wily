@@ -137,7 +137,7 @@
                     <connections>
                         <outlet property="playButton" destination="oWQ-kt-XIt" id="l82-9j-Esu"/>
                         <outlet property="playProgressView" destination="NGG-uo-p72" id="0Hl-oE-6ik"/>
-                        <outlet property="searchDisplayController" destination="ypz-fb-ptg" id="Ewf-wf-k7f"/>
+                        <outlet property="searchResultsDisplayController" destination="ypz-fb-ptg" id="7Oh-9e-A0K"/>
                         <outlet property="wallPaperImageView" destination="OwN-m9-EVv" id="1y6-WJ-u72"/>
                     </connections>
                 </viewController>
