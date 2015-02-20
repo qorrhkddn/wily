@@ -60,6 +60,7 @@
             <Button android:id="@+id/btn_shuffle" style="?metaButtonBarButtonStyle"
                 android:layout_width="0dp" android:layout_height="wrap_content"
                 android:layout_weight="1" android:text="@string/shuffle_button"
+                android:onClick="shuffle"
                 android:paddingLeft="10dp" android:paddingRight="10dp" android:paddingTop="30dp" android:paddingBottom="30dp"/>
 
         </LinearLayout>
