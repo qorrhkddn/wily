@@ -39,14 +39,14 @@
                                         <color key="trackTintColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                                     </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydu-8C-JnR" userLabel="Time Done">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="18"/>
+                                        <rect key="frame" x="5" y="0.0" width="30" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-4:53" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqy-op-okc" userLabel="Time Left">
-                                        <rect key="frame" x="564" y="0.0" width="36" height="18"/>
+                                        <rect key="frame" x="559" y="0.0" width="36" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -75,7 +75,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="yqy-op-okc" secondAttribute="trailing" id="2re-Wh-GWX"/>
+                                    <constraint firstAttribute="trailing" secondItem="yqy-op-okc" secondAttribute="trailing" constant="5" id="2re-Wh-GWX"/>
                                     <constraint firstItem="NGG-uo-p72" firstAttribute="leading" secondItem="dAq-gS-TyW" secondAttribute="leading" id="40o-h4-Qye"/>
                                     <constraint firstAttribute="trailing" secondItem="NGG-uo-p72" secondAttribute="trailing" id="5Ts-ri-BEu"/>
                                     <constraint firstItem="ydu-8C-JnR" firstAttribute="top" secondItem="dAq-gS-TyW" secondAttribute="top" id="79q-qp-znC"/>
@@ -83,7 +83,7 @@
                                     <constraint firstAttribute="height" constant="3000" id="L9p-MD-tvc"/>
                                     <constraint firstItem="NGG-uo-p72" firstAttribute="top" secondItem="yqy-op-okc" secondAttribute="bottom" constant="5" id="QTL-SW-iJx"/>
                                     <constraint firstAttribute="bottom" secondItem="1Wb-VI-fJg" secondAttribute="bottom" id="aWd-hz-QUv"/>
-                                    <constraint firstItem="ydu-8C-JnR" firstAttribute="leading" secondItem="dAq-gS-TyW" secondAttribute="leading" id="gwd-RC-yYz"/>
+                                    <constraint firstItem="ydu-8C-JnR" firstAttribute="leading" secondItem="dAq-gS-TyW" secondAttribute="leading" constant="5" id="gwd-RC-yYz"/>
                                     <constraint firstItem="yqy-op-okc" firstAttribute="top" secondItem="dAq-gS-TyW" secondAttribute="top" id="kvn-a5-UFI"/>
                                     <constraint firstItem="1Wb-VI-fJg" firstAttribute="leading" secondItem="dAq-gS-TyW" secondAttribute="leading" id="mHL-ja-Fcu"/>
                                     <constraint firstItem="1Wb-VI-fJg" firstAttribute="top" secondItem="NGG-uo-p72" secondAttribute="bottom" constant="2" id="oOV-GB-i8S"/>
