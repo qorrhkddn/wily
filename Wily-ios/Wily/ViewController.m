@@ -1,5 +1,6 @@
 #import "ViewController.h"
 #import "InvisibleYouTubeVideoPlayer.h"
+
 static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 
 @interface ViewController ()
@@ -11,6 +12,7 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.player = [[InvisibleYouTubeVideoPlayer alloc] initWithContainerView:self.view];
 
   [self changeWallPaper];
 }
@@ -20,9 +22,7 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 }
 
 - (void)playVideo {
-  self.player = [[InvisibleYouTubeVideoPlayer alloc] initWithContainerView:self.view
-                                                           videoIdentifier:VideoIdentifier];
-  [self.player play];
+  [self.player playVideoWithIdentifier:VideoIdentifier];
 }
 
 - (void)changeWallPaper {

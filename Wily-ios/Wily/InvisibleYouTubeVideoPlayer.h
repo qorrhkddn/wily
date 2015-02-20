@@ -2,12 +2,14 @@
 
 @interface InvisibleYouTubeVideoPlayer : NSObject
 
-- (instancetype)initWithContainerView:(UIView *)containerView
-                      videoIdentifier:(NSString *)videoIdentifier NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithContainerView:(UIView *)containerView NS_DESIGNATED_INITIALIZER;
 
 /**
- @note Multiple calls to this method are ignored.
+ Start playing video with @p videoIdentifier in an invisible view
+ added to the container view.
+
+ @note Multiple calls to this method are undefined.
  */
-- (void)play;
+- (void)playVideoWithIdentifier:(NSString *)videoIdentifier;
 
 @end
