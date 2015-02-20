@@ -28,9 +28,14 @@
     _playerEventLogger = [[PlayerEventLogger alloc] init];
     _nowPlayingInfoCenterProvider = [[NowPlayingInfoCenterProvider alloc] init];
 
+    [self startObservingVideoNotifications];
     [self enableAVAudioSessionCategoryPlayback];
   }
   return self;
+}
+
+- (void)startObservingVideoNotifications {
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoPlayerViewControllerDidReceiveVideo:) name:XCDYouTubeVideoPlayerViewControllerDidReceiveVideoNotification object:nil];
 }
 
 - (void)enableAVAudioSessionCategoryPlayback {
@@ -40,6 +45,10 @@
   if (!success) {
     NSLog(@"Audio Session Category error: %@", error);
   }
+}
+
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)loadVideoWithIdentifier:(NSString *)videoIdentifier {
@@ -87,7 +96,6 @@
   return [self.moviePlayer duration];
 }
 
-
 - (void)startPollingMediaPlayerForProgress {
   self.playerProgressTimer =
   [NSTimer scheduledTimerWithTimeInterval:5
@@ -117,6 +125,13 @@
 - (void)notifyDelegateOfProgress:(float)progress {
   if ([self.delegate respondsToSelector:@selector(invisibleYouTubeVideoPlayer:didChangeVideoProgress:)]) {
     [self.delegate invisibleYouTubeVideoPlayer:self didChangeVideoProgress:progress];
+  }
+}
+
+- (void)videoPlayerViewControllerDidReceiveVideo:(NSNotification *)notification {
+  if ([self.delegate respondsToSelector:@selector(invisibleYouTubeVideoPlayer:didFetchVideoTitle:)]) {
+    NSString *title = [notification.userInfo[XCDYouTubeVideoUserInfoKey] title];
+    [self.delegate invisibleYouTubeVideoPlayer:self didFetchVideoTitle:title];
   }
 }
 

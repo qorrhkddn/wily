@@ -72,4 +72,9 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
   NSLog(@"progress: %@", @(progress));
 }
 
+- (void)invisibleYouTubeVideoPlayer:(InvisibleYouTubeVideoPlayer *)player
+                 didFetchVideoTitle:(NSString *)title {
+  NSLog(@"title: %@", title);
+}
+
 @end

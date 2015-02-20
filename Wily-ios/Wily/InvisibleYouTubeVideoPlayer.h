@@ -31,6 +31,9 @@
 
 @optional
 
+- (void)invisibleYouTubeVideoPlayer:(InvisibleYouTubeVideoPlayer *)player
+                 didFetchVideoTitle:(NSString *)title;
+
 /**
  @p progress is between [0, 1].
  */
