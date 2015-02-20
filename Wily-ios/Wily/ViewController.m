@@ -24,9 +24,14 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 }
 
 - (IBAction)play:(id)sender {
-  [self playVideo];
   UIImage *playButtonImage = self.isPlaying ? [UIImage imageNamed:@"play"] : [UIImage imageNamed:@"pause"];
   [self.playButton setImage:playButtonImage forState:UIControlStateNormal];
+
+  if (self.isPlaying) {
+    [self pauseVideo];
+  } else {
+    [self playVideo];
+  }
 
   self.playing = !self.isPlaying;
 }
@@ -35,6 +40,10 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
   self.player = [[InvisibleYouTubeVideoPlayer alloc] initWithContainerView:self.view
                                                            videoIdentifier:VideoIdentifier];
   [self.player play];
+}
+
+- (void)pauseVideo {
+  [self.player pause];
 }
 
 - (void)changeWallPaper {

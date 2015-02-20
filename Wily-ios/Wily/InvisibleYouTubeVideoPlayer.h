@@ -10,4 +10,6 @@
  */
 - (void)play;
 
+- (void)pause;
+
 @end
