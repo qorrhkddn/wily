@@ -1,10 +1,13 @@
 PODS:
+  - iOS-GTLYouTube (0.0.4)
   - XCDYouTubeKit (2.1.1)
 
 DEPENDENCIES:
+  - iOS-GTLYouTube (~> 0.0)
   - XCDYouTubeKit (~> 2.1.1)
 
 SPEC CHECKSUMS:
+  iOS-GTLYouTube: 4a18a6d53ccca75c5deb7269a40a25c52f0a4de3
   XCDYouTubeKit: fd5bb231519645b2fa4f0b3e5f9b847228c3f953
 
 COCOAPODS: 0.35.0

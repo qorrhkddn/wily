@@ -4,4 +4,5 @@ platform :ios, '7.0'
 
 target :Wily do
   pod "XCDYouTubeKit", "~> 2.1.1", :inhibit_warnings => true
+  pod 'iOS-GTLYouTube', '~> 0.0', :inhibit_warnings => true
 end
