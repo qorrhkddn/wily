@@ -6,5 +6,6 @@
     <string name="repeat_button">Repeat</string>
     <string name="play_button">Play</string>
     <string name="shuffle_button">Shuffle</string>
+    <string name="pause_button">Pause</string>
 
 </resources>

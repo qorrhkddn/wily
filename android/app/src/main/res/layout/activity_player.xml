@@ -1,6 +1,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="#0099cc"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    android:id="@+id/root"
     tools:context=".PlayerActivity">
 
     <ImageView
@@ -20,6 +23,7 @@
             android:layout_height="30dp"/>
 
         <TextView
+            android:id="@+id/song_title"
             android:layout_gravity="top"
             android:gravity="top"
             android:layout_width="match_parent"
@@ -46,9 +50,11 @@
                 android:layout_weight="1" android:text="@string/repeat_button"
                 android:paddingLeft="10dp" android:paddingRight="10dp" android:paddingTop="30dp" android:paddingBottom="30dp"/>
 
-            <Button android:id="@+id/btn_play" style="?metaButtonBarButtonStyle"
+            <ToggleButton android:id="@+id/btn_play" style="?metaButtonBarButtonStyle"
                 android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:text="@string/play_button"
+                android:layout_weight="1" android:textOn="@string/play_button"
+                android:textOff="@string/pause_button"
+                android:onClick="playPause"
                 android:paddingLeft="10dp" android:paddingRight="10dp" android:paddingTop="30dp" android:paddingBottom="30dp"/>
 
             <Button android:id="@+id/btn_shuffle" style="?metaButtonBarButtonStyle"
