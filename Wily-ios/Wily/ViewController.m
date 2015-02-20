@@ -52,8 +52,8 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
                                        NSLog(@"%@", videoIdentifier);
                                      }];
    */
-  [self.player playVideoWithIdentifier:VideoIdentifier];
-
+  [self.player loadVideoWithIdentifier:VideoIdentifier];
+  [self.player play];
 }
 
 - (void)pauseVideo {

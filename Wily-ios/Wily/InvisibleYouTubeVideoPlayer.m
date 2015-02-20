@@ -41,24 +41,27 @@
   }
 }
 
-- (void)playVideoWithIdentifier:(NSString *)videoIdentifier {
-  NSAssert(self.videoIdentifier == nil, @"Multiple playback is not supported");
-
+- (void)loadVideoWithIdentifier:(NSString *)videoIdentifier {
   self.videoIdentifier = videoIdentifier;
   self.videoContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
   self.videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:self.videoIdentifier];
   [self.containerView addSubview:self.videoContainerView];
   self.videoContainerView.hidden = YES;
 
-  NSLog(@"Initiating playback [Video Identifier = %@]", self.videoIdentifier);
+  NSLog(@"Changing video [Video Identifier = %@]", self.videoIdentifier);
   [self.videoPlayerViewController presentInView:self.videoContainerView];
 
   self.videoPlayerViewController.moviePlayer.backgroundPlaybackEnabled = YES;
-  [self.videoPlayerViewController.moviePlayer play];
 }
 
+- (void)play {
+  [self.videoPlayerViewController.moviePlayer play];
+}
 - (void)pause {
   [self.videoPlayerViewController.moviePlayer pause];
+}
+- (void)stop {
+  [self.videoPlayerViewController.moviePlayer stop];
 }
 
 @end
