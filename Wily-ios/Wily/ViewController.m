@@ -4,7 +4,7 @@
 
 static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 
-@interface ViewController ()
+@interface ViewController () <InvisibleYouTubeVideoPlayerDelegate>
 
 @property (nonatomic) InvisibleYouTubeVideoPlayer *player;
 @property (nonatomic) YoutubeSearcher *searcher;
@@ -22,6 +22,7 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.player = [[InvisibleYouTubeVideoPlayer alloc] initWithContainerView:self.view];
+  self.player.delegate = self;
   self.searcher = [[YoutubeSearcher alloc] init];
 
   [self changeWallPaper];
@@ -64,6 +65,11 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
   NSUInteger wallPaperNumber = arc4random() % 37;
   NSString *wallPaperImageName = [NSString stringWithFormat:@"%@", @(wallPaperNumber)];
   self.wallPaperImageView.image = [UIImage imageNamed:wallPaperImageName];
+}
+
+- (void)invisibleYouTubeVideoPlayer:(InvisibleYouTubeVideoPlayer *)player
+             didChangeVideoProgress:(float)progress {
+  NSLog(@"progress: %@", @(progress));
 }
 
 @end
