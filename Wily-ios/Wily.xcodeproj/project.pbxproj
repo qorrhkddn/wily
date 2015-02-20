@@ -19,6 +19,7 @@
 		697CAFBB1A97451800FC917F /* NowPlayingInfoCenterProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFB71A97451800FC917F /* NowPlayingInfoCenterProvider.m */; };
 		697CAFBC1A97451800FC917F /* PlayerEventLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFB91A97451800FC917F /* PlayerEventLogger.m */; };
 		8ED145E81A972C4600FD6A97 /* Wallpapers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */; };
+		8ED145F51A97638800FD6A97 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED145F31A97638800FD6A97 /* SearchResultTableViewCell.xib */; };
 		C351799DE10AF7A3706E09BF /* libPods-Wily.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99487907B0430D1E74C6A687 /* libPods-Wily.a */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		697CAFB81A97451800FC917F /* PlayerEventLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerEventLogger.h; sourceTree = "<group>"; };
 		697CAFB91A97451800FC917F /* PlayerEventLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerEventLogger.m; sourceTree = "<group>"; };
 		8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Wallpapers.xcassets; sourceTree = "<group>"; };
+		8ED145F31A97638800FD6A97 /* SearchResultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultTableViewCell.xib; sourceTree = "<group>"; };
 		99487907B0430D1E74C6A687 /* libPods-Wily.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wily.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88926DEC784DE3F59570B53 /* Pods-Wily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wily.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wily/Pods-Wily.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +120,7 @@
 				697CAFA61A97335900FC917F /* InvisibleYouTubeVideoPlayer.h */,
 				697CAFA71A97335900FC917F /* InvisibleYouTubeVideoPlayer.m */,
 				697CAF8A1A97222200FC917F /* Main.storyboard */,
+				8ED145F31A97638800FD6A97 /* SearchResultTableViewCell.xib */,
 				697CAF8D1A97222200FC917F /* Images.xcassets */,
 				8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */,
 				697CAF8F1A97222200FC917F /* LaunchScreen.xib */,
@@ -267,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				697CAF8C1A97222200FC917F /* Main.storyboard in Resources */,
+				8ED145F51A97638800FD6A97 /* SearchResultTableViewCell.xib in Resources */,
 				697CAF911A97222200FC917F /* LaunchScreen.xib in Resources */,
 				8ED145E81A972C4600FD6A97 /* Wallpapers.xcassets in Resources */,
 				697CAF8E1A97222200FC917F /* Images.xcassets in Resources */,
