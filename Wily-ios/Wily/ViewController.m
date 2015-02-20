@@ -4,8 +4,15 @@
 static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 
 @interface ViewController ()
+
 @property (nonatomic) InvisibleYouTubeVideoPlayer *player;
+
+@property (nonatomic, getter=isPlaying) BOOL playing;
+
 @property (weak, nonatomic) IBOutlet UIImageView *wallPaperImageView;
+@property (weak, nonatomic) IBOutlet UIProgressView *playProgressView;
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
+
 @end
 
 @implementation ViewController
@@ -15,14 +22,28 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
   self.player = [[InvisibleYouTubeVideoPlayer alloc] initWithContainerView:self.view];
 
   [self changeWallPaper];
+  self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
 }
 
 - (IBAction)play:(id)sender {
-  [self playVideo];
+  UIImage *playButtonImage = self.isPlaying ? [UIImage imageNamed:@"play"] : [UIImage imageNamed:@"pause"];
+  [self.playButton setImage:playButtonImage forState:UIControlStateNormal];
+
+  if (self.isPlaying) {
+    [self pauseVideo];
+  } else {
+    [self playVideo];
+  }
+
+  self.playing = !self.isPlaying;
 }
 
 - (void)playVideo {
   [self.player playVideoWithIdentifier:VideoIdentifier];
+}
+
+- (void)pauseVideo {
+  [self.player pause];
 }
 
 - (void)changeWallPaper {

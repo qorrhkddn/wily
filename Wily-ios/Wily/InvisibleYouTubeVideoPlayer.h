@@ -12,4 +12,6 @@
  */
 - (void)playVideoWithIdentifier:(NSString *)videoIdentifier;
 
+- (void)pause;
+
 @end
