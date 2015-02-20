@@ -6,7 +6,7 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
-@interface ViewController () <UITableViewDataSource, UISearchBarDelegate>
+@interface ViewController () <UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate>
 
 @property (nonatomic) InvisibleYouTubeVideoPlayer *player;
 @property (nonatomic) YoutubeSearcher *searcher;
@@ -90,6 +90,14 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [self.searcher autocompleteSuggestionsForSearchString:searchBar.text completionBlock:^(NSArray *suggestions) {
     self.searchResults = suggestions;
     [self.searchResultsDisplayController.searchResultsTableView reloadData];
+  }];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [self.searcher firstVideoIdentifierForSearchString:self.searchResults[indexPath.row] completionBlock:^(NSString *videoIdentifier) {
+    [self.player playVideoWithIdentifier:videoIdentifier];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.searchResultsDisplayController setActive:NO animated:YES];
   }];
 }
 
