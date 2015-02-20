@@ -3,9 +3,12 @@
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
 #import "MPMoviePlayerController+BackgroundPlayback.h"
 #import "PlayerEventLogger.h"
+#import "NowPlayingInfoCenterProvider.h"
 
 @interface InvisibleYouTubeVideoPlayer ()
 @property (nonatomic, readonly) PlayerEventLogger *playerEventLogger;
+@property (nonatomic, readonly) NowPlayingInfoCenterProvider *nowPlayingInfoCenterProvider;
+
 @property (nonatomic, weak) UIView *containerView;
 @property (nonatomic) UIView *videoContainerView;
 @property (nonatomic) XCDYouTubeVideoPlayerViewController *videoPlayerViewController;
@@ -21,6 +24,9 @@
   if (self) {
     _playerEventLogger = [[PlayerEventLogger alloc] init];
     _playerEventLogger.enabled = YES;
+
+    _nowPlayingInfoCenterProvider = [[NowPlayingInfoCenterProvider alloc] init];
+    _nowPlayingInfoCenterProvider.enabled = YES;
 
     _videoIdentifier = videoIdentifier;
 
