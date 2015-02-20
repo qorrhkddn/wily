@@ -14,6 +14,7 @@
 		697CAF8E1A97222200FC917F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8D1A97222200FC917F /* Images.xcassets */; };
 		697CAF911A97222200FC917F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8F1A97222200FC917F /* LaunchScreen.xib */; };
 		697CAF9D1A97222300FC917F /* WilyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF9C1A97222300FC917F /* WilyTests.m */; };
+		697CAFA81A97335900FC917F /* InvisibleYouTubeVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFA71A97335900FC917F /* InvisibleYouTubeVideoPlayer.m */; };
 		C351799DE10AF7A3706E09BF /* libPods-Wily.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99487907B0430D1E74C6A687 /* libPods-Wily.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,8 @@
 		697CAF961A97222300FC917F /* WilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		697CAF9B1A97222300FC917F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		697CAF9C1A97222300FC917F /* WilyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WilyTests.m; sourceTree = "<group>"; };
+		697CAFA61A97335900FC917F /* InvisibleYouTubeVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvisibleYouTubeVideoPlayer.h; sourceTree = "<group>"; };
+		697CAFA71A97335900FC917F /* InvisibleYouTubeVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvisibleYouTubeVideoPlayer.m; sourceTree = "<group>"; };
 		99487907B0430D1E74C6A687 /* libPods-Wily.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wily.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88926DEC784DE3F59570B53 /* Pods-Wily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wily.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wily/Pods-Wily.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +103,8 @@
 				697CAF851A97222200FC917F /* AppDelegate.m */,
 				697CAF871A97222200FC917F /* ViewController.h */,
 				697CAF881A97222200FC917F /* ViewController.m */,
+				697CAFA61A97335900FC917F /* InvisibleYouTubeVideoPlayer.h */,
+				697CAFA71A97335900FC917F /* InvisibleYouTubeVideoPlayer.m */,
 				697CAF8A1A97222200FC917F /* Main.storyboard */,
 				697CAF8D1A97222200FC917F /* Images.xcassets */,
 				697CAF8F1A97222200FC917F /* LaunchScreen.xib */,
@@ -280,6 +285,7 @@
 			files = (
 				697CAF891A97222200FC917F /* ViewController.m in Sources */,
 				697CAF861A97222200FC917F /* AppDelegate.m in Sources */,
+				697CAFA81A97335900FC917F /* InvisibleYouTubeVideoPlayer.m in Sources */,
 				697CAF831A97222200FC917F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
