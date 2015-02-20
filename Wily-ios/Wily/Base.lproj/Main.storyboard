@@ -88,16 +88,27 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walking With Wily Women" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xe-VA-zwg">
+                                <rect key="frame" x="20" y="40" width="560" height="60"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="OwN-m9-EVv" secondAttribute="trailing" id="3h6-28-bZ9"/>
+                            <constraint firstItem="0Xe-VA-zwg" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="5iD-CL-K0a"/>
                             <constraint firstItem="OwN-m9-EVv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ARK-BF-tEx"/>
+                            <constraint firstAttribute="trailing" secondItem="0Xe-VA-zwg" secondAttribute="trailing" constant="20" id="C4D-m1-j9q"/>
                             <constraint firstItem="dAq-gS-TyW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="E9m-JK-tyS"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dAq-gS-TyW" secondAttribute="bottom" id="Twr-uV-Mwm"/>
                             <constraint firstAttribute="trailing" secondItem="dAq-gS-TyW" secondAttribute="trailing" id="YC3-yh-Q4A"/>
                             <constraint firstItem="OwN-m9-EVv" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="c2z-GR-OaJ"/>
                             <constraint firstAttribute="bottom" secondItem="OwN-m9-EVv" secondAttribute="bottom" id="pHz-qM-Ud7"/>
+                            <constraint firstItem="0Xe-VA-zwg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="tDy-Ra-baQ"/>
                         </constraints>
                     </view>
                     <connections>
