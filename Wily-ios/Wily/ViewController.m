@@ -16,6 +16,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentPlaybackTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchBarHeightConstraint;
 
 @property (nonatomic, strong) NSArray *searchResults;
 
@@ -139,6 +140,10 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [self.playProgressView setProgress:progress animated:YES];
   self.currentPlaybackTimeLabel.text = [self formattedStringForTimeInterval:player.currentPlaybackTime];
   self.durationLabel.text = [self formattedStringForTimeInterval:player.duration];
+}
+
+- (IBAction)viewTapped:(UITapGestureRecognizer *)sender {
+  self.searchBarHeightConstraint.constant = (self.searchBarHeightConstraint.constant == 0) ? 44 : 0;
 }
 
 @end
