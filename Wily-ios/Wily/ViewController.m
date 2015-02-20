@@ -3,8 +3,9 @@
 #import "YoutubeSearcher.h"
 
 static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
+static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
-@interface ViewController () <InvisibleYouTubeVideoPlayerDelegate>
+@interface ViewController () <InvisibleYouTubeVideoPlayerDelegate, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate>
 
 @property (nonatomic) InvisibleYouTubeVideoPlayer *player;
 @property (nonatomic) YoutubeSearcher *searcher;
@@ -14,6 +15,9 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 @property (weak, nonatomic) IBOutlet UIImageView *wallPaperImageView;
 @property (weak, nonatomic) IBOutlet UIProgressView *playProgressView;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (strong, nonatomic) IBOutlet UISearchDisplayController *searchResultsDisplayController;
+
+@property (nonatomic, strong) NSArray *searchResults;
 
 @end
 
@@ -27,6 +31,11 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 
   [self changeWallPaper];
   self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
+
+  UITableView *tableView = self.searchResultsDisplayController.searchResultsTableView;
+  tableView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+  tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  [tableView registerNib:[UINib nibWithNibName:@"SearchResultTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:SearchResultCellIdentifier];
 }
 
 - (IBAction)play:(id)sender {
@@ -75,6 +84,32 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 - (void)invisibleYouTubeVideoPlayer:(InvisibleYouTubeVideoPlayer *)player
                  didFetchVideoTitle:(NSString *)title {
   NSLog(@"title: %@", title);
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  return self.searchResults.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier forIndexPath:indexPath];
+  cell.textLabel.text = self.searchResults[indexPath.row];
+  return cell;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+  [self.searcher autocompleteSuggestionsForSearchString:searchBar.text completionBlock:^(NSArray *suggestions) {
+    self.searchResults = suggestions;
+    [self.searchResultsDisplayController.searchResultsTableView reloadData];
+  }];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [self.searcher firstVideoIdentifierForSearchString:self.searchResults[indexPath.row] completionBlock:^(NSString *videoIdentifier) {
+    [self.player loadVideoWithIdentifier:videoIdentifier];
+    [self.player play];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.searchResultsDisplayController setActive:NO animated:YES];
+  }];
 }
 
 @end
