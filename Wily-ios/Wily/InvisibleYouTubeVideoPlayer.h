@@ -11,17 +11,17 @@
 /**
  Load video with @p videoIdentifier in an invisible view
  added to the container view.
- */
-- (void)loadVideoWithIdentifier:(NSString *)videoIdentifier;
 
-/**
- If @p play has been called, @p stop must be called before called before
+ If @p loadVideo has been called, @p unloadVideo must be called before
  letting go of the last reference to the receiver to avoid a memory leak.
  */
+- (void)loadVideoWithIdentifier:(NSString *)videoIdentifier;
+- (void)unloadVideo;
+
 - (void)play;
 - (void)pause;
-- (void)stop;
 
+@property(nonatomic, readonly) BOOL isPlaying;
 @property(nonatomic, readonly) NSTimeInterval currentPlaybackTime;
 @property(nonatomic, readonly) NSTimeInterval duration;
 

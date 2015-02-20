@@ -2,7 +2,6 @@
 #import "InvisibleYouTubeVideoPlayer.h"
 #import "YoutubeSearcher.h"
 
-static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 @interface ViewController () <InvisibleYouTubeVideoPlayerDelegate, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate>
@@ -10,12 +9,13 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @property (nonatomic) InvisibleYouTubeVideoPlayer *player;
 @property (nonatomic) YoutubeSearcher *searcher;
 
-@property (nonatomic, getter=isPlaying) BOOL playing;
-
 @property (weak, nonatomic) IBOutlet UIImageView *wallPaperImageView;
 @property (weak, nonatomic) IBOutlet UIProgressView *playProgressView;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 @property (strong, nonatomic) IBOutlet UISearchDisplayController *searchResultsDisplayController;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currentPlaybackTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *durationLabel;
 
 @property (nonatomic, strong) NSArray *searchResults;
 
@@ -29,6 +29,8 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   self.player.delegate = self;
   self.searcher = [[YoutubeSearcher alloc] init];
 
+  [self disableControls];
+
   [self changeWallPaper];
   self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
 
@@ -38,52 +40,10 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [tableView registerNib:[UINib nibWithNibName:@"SearchResultTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:SearchResultCellIdentifier];
 }
 
-- (IBAction)play:(id)sender {
-  UIImage *playButtonImage = self.isPlaying ? [UIImage imageNamed:@"play"] : [UIImage imageNamed:@"pause"];
-  [self.playButton setImage:playButtonImage forState:UIControlStateNormal];
-
-  if (self.isPlaying) {
-    [self pauseVideo];
-  } else {
-    [self playVideo];
-  }
-
-  self.playing = !self.isPlaying;
-}
-
-- (void)playVideo {
-  [self.searcher autocompleteSuggestionsForSearchString:@"hello"
-                                        completionBlock:^(NSArray *suggestions) {
-                                          NSLog(@"%@", suggestions);
-                                        }];
-  /*
-  [self.searcher firstVideoIdentifierForSearchString:@"hello"
-                                     completionBlock:^(NSString *videoIdentifier) {
-                                       NSLog(@"%@", videoIdentifier);
-                                     }];
-   */
-  [self.player loadVideoWithIdentifier:VideoIdentifier];
-  [self.player play];
-}
-
-- (void)pauseVideo {
-  [self.player pause];
-}
-
 - (void)changeWallPaper {
   NSUInteger wallPaperNumber = arc4random() % 37;
   NSString *wallPaperImageName = [NSString stringWithFormat:@"%@", @(wallPaperNumber)];
   self.wallPaperImageView.image = [UIImage imageNamed:wallPaperImageName];
-}
-
-- (void)invisibleYouTubeVideoPlayer:(InvisibleYouTubeVideoPlayer *)player
-             didChangeVideoProgress:(float)progress {
-  NSLog(@"progress: %@", @(progress));
-}
-
-- (void)invisibleYouTubeVideoPlayer:(InvisibleYouTubeVideoPlayer *)player
-                 didFetchVideoTitle:(NSString *)title {
-  NSLog(@"title: %@", title);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -105,11 +65,68 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [self.searcher firstVideoIdentifierForSearchString:self.searchResults[indexPath.row] completionBlock:^(NSString *videoIdentifier) {
-    [self.player loadVideoWithIdentifier:videoIdentifier];
-    [self.player play];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.searchResultsDisplayController setActive:NO animated:YES];
+    if (videoIdentifier != nil) {
+      [self playVideoWithIdentifier:videoIdentifier];
+    }
   }];
+}
+
+- (void)disableControls {
+  self.playButton.hidden = YES;
+  self.currentPlaybackTimeLabel.text = @"-:-";
+  self.durationLabel.text = @"-:-";
+}
+
+- (void)enableControls {
+  self.playButton.hidden = NO;
+}
+
+- (void)playVideoWithIdentifier:(NSString *)videoIdentifier {
+  if (self.player.isPlaying) {
+    [self.player unloadVideo];
+  }
+  [self.player loadVideoWithIdentifier:videoIdentifier];
+  [self enableControls];
+  [self updatePlayButtonImage];
+}
+
+- (void)updatePlayButtonImage {
+  UIImage *image = self.player.isPlaying ? [UIImage imageNamed:@"play"] : [UIImage imageNamed:@"pause"];
+  [self.playButton setImage:image forState:UIControlStateNormal];
+}
+
+- (IBAction)play:(id)sender {
+  if (self.player.isPlaying) {
+    [self pauseVideo];
+  } else {
+    [self playVideo];
+  }
+}
+
+- (void)playVideo {
+  [self.player play];
+  [self updatePlayButtonImage];
+}
+
+- (void)pauseVideo {
+  [self.player pause];
+  [self updatePlayButtonImage];
+}
+
+- (void)invisibleYouTubeVideoPlayer:(InvisibleYouTubeVideoPlayer *)player
+                 didFetchVideoTitle:(NSString *)title {
+  NSLog(@"title: %@", title);
+  self.titleLabel.text = title;
+}
+
+- (void)invisibleYouTubeVideoPlayer:(InvisibleYouTubeVideoPlayer *)player
+             didChangeVideoProgress:(float)progress {
+  NSLog(@"progress: %@", @(progress));
+  [self.playProgressView setProgress:progress animated:YES];
+  self.currentPlaybackTimeLabel.text = [NSString stringWithFormat:@"%@", @(player.currentPlaybackTime / 60)];
+  self.durationLabel.text = [NSString stringWithFormat:@"%@", @(player.duration / 60)];
 }
 
 @end

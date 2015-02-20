@@ -135,9 +135,12 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="currentPlaybackTimeLabel" destination="ydu-8C-JnR" id="Avl-Vi-Oht"/>
+                        <outlet property="durationLabel" destination="yqy-op-okc" id="ZYn-0Y-NEs"/>
                         <outlet property="playButton" destination="oWQ-kt-XIt" id="l82-9j-Esu"/>
                         <outlet property="playProgressView" destination="NGG-uo-p72" id="0Hl-oE-6ik"/>
                         <outlet property="searchResultsDisplayController" destination="ypz-fb-ptg" id="7Oh-9e-A0K"/>
+                        <outlet property="titleLabel" destination="0Xe-VA-zwg" id="AQQ-6O-JE5"/>
                         <outlet property="wallPaperImageView" destination="OwN-m9-EVv" id="1y6-WJ-u72"/>
                     </connections>
                 </viewController>

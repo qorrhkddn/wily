@@ -52,6 +52,8 @@
 }
 
 - (void)loadVideoWithIdentifier:(NSString *)videoIdentifier {
+  NSAssert(self.playerProgressTimer == nil, @"`unloadVideo' must be called before calling `loadVideo' again");
+
   self.videoIdentifier = videoIdentifier;
   self.videoContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
   self.videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:self.videoIdentifier];
@@ -61,31 +63,43 @@
   NSLog(@"Changing video [Video Identifier = %@]", self.videoIdentifier);
   [self.videoPlayerViewController presentInView:self.videoContainerView];
 
-  self.videoPlayerViewController.moviePlayer.backgroundPlaybackEnabled = YES;
+  self.moviePlayer.backgroundPlaybackEnabled = YES;
+  [self.moviePlayer play];
+  [self notifyDelegateOfProgress:0];
+  [self startPollingMediaPlayerForProgress];
+}
+
+- (void)unloadVideo {
+  NSAssert(self.playerProgressTimer != nil, @"`loadVideo' must be called before calling `unloadVideo' again");
+
+  [self.moviePlayer stop];
+  [self notifyDelegateOfProgress:0];
+  [self stopPollingMediaPlayerForProgress];
+
+  self.videoPlayerViewController = nil;
+  self.videoContainerView = nil;
+  self.videoIdentifier = nil;
 }
 
 - (MPMoviePlayerController *)moviePlayer {
   return self.videoPlayerViewController.moviePlayer;
 }
 
-- (void)play {
-  NSAssert(self.playerProgressTimer == nil, @"`stop' must be called before calling `play' again");
+- (BOOL)isPlaying {
+  if (self.videoIdentifier == nil) {
+    return NO;
+  }
+  return (self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying);
+}
 
+- (void)play {
+  NSAssert(!self.isPlaying, @"Attempting to play when already playing");
   [self.moviePlayer play];
-  [self notifyDelegateOfProgress:0];
-  [self startPollingMediaPlayerForProgress];
 }
 
 - (void)pause {
+  NSAssert(self.isPlaying, @"Attempting to pause when not playing");
   [self.moviePlayer pause];
-}
-
-- (void)stop {
-  NSAssert(self.playerProgressTimer != nil, @"`play' must be called before calling `stop' again");
-
-  [self.moviePlayer stop];
-  [self notifyDelegateOfProgress:0];
-  [self stopPollingMediaPlayerForProgress];
 }
 
 - (NSTimeInterval)currentPlaybackTime {
@@ -106,7 +120,7 @@
 }
 
 - (void)progressTimerTick:(NSObject *)sender {
-  if (self.moviePlayer.playbackState != MPMoviePlaybackStatePlaying) {
+  if (!self.isPlaying) {
     return;
   }
 
