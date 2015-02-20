@@ -24,12 +24,8 @@
   self = [super init];
   if (self) {
     _containerView = containerView;
-
     _playerEventLogger = [[PlayerEventLogger alloc] init];
-    _playerEventLogger.enabled = YES;
-
     _nowPlayingInfoCenterProvider = [[NowPlayingInfoCenterProvider alloc] init];
-    _nowPlayingInfoCenterProvider.enabled = YES;
 
     [self enableAVAudioSessionCategoryPlayback];
   }
