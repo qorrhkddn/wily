@@ -1,6 +1,7 @@
 #import "InvisibleYouTubeVideoPlayer.h"
 #import <AVFoundation/AVFoundation.h>
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
+#import "MPMoviePlayerController+BackgroundPlayback.h"
 
 @interface InvisibleYouTubeVideoPlayer ()
 @property (nonatomic, weak) UIView *containerView;
@@ -37,8 +38,19 @@
 
   MPMoviePlayerController *moviePlayer = self.videoPlayerViewController.moviePlayer;
   [moviePlayer prepareToPlay];
+  [[self class] enableAVAudioSessionCategoryPlayback];
+  moviePlayer.backgroundPlaybackEnabled = YES;
   moviePlayer.shouldAutoplay = YES;
   [moviePlayer play];
+}
+
++ (void)enableAVAudioSessionCategoryPlayback {
+  NSError *error = nil;
+  BOOL success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback
+                                                        error:&error];
+  if (!success) {
+    NSLog(@"Audio Session Category error: %@", error);
+  }
 }
 
 @end

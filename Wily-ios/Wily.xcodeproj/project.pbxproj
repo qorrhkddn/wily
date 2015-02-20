@@ -1,500 +1,506 @@
 // !$*UTF8*$!
 {
-  archiveVersion = 1;
-  classes = {
-  };
-  objectVersion = 46;
-  objects = {
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
 
 /* Begin PBXBuildFile section */
-    697CAF831A97222200FC917F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF821A97222200FC917F /* main.m */; };
-    697CAF861A97222200FC917F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF851A97222200FC917F /* AppDelegate.m */; };
-    697CAF891A97222200FC917F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF881A97222200FC917F /* ViewController.m */; };
-    697CAF8C1A97222200FC917F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8A1A97222200FC917F /* Main.storyboard */; };
-    697CAF8E1A97222200FC917F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8D1A97222200FC917F /* Images.xcassets */; };
-    697CAF911A97222200FC917F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8F1A97222200FC917F /* LaunchScreen.xib */; };
-    697CAF9D1A97222300FC917F /* WilyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF9C1A97222300FC917F /* WilyTests.m */; };
-    697CAFA81A97335900FC917F /* InvisibleYouTubeVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFA71A97335900FC917F /* InvisibleYouTubeVideoPlayer.m */; };
-    8ED145E81A972C4600FD6A97 /* Wallpapers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */; };
-    C351799DE10AF7A3706E09BF /* libPods-Wily.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99487907B0430D1E74C6A687 /* libPods-Wily.a */; };
+		697CAF831A97222200FC917F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF821A97222200FC917F /* main.m */; };
+		697CAF861A97222200FC917F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF851A97222200FC917F /* AppDelegate.m */; };
+		697CAF891A97222200FC917F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF881A97222200FC917F /* ViewController.m */; };
+		697CAF8C1A97222200FC917F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8A1A97222200FC917F /* Main.storyboard */; };
+		697CAF8E1A97222200FC917F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8D1A97222200FC917F /* Images.xcassets */; };
+		697CAF911A97222200FC917F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8F1A97222200FC917F /* LaunchScreen.xib */; };
+		697CAF9D1A97222300FC917F /* WilyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF9C1A97222300FC917F /* WilyTests.m */; };
+		697CAFA81A97335900FC917F /* InvisibleYouTubeVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFA71A97335900FC917F /* InvisibleYouTubeVideoPlayer.m */; };
+		697CAFAB1A973BAC00FC917F /* MPMoviePlayerController+BackgroundPlayback.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFAA1A973BAC00FC917F /* MPMoviePlayerController+BackgroundPlayback.m */; };
+		8ED145E81A972C4600FD6A97 /* Wallpapers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */; };
+		C351799DE10AF7A3706E09BF /* libPods-Wily.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99487907B0430D1E74C6A687 /* libPods-Wily.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-    697CAF971A97222300FC917F /* PBXContainerItemProxy */ = {
-      isa = PBXContainerItemProxy;
-      containerPortal = 697CAF751A97222200FC917F /* Project object */;
-      proxyType = 1;
-      remoteGlobalIDString = 697CAF7C1A97222200FC917F;
-      remoteInfo = Wily;
-    };
+		697CAF971A97222300FC917F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 697CAF751A97222200FC917F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 697CAF7C1A97222200FC917F;
+			remoteInfo = Wily;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-    2C54D1BF18B538C9B9B6FB6E /* Pods-Wily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wily/Pods-Wily.debug.xcconfig"; sourceTree = "<group>"; };
-    697CAF7D1A97222200FC917F /* Wily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wily.app; sourceTree = BUILT_PRODUCTS_DIR; };
-    697CAF811A97222200FC917F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-    697CAF821A97222200FC917F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-    697CAF841A97222200FC917F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-    697CAF851A97222200FC917F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-    697CAF871A97222200FC917F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-    697CAF881A97222200FC917F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-    697CAF8B1A97222200FC917F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-    697CAF8D1A97222200FC917F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-    697CAF901A97222200FC917F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-    697CAF961A97222300FC917F /* WilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-    697CAF9B1A97222300FC917F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-    697CAF9C1A97222300FC917F /* WilyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WilyTests.m; sourceTree = "<group>"; };
-    697CAFA61A97335900FC917F /* InvisibleYouTubeVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvisibleYouTubeVideoPlayer.h; sourceTree = "<group>"; };
-    697CAFA71A97335900FC917F /* InvisibleYouTubeVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvisibleYouTubeVideoPlayer.m; sourceTree = "<group>"; };
-    8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Wallpapers.xcassets; sourceTree = "<group>"; };
-    99487907B0430D1E74C6A687 /* libPods-Wily.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wily.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-    B88926DEC784DE3F59570B53 /* Pods-Wily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wily.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wily/Pods-Wily.release.xcconfig"; sourceTree = "<group>"; };
+		2C54D1BF18B538C9B9B6FB6E /* Pods-Wily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wily/Pods-Wily.debug.xcconfig"; sourceTree = "<group>"; };
+		697CAF7D1A97222200FC917F /* Wily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wily.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		697CAF811A97222200FC917F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		697CAF821A97222200FC917F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		697CAF841A97222200FC917F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		697CAF851A97222200FC917F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		697CAF871A97222200FC917F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		697CAF881A97222200FC917F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		697CAF8B1A97222200FC917F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		697CAF8D1A97222200FC917F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		697CAF901A97222200FC917F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		697CAF961A97222300FC917F /* WilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		697CAF9B1A97222300FC917F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		697CAF9C1A97222300FC917F /* WilyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WilyTests.m; sourceTree = "<group>"; };
+		697CAFA61A97335900FC917F /* InvisibleYouTubeVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvisibleYouTubeVideoPlayer.h; sourceTree = "<group>"; };
+		697CAFA71A97335900FC917F /* InvisibleYouTubeVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvisibleYouTubeVideoPlayer.m; sourceTree = "<group>"; };
+		697CAFA91A973BAC00FC917F /* MPMoviePlayerController+BackgroundPlayback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMoviePlayerController+BackgroundPlayback.h"; sourceTree = "<group>"; };
+		697CAFAA1A973BAC00FC917F /* MPMoviePlayerController+BackgroundPlayback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMoviePlayerController+BackgroundPlayback.m"; sourceTree = "<group>"; };
+		8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Wallpapers.xcassets; sourceTree = "<group>"; };
+		99487907B0430D1E74C6A687 /* libPods-Wily.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wily.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B88926DEC784DE3F59570B53 /* Pods-Wily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wily.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wily/Pods-Wily.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-    697CAF7A1A97222200FC917F /* Frameworks */ = {
-      isa = PBXFrameworksBuildPhase;
-      buildActionMask = 2147483647;
-      files = (
-        C351799DE10AF7A3706E09BF /* libPods-Wily.a in Frameworks */,
-      );
-      runOnlyForDeploymentPostprocessing = 0;
-    };
-    697CAF931A97222300FC917F /* Frameworks */ = {
-      isa = PBXFrameworksBuildPhase;
-      buildActionMask = 2147483647;
-      files = (
-      );
-      runOnlyForDeploymentPostprocessing = 0;
-    };
+		697CAF7A1A97222200FC917F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C351799DE10AF7A3706E09BF /* libPods-Wily.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		697CAF931A97222300FC917F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-    1D444F6C336D22EEBE742AF8 /* Frameworks */ = {
-      isa = PBXGroup;
-      children = (
-        99487907B0430D1E74C6A687 /* libPods-Wily.a */,
-      );
-      name = Frameworks;
-      sourceTree = "<group>";
-    };
-    697CAF741A97222200FC917F = {
-      isa = PBXGroup;
-      children = (
-        697CAF7F1A97222200FC917F /* Wily */,
-        697CAF991A97222300FC917F /* WilyTests */,
-        697CAF7E1A97222200FC917F /* Products */,
-        721AE3AFD129C30768738EFD /* Pods */,
-        1D444F6C336D22EEBE742AF8 /* Frameworks */,
-      );
-      sourceTree = "<group>";
-    };
-    697CAF7E1A97222200FC917F /* Products */ = {
-      isa = PBXGroup;
-      children = (
-        697CAF7D1A97222200FC917F /* Wily.app */,
-        697CAF961A97222300FC917F /* WilyTests.xctest */,
-      );
-      name = Products;
-      sourceTree = "<group>";
-    };
-    697CAF7F1A97222200FC917F /* Wily */ = {
-      isa = PBXGroup;
-      children = (
-        697CAF841A97222200FC917F /* AppDelegate.h */,
-        697CAF851A97222200FC917F /* AppDelegate.m */,
-        697CAF871A97222200FC917F /* ViewController.h */,
-        697CAF881A97222200FC917F /* ViewController.m */,
-        697CAFA61A97335900FC917F /* InvisibleYouTubeVideoPlayer.h */,
-        697CAFA71A97335900FC917F /* InvisibleYouTubeVideoPlayer.m */,
-        697CAF8A1A97222200FC917F /* Main.storyboard */,
-        697CAF8D1A97222200FC917F /* Images.xcassets */,
-        8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */,
-        697CAF8F1A97222200FC917F /* LaunchScreen.xib */,
-        697CAF801A97222200FC917F /* Supporting Files */,
-      );
-      path = Wily;
-      sourceTree = "<group>";
-    };
-    697CAF801A97222200FC917F /* Supporting Files */ = {
-      isa = PBXGroup;
-      children = (
-        697CAF811A97222200FC917F /* Info.plist */,
-        697CAF821A97222200FC917F /* main.m */,
-      );
-      name = "Supporting Files";
-      sourceTree = "<group>";
-    };
-    697CAF991A97222300FC917F /* WilyTests */ = {
-      isa = PBXGroup;
-      children = (
-        697CAF9C1A97222300FC917F /* WilyTests.m */,
-        697CAF9A1A97222300FC917F /* Supporting Files */,
-      );
-      path = WilyTests;
-      sourceTree = "<group>";
-    };
-    697CAF9A1A97222300FC917F /* Supporting Files */ = {
-      isa = PBXGroup;
-      children = (
-        697CAF9B1A97222300FC917F /* Info.plist */,
-      );
-      name = "Supporting Files";
-      sourceTree = "<group>";
-    };
-    721AE3AFD129C30768738EFD /* Pods */ = {
-      isa = PBXGroup;
-      children = (
-        2C54D1BF18B538C9B9B6FB6E /* Pods-Wily.debug.xcconfig */,
-        B88926DEC784DE3F59570B53 /* Pods-Wily.release.xcconfig */,
-      );
-      name = Pods;
-      sourceTree = "<group>";
-    };
+		1D444F6C336D22EEBE742AF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99487907B0430D1E74C6A687 /* libPods-Wily.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		697CAF741A97222200FC917F = {
+			isa = PBXGroup;
+			children = (
+				697CAF7F1A97222200FC917F /* Wily */,
+				697CAF991A97222300FC917F /* WilyTests */,
+				697CAF7E1A97222200FC917F /* Products */,
+				721AE3AFD129C30768738EFD /* Pods */,
+				1D444F6C336D22EEBE742AF8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		697CAF7E1A97222200FC917F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				697CAF7D1A97222200FC917F /* Wily.app */,
+				697CAF961A97222300FC917F /* WilyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		697CAF7F1A97222200FC917F /* Wily */ = {
+			isa = PBXGroup;
+			children = (
+				697CAF841A97222200FC917F /* AppDelegate.h */,
+				697CAF851A97222200FC917F /* AppDelegate.m */,
+				697CAF871A97222200FC917F /* ViewController.h */,
+				697CAF881A97222200FC917F /* ViewController.m */,
+				697CAFA61A97335900FC917F /* InvisibleYouTubeVideoPlayer.h */,
+				697CAFA71A97335900FC917F /* InvisibleYouTubeVideoPlayer.m */,
+				697CAFA91A973BAC00FC917F /* MPMoviePlayerController+BackgroundPlayback.h */,
+				697CAFAA1A973BAC00FC917F /* MPMoviePlayerController+BackgroundPlayback.m */,
+				697CAF8A1A97222200FC917F /* Main.storyboard */,
+				697CAF8D1A97222200FC917F /* Images.xcassets */,
+				8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */,
+				697CAF8F1A97222200FC917F /* LaunchScreen.xib */,
+				697CAF801A97222200FC917F /* Supporting Files */,
+			);
+			path = Wily;
+			sourceTree = "<group>";
+		};
+		697CAF801A97222200FC917F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				697CAF811A97222200FC917F /* Info.plist */,
+				697CAF821A97222200FC917F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		697CAF991A97222300FC917F /* WilyTests */ = {
+			isa = PBXGroup;
+			children = (
+				697CAF9C1A97222300FC917F /* WilyTests.m */,
+				697CAF9A1A97222300FC917F /* Supporting Files */,
+			);
+			path = WilyTests;
+			sourceTree = "<group>";
+		};
+		697CAF9A1A97222300FC917F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				697CAF9B1A97222300FC917F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		721AE3AFD129C30768738EFD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C54D1BF18B538C9B9B6FB6E /* Pods-Wily.debug.xcconfig */,
+				B88926DEC784DE3F59570B53 /* Pods-Wily.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-    697CAF7C1A97222200FC917F /* Wily */ = {
-      isa = PBXNativeTarget;
-      buildConfigurationList = 697CAFA01A97222300FC917F /* Build configuration list for PBXNativeTarget "Wily" */;
-      buildPhases = (
-        ED1F3695D3C8B3D67CF12292 /* Check Pods Manifest.lock */,
-        697CAF791A97222200FC917F /* Sources */,
-        697CAF7A1A97222200FC917F /* Frameworks */,
-        697CAF7B1A97222200FC917F /* Resources */,
-        B03DF342EF41768DD1460724 /* Copy Pods Resources */,
-      );
-      buildRules = (
-      );
-      dependencies = (
-      );
-      name = Wily;
-      productName = Wily;
-      productReference = 697CAF7D1A97222200FC917F /* Wily.app */;
-      productType = "com.apple.product-type.application";
-    };
-    697CAF951A97222300FC917F /* WilyTests */ = {
-      isa = PBXNativeTarget;
-      buildConfigurationList = 697CAFA31A97222300FC917F /* Build configuration list for PBXNativeTarget "WilyTests" */;
-      buildPhases = (
-        697CAF921A97222300FC917F /* Sources */,
-        697CAF931A97222300FC917F /* Frameworks */,
-        697CAF941A97222300FC917F /* Resources */,
-      );
-      buildRules = (
-      );
-      dependencies = (
-        697CAF981A97222300FC917F /* PBXTargetDependency */,
-      );
-      name = WilyTests;
-      productName = WilyTests;
-      productReference = 697CAF961A97222300FC917F /* WilyTests.xctest */;
-      productType = "com.apple.product-type.bundle.unit-test";
-    };
+		697CAF7C1A97222200FC917F /* Wily */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 697CAFA01A97222300FC917F /* Build configuration list for PBXNativeTarget "Wily" */;
+			buildPhases = (
+				ED1F3695D3C8B3D67CF12292 /* Check Pods Manifest.lock */,
+				697CAF791A97222200FC917F /* Sources */,
+				697CAF7A1A97222200FC917F /* Frameworks */,
+				697CAF7B1A97222200FC917F /* Resources */,
+				B03DF342EF41768DD1460724 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Wily;
+			productName = Wily;
+			productReference = 697CAF7D1A97222200FC917F /* Wily.app */;
+			productType = "com.apple.product-type.application";
+		};
+		697CAF951A97222300FC917F /* WilyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 697CAFA31A97222300FC917F /* Build configuration list for PBXNativeTarget "WilyTests" */;
+			buildPhases = (
+				697CAF921A97222300FC917F /* Sources */,
+				697CAF931A97222300FC917F /* Frameworks */,
+				697CAF941A97222300FC917F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				697CAF981A97222300FC917F /* PBXTargetDependency */,
+			);
+			name = WilyTests;
+			productName = WilyTests;
+			productReference = 697CAF961A97222300FC917F /* WilyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-    697CAF751A97222200FC917F /* Project object */ = {
-      isa = PBXProject;
-      attributes = {
-        LastUpgradeCheck = 0610;
-        ORGANIZATIONNAME = Riva;
-        TargetAttributes = {
-          697CAF7C1A97222200FC917F = {
-            CreatedOnToolsVersion = 6.1.1;
-          };
-          697CAF951A97222300FC917F = {
-            CreatedOnToolsVersion = 6.1.1;
-            TestTargetID = 697CAF7C1A97222200FC917F;
-          };
-        };
-      };
-      buildConfigurationList = 697CAF781A97222200FC917F /* Build configuration list for PBXProject "Wily" */;
-      compatibilityVersion = "Xcode 3.2";
-      developmentRegion = English;
-      hasScannedForEncodings = 0;
-      knownRegions = (
-        en,
-        Base,
-      );
-      mainGroup = 697CAF741A97222200FC917F;
-      productRefGroup = 697CAF7E1A97222200FC917F /* Products */;
-      projectDirPath = "";
-      projectRoot = "";
-      targets = (
-        697CAF7C1A97222200FC917F /* Wily */,
-        697CAF951A97222300FC917F /* WilyTests */,
-      );
-    };
+		697CAF751A97222200FC917F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Riva;
+				TargetAttributes = {
+					697CAF7C1A97222200FC917F = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					697CAF951A97222300FC917F = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 697CAF7C1A97222200FC917F;
+					};
+				};
+			};
+			buildConfigurationList = 697CAF781A97222200FC917F /* Build configuration list for PBXProject "Wily" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 697CAF741A97222200FC917F;
+			productRefGroup = 697CAF7E1A97222200FC917F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				697CAF7C1A97222200FC917F /* Wily */,
+				697CAF951A97222300FC917F /* WilyTests */,
+			);
+		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-    697CAF7B1A97222200FC917F /* Resources */ = {
-      isa = PBXResourcesBuildPhase;
-      buildActionMask = 2147483647;
-      files = (
-        697CAF8C1A97222200FC917F /* Main.storyboard in Resources */,
-        697CAF911A97222200FC917F /* LaunchScreen.xib in Resources */,
-        8ED145E81A972C4600FD6A97 /* Wallpapers.xcassets in Resources */,
-        697CAF8E1A97222200FC917F /* Images.xcassets in Resources */,
-      );
-      runOnlyForDeploymentPostprocessing = 0;
-    };
-    697CAF941A97222300FC917F /* Resources */ = {
-      isa = PBXResourcesBuildPhase;
-      buildActionMask = 2147483647;
-      files = (
-      );
-      runOnlyForDeploymentPostprocessing = 0;
-    };
+		697CAF7B1A97222200FC917F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				697CAF8C1A97222200FC917F /* Main.storyboard in Resources */,
+				697CAF911A97222200FC917F /* LaunchScreen.xib in Resources */,
+				8ED145E81A972C4600FD6A97 /* Wallpapers.xcassets in Resources */,
+				697CAF8E1A97222200FC917F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		697CAF941A97222300FC917F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-    B03DF342EF41768DD1460724 /* Copy Pods Resources */ = {
-      isa = PBXShellScriptBuildPhase;
-      buildActionMask = 2147483647;
-      files = (
-      );
-      inputPaths = (
-      );
-      name = "Copy Pods Resources";
-      outputPaths = (
-      );
-      runOnlyForDeploymentPostprocessing = 0;
-      shellPath = /bin/sh;
-      shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wily/Pods-Wily-resources.sh\"\n";
-      showEnvVarsInLog = 0;
-    };
-    ED1F3695D3C8B3D67CF12292 /* Check Pods Manifest.lock */ = {
-      isa = PBXShellScriptBuildPhase;
-      buildActionMask = 2147483647;
-      files = (
-      );
-      inputPaths = (
-      );
-      name = "Check Pods Manifest.lock";
-      outputPaths = (
-      );
-      runOnlyForDeploymentPostprocessing = 0;
-      shellPath = /bin/sh;
-      shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-      showEnvVarsInLog = 0;
-    };
+		B03DF342EF41768DD1460724 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wily/Pods-Wily-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED1F3695D3C8B3D67CF12292 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-    697CAF791A97222200FC917F /* Sources */ = {
-      isa = PBXSourcesBuildPhase;
-      buildActionMask = 2147483647;
-      files = (
-        697CAF891A97222200FC917F /* ViewController.m in Sources */,
-        697CAF861A97222200FC917F /* AppDelegate.m in Sources */,
-        697CAFA81A97335900FC917F /* InvisibleYouTubeVideoPlayer.m in Sources */,
-        697CAF831A97222200FC917F /* main.m in Sources */,
-      );
-      runOnlyForDeploymentPostprocessing = 0;
-    };
-    697CAF921A97222300FC917F /* Sources */ = {
-      isa = PBXSourcesBuildPhase;
-      buildActionMask = 2147483647;
-      files = (
-        697CAF9D1A97222300FC917F /* WilyTests.m in Sources */,
-      );
-      runOnlyForDeploymentPostprocessing = 0;
-    };
+		697CAF791A97222200FC917F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				697CAF891A97222200FC917F /* ViewController.m in Sources */,
+				697CAF861A97222200FC917F /* AppDelegate.m in Sources */,
+				697CAFAB1A973BAC00FC917F /* MPMoviePlayerController+BackgroundPlayback.m in Sources */,
+				697CAFA81A97335900FC917F /* InvisibleYouTubeVideoPlayer.m in Sources */,
+				697CAF831A97222200FC917F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		697CAF921A97222300FC917F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				697CAF9D1A97222300FC917F /* WilyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-    697CAF981A97222300FC917F /* PBXTargetDependency */ = {
-      isa = PBXTargetDependency;
-      target = 697CAF7C1A97222200FC917F /* Wily */;
-      targetProxy = 697CAF971A97222300FC917F /* PBXContainerItemProxy */;
-    };
+		697CAF981A97222300FC917F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 697CAF7C1A97222200FC917F /* Wily */;
+			targetProxy = 697CAF971A97222300FC917F /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-    697CAF8A1A97222200FC917F /* Main.storyboard */ = {
-      isa = PBXVariantGroup;
-      children = (
-        697CAF8B1A97222200FC917F /* Base */,
-      );
-      name = Main.storyboard;
-      sourceTree = "<group>";
-    };
-    697CAF8F1A97222200FC917F /* LaunchScreen.xib */ = {
-      isa = PBXVariantGroup;
-      children = (
-        697CAF901A97222200FC917F /* Base */,
-      );
-      name = LaunchScreen.xib;
-      sourceTree = "<group>";
-    };
+		697CAF8A1A97222200FC917F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				697CAF8B1A97222200FC917F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		697CAF8F1A97222200FC917F /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				697CAF901A97222200FC917F /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-    697CAF9E1A97222300FC917F /* Debug */ = {
-      isa = XCBuildConfiguration;
-      buildSettings = {
-        ALWAYS_SEARCH_USER_PATHS = NO;
-        CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-        CLANG_CXX_LIBRARY = "libc++";
-        CLANG_ENABLE_MODULES = YES;
-        CLANG_ENABLE_OBJC_ARC = YES;
-        CLANG_WARN_BOOL_CONVERSION = YES;
-        CLANG_WARN_CONSTANT_CONVERSION = YES;
-        CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-        CLANG_WARN_EMPTY_BODY = YES;
-        CLANG_WARN_ENUM_CONVERSION = YES;
-        CLANG_WARN_INT_CONVERSION = YES;
-        CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-        CLANG_WARN_UNREACHABLE_CODE = YES;
-        CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-        "CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-        COPY_PHASE_STRIP = NO;
-        ENABLE_STRICT_OBJC_MSGSEND = YES;
-        GCC_C_LANGUAGE_STANDARD = gnu99;
-        GCC_DYNAMIC_NO_PIC = NO;
-        GCC_OPTIMIZATION_LEVEL = 0;
-        GCC_PREPROCESSOR_DEFINITIONS = (
-          "DEBUG=1",
-          "$(inherited)",
-        );
-        GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-        GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-        GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-        GCC_WARN_UNDECLARED_SELECTOR = YES;
-        GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-        GCC_WARN_UNUSED_FUNCTION = YES;
-        GCC_WARN_UNUSED_VARIABLE = YES;
-        IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-        MTL_ENABLE_DEBUG_INFO = YES;
-        ONLY_ACTIVE_ARCH = YES;
-        SDKROOT = iphoneos;
-      };
-      name = Debug;
-    };
-    697CAF9F1A97222300FC917F /* Release */ = {
-      isa = XCBuildConfiguration;
-      buildSettings = {
-        ALWAYS_SEARCH_USER_PATHS = NO;
-        CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-        CLANG_CXX_LIBRARY = "libc++";
-        CLANG_ENABLE_MODULES = YES;
-        CLANG_ENABLE_OBJC_ARC = YES;
-        CLANG_WARN_BOOL_CONVERSION = YES;
-        CLANG_WARN_CONSTANT_CONVERSION = YES;
-        CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-        CLANG_WARN_EMPTY_BODY = YES;
-        CLANG_WARN_ENUM_CONVERSION = YES;
-        CLANG_WARN_INT_CONVERSION = YES;
-        CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-        CLANG_WARN_UNREACHABLE_CODE = YES;
-        CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-        "CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-        COPY_PHASE_STRIP = YES;
-        ENABLE_NS_ASSERTIONS = NO;
-        ENABLE_STRICT_OBJC_MSGSEND = YES;
-        GCC_C_LANGUAGE_STANDARD = gnu99;
-        GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-        GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-        GCC_WARN_UNDECLARED_SELECTOR = YES;
-        GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-        GCC_WARN_UNUSED_FUNCTION = YES;
-        GCC_WARN_UNUSED_VARIABLE = YES;
-        IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-        MTL_ENABLE_DEBUG_INFO = NO;
-        SDKROOT = iphoneos;
-        VALIDATE_PRODUCT = YES;
-      };
-      name = Release;
-    };
-    697CAFA11A97222300FC917F /* Debug */ = {
-      isa = XCBuildConfiguration;
-      baseConfigurationReference = 2C54D1BF18B538C9B9B6FB6E /* Pods-Wily.debug.xcconfig */;
-      buildSettings = {
-        ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-        INFOPLIST_FILE = Wily/Info.plist;
-        LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-        PRODUCT_NAME = "$(TARGET_NAME)";
-      };
-      name = Debug;
-    };
-    697CAFA21A97222300FC917F /* Release */ = {
-      isa = XCBuildConfiguration;
-      baseConfigurationReference = B88926DEC784DE3F59570B53 /* Pods-Wily.release.xcconfig */;
-      buildSettings = {
-        ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-        INFOPLIST_FILE = Wily/Info.plist;
-        LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-        PRODUCT_NAME = "$(TARGET_NAME)";
-      };
-      name = Release;
-    };
-    697CAFA41A97222300FC917F /* Debug */ = {
-      isa = XCBuildConfiguration;
-      buildSettings = {
-        BUNDLE_LOADER = "$(TEST_HOST)";
-        FRAMEWORK_SEARCH_PATHS = (
-          "$(SDKROOT)/Developer/Library/Frameworks",
-          "$(inherited)",
-        );
-        GCC_PREPROCESSOR_DEFINITIONS = (
-          "DEBUG=1",
-          "$(inherited)",
-        );
-        INFOPLIST_FILE = WilyTests/Info.plist;
-        LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-        PRODUCT_NAME = "$(TARGET_NAME)";
-        TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wily.app/Wily";
-      };
-      name = Debug;
-    };
-    697CAFA51A97222300FC917F /* Release */ = {
-      isa = XCBuildConfiguration;
-      buildSettings = {
-        BUNDLE_LOADER = "$(TEST_HOST)";
-        FRAMEWORK_SEARCH_PATHS = (
-          "$(SDKROOT)/Developer/Library/Frameworks",
-          "$(inherited)",
-        );
-        INFOPLIST_FILE = WilyTests/Info.plist;
-        LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-        PRODUCT_NAME = "$(TARGET_NAME)";
-        TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wily.app/Wily";
-      };
-      name = Release;
-    };
+		697CAF9E1A97222300FC917F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		697CAF9F1A97222300FC917F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		697CAFA11A97222300FC917F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C54D1BF18B538C9B9B6FB6E /* Pods-Wily.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Wily/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		697CAFA21A97222300FC917F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B88926DEC784DE3F59570B53 /* Pods-Wily.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Wily/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		697CAFA41A97222300FC917F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WilyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wily.app/Wily";
+			};
+			name = Debug;
+		};
+		697CAFA51A97222300FC917F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WilyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wily.app/Wily";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-    697CAF781A97222200FC917F /* Build configuration list for PBXProject "Wily" */ = {
-      isa = XCConfigurationList;
-      buildConfigurations = (
-        697CAF9E1A97222300FC917F /* Debug */,
-        697CAF9F1A97222300FC917F /* Release */,
-      );
-      defaultConfigurationIsVisible = 0;
-      defaultConfigurationName = Release;
-    };
-    697CAFA01A97222300FC917F /* Build configuration list for PBXNativeTarget "Wily" */ = {
-      isa = XCConfigurationList;
-      buildConfigurations = (
-        697CAFA11A97222300FC917F /* Debug */,
-        697CAFA21A97222300FC917F /* Release */,
-      );
-      defaultConfigurationIsVisible = 0;
-      defaultConfigurationName = Release;
-    };
-    697CAFA31A97222300FC917F /* Build configuration list for PBXNativeTarget "WilyTests" */ = {
-      isa = XCConfigurationList;
-      buildConfigurations = (
-        697CAFA41A97222300FC917F /* Debug */,
-        697CAFA51A97222300FC917F /* Release */,
-      );
-      defaultConfigurationIsVisible = 0;
-      defaultConfigurationName = Release;
-    };
+		697CAF781A97222200FC917F /* Build configuration list for PBXProject "Wily" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				697CAF9E1A97222300FC917F /* Debug */,
+				697CAF9F1A97222300FC917F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		697CAFA01A97222300FC917F /* Build configuration list for PBXNativeTarget "Wily" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				697CAFA11A97222300FC917F /* Debug */,
+				697CAFA21A97222300FC917F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		697CAFA31A97222300FC917F /* Build configuration list for PBXNativeTarget "WilyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				697CAFA41A97222300FC917F /* Debug */,
+				697CAFA51A97222300FC917F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
-  };
-  rootObject = 697CAF751A97222200FC917F /* Project object */;
+	};
+	rootObject = 697CAF751A97222200FC917F /* Project object */;
 }
