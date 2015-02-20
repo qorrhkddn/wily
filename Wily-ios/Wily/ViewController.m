@@ -124,12 +124,21 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   self.titleLabel.text = title;
 }
 
+- (NSString *)formattedStringForTimeInterval:(NSTimeInterval)interval {
+  if (isnan(interval)) {
+    return @"-:-";
+  }
+  NSUInteger minutes = floor(interval/60);
+  NSUInteger seconds = round(interval - minutes * 60);
+  return [NSString stringWithFormat:@"%@:%@", @(minutes), @(seconds)];
+}
+
 - (void)invisibleYouTubeVideoPlayer:(InvisibleYouTubeVideoPlayer *)player
              didChangeVideoProgress:(float)progress {
   NSLog(@"progress: %@", @(progress));
   [self.playProgressView setProgress:progress animated:YES];
-  self.currentPlaybackTimeLabel.text = [NSString stringWithFormat:@"%@", @(player.currentPlaybackTime / 60)];
-  self.durationLabel.text = [NSString stringWithFormat:@"%@", @(player.duration / 60)];
+  self.currentPlaybackTimeLabel.text = [self formattedStringForTimeInterval:player.currentPlaybackTime];
+  self.durationLabel.text = [self formattedStringForTimeInterval:player.duration];
 }
 
 @end
