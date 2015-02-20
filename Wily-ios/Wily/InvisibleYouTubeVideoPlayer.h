@@ -22,6 +22,9 @@
 - (void)pause;
 - (void)stop;
 
+@property(nonatomic, readonly) NSTimeInterval currentPlaybackTime;
+@property(nonatomic, readonly) NSTimeInterval duration;
+
 @end
 
 @protocol InvisibleYouTubeVideoPlayerDelegate <NSObject>

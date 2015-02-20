@@ -55,25 +55,38 @@
   self.videoPlayerViewController.moviePlayer.backgroundPlaybackEnabled = YES;
 }
 
+- (MPMoviePlayerController *)moviePlayer {
+  return self.videoPlayerViewController.moviePlayer;
+}
+
 - (void)play {
   NSAssert(self.playerProgressTimer == nil, @"`stop' must be called before calling `play' again");
 
-  [self.videoPlayerViewController.moviePlayer play];
+  [self.moviePlayer play];
   [self notifyDelegateOfProgress:0];
   [self startPollingMediaPlayerForProgress];
 }
 
 - (void)pause {
-  [self.videoPlayerViewController.moviePlayer pause];
+  [self.moviePlayer pause];
 }
 
 - (void)stop {
   NSAssert(self.playerProgressTimer != nil, @"`play' must be called before calling `stop' again");
 
-  [self.videoPlayerViewController.moviePlayer stop];
+  [self.moviePlayer stop];
   [self notifyDelegateOfProgress:0];
   [self stopPollingMediaPlayerForProgress];
 }
+
+- (NSTimeInterval)currentPlaybackTime {
+  return [self.moviePlayer currentPlaybackTime];
+}
+
+- (NSTimeInterval)duration {
+  return [self.moviePlayer duration];
+}
+
 
 - (void)startPollingMediaPlayerForProgress {
   self.playerProgressTimer =
@@ -85,14 +98,15 @@
 }
 
 - (void)progressTimerTick:(NSObject *)sender {
-  MPMoviePlayerController *moviePlayer = self.videoPlayerViewController.moviePlayer;
-  if (moviePlayer.playbackState == MPMoviePlaybackStatePlaying) {
-    float progress = 0;
-    if (moviePlayer.duration != 0) {
-      progress = moviePlayer.currentPlaybackTime / moviePlayer.duration;
-    }
-    [self notifyDelegateOfProgress:progress];
+  if (self.moviePlayer.playbackState != MPMoviePlaybackStatePlaying) {
+    return;
   }
+
+  float progress = 0;
+  if (self.duration != 0) {
+    progress = self.currentPlaybackTime / self.duration;
+  }
+  [self notifyDelegateOfProgress:progress];
 }
 
 - (void)stopPollingMediaPlayerForProgress {
