@@ -80,22 +80,14 @@
                                     <constraint firstAttribute="trailing" secondItem="NGG-uo-p72" secondAttribute="trailing" id="5Ts-ri-BEu"/>
                                     <constraint firstItem="ydu-8C-JnR" firstAttribute="top" secondItem="dAq-gS-TyW" secondAttribute="top" id="79q-qp-znC"/>
                                     <constraint firstItem="NGG-uo-p72" firstAttribute="top" secondItem="ydu-8C-JnR" secondAttribute="bottom" constant="5" id="DW4-eZ-LHU"/>
-                                    <constraint firstAttribute="height" constant="3000" id="L9p-MD-tvc"/>
                                     <constraint firstItem="NGG-uo-p72" firstAttribute="top" secondItem="yqy-op-okc" secondAttribute="bottom" constant="5" id="QTL-SW-iJx"/>
                                     <constraint firstAttribute="bottom" secondItem="1Wb-VI-fJg" secondAttribute="bottom" id="aWd-hz-QUv"/>
                                     <constraint firstItem="ydu-8C-JnR" firstAttribute="leading" secondItem="dAq-gS-TyW" secondAttribute="leading" constant="5" id="gwd-RC-yYz"/>
                                     <constraint firstItem="yqy-op-okc" firstAttribute="top" secondItem="dAq-gS-TyW" secondAttribute="top" id="kvn-a5-UFI"/>
                                     <constraint firstItem="1Wb-VI-fJg" firstAttribute="leading" secondItem="dAq-gS-TyW" secondAttribute="leading" id="mHL-ja-Fcu"/>
                                     <constraint firstItem="1Wb-VI-fJg" firstAttribute="top" secondItem="NGG-uo-p72" secondAttribute="bottom" constant="2" id="oOV-GB-i8S"/>
-                                    <constraint firstAttribute="bottom" secondItem="yqy-op-okc" secondAttribute="bottom" constant="5" id="sxB-7Z-dnS"/>
                                     <constraint firstAttribute="trailing" secondItem="1Wb-VI-fJg" secondAttribute="trailing" id="vnY-5o-i4S"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="L9p-MD-tvc"/>
-                                        <exclude reference="sxB-7Z-dnS"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="j5M-7D-R66">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
@@ -109,29 +101,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="OwN-m9-EVv" secondAttribute="trailing" id="3h6-28-bZ9"/>
-                            <constraint firstItem="0Xe-VA-zwg" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="5iD-CL-K0a"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="8HB-8H-OA6" secondAttribute="bottom" id="7Eu-zs-hBb"/>
                             <constraint firstItem="OwN-m9-EVv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ARK-BF-tEx"/>
                             <constraint firstAttribute="trailing" secondItem="0Xe-VA-zwg" secondAttribute="trailing" constant="20" id="C4D-m1-j9q"/>
                             <constraint firstItem="dAq-gS-TyW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="E9m-JK-tyS"/>
                             <constraint firstAttribute="trailing" secondItem="j5M-7D-R66" secondAttribute="trailing" id="EtU-xo-Z4V"/>
                             <constraint firstItem="j5M-7D-R66" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="IQp-La-Ihj"/>
+                            <constraint firstItem="0Xe-VA-zwg" firstAttribute="top" secondItem="j5M-7D-R66" secondAttribute="bottom" constant="5" id="OTy-2j-MgK"/>
                             <constraint firstAttribute="trailing" secondItem="8HB-8H-OA6" secondAttribute="trailing" id="Rb7-Ye-jr0"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dAq-gS-TyW" secondAttribute="bottom" id="Twr-uV-Mwm"/>
                             <constraint firstAttribute="trailing" secondItem="dAq-gS-TyW" secondAttribute="trailing" id="YC3-yh-Q4A"/>
                             <constraint firstItem="8HB-8H-OA6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="bA7-2y-ZiS"/>
                             <constraint firstItem="OwN-m9-EVv" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="c2z-GR-OaJ"/>
-                            <constraint firstItem="8HB-8H-OA6" firstAttribute="top" secondItem="0Xe-VA-zwg" secondAttribute="bottom" id="obf-Ht-aK9"/>
                             <constraint firstAttribute="bottom" secondItem="OwN-m9-EVv" secondAttribute="bottom" id="pHz-qM-Ud7"/>
                             <constraint firstItem="8HB-8H-OA6" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="puq-Id-vbt"/>
                             <constraint firstItem="0Xe-VA-zwg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="tDy-Ra-baQ"/>
                             <constraint firstItem="j5M-7D-R66" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="zYW-B4-Ntn"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="obf-Ht-aK9"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="currentPlaybackTimeLabel" destination="ydu-8C-JnR" id="Avl-Vi-Oht"/>
