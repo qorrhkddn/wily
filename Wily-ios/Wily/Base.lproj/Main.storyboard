@@ -98,6 +98,14 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="j5M-7D-R66">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="iq8-4t-Iff"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -107,6 +115,8 @@
                             <constraint firstItem="OwN-m9-EVv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ARK-BF-tEx"/>
                             <constraint firstAttribute="trailing" secondItem="0Xe-VA-zwg" secondAttribute="trailing" constant="20" id="C4D-m1-j9q"/>
                             <constraint firstItem="dAq-gS-TyW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="E9m-JK-tyS"/>
+                            <constraint firstAttribute="trailing" secondItem="j5M-7D-R66" secondAttribute="trailing" id="EtU-xo-Z4V"/>
+                            <constraint firstItem="j5M-7D-R66" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="IQp-La-Ihj"/>
                             <constraint firstAttribute="trailing" secondItem="8HB-8H-OA6" secondAttribute="trailing" id="Rb7-Ye-jr0"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dAq-gS-TyW" secondAttribute="bottom" id="Twr-uV-Mwm"/>
                             <constraint firstAttribute="trailing" secondItem="dAq-gS-TyW" secondAttribute="trailing" id="YC3-yh-Q4A"/>
@@ -116,6 +126,7 @@
                             <constraint firstAttribute="bottom" secondItem="OwN-m9-EVv" secondAttribute="bottom" id="pHz-qM-Ud7"/>
                             <constraint firstItem="8HB-8H-OA6" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="puq-Id-vbt"/>
                             <constraint firstItem="0Xe-VA-zwg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="tDy-Ra-baQ"/>
+                            <constraint firstItem="j5M-7D-R66" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="zYW-B4-Ntn"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -126,10 +137,20 @@
                     <connections>
                         <outlet property="playButton" destination="oWQ-kt-XIt" id="l82-9j-Esu"/>
                         <outlet property="playProgressView" destination="NGG-uo-p72" id="0Hl-oE-6ik"/>
+                        <outlet property="searchDisplayController" destination="ypz-fb-ptg" id="Ewf-wf-k7f"/>
                         <outlet property="wallPaperImageView" destination="OwN-m9-EVv" id="1y6-WJ-u72"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="ypz-fb-ptg">
+                    <connections>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="q0h-nX-eQ0"/>
+                        <outlet property="searchBar" destination="j5M-7D-R66" id="26C-pS-gpg"/>
+                        <outlet property="searchContentsController" destination="vXZ-lx-hvc" id="drn-er-02P"/>
+                        <outlet property="searchResultsDataSource" destination="vXZ-lx-hvc" id="VHh-zo-iZf"/>
+                        <outlet property="searchResultsDelegate" destination="vXZ-lx-hvc" id="eOb-uR-SMi"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-221" y="-106"/>
         </scene>

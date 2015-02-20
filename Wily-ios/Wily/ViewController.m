@@ -3,7 +3,7 @@
 
 static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDataSource>
 
 @property (nonatomic) InvisibleYouTubeVideoPlayer *player;
 
@@ -50,6 +50,19 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
   NSUInteger wallPaperNumber = arc4random() % 37;
   NSString *wallPaperImageName = [NSString stringWithFormat:@"%@", @(wallPaperNumber)];
   self.wallPaperImageView.image = [UIImage imageNamed:wallPaperImageName];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  tableView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+  tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  [tableView registerNib:[UINib nibWithNibName:@"SearchResultTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SearchResultCell"];
+  return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchResultCell" forIndexPath:indexPath];
+  cell.textLabel.text = @"Text";
+  return cell;
 }
 
 @end
