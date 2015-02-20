@@ -6,7 +6,7 @@ static NSString * const VideoIdentifier = @"vrfAQI-TIVM";
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
-@interface ViewController () <UITableViewDataSource>
+@interface ViewController () <UITableViewDataSource, UISearchBarDelegate>
 
 @property (nonatomic) InvisibleYouTubeVideoPlayer *player;
 @property (nonatomic) YoutubeSearcher *searcher;
@@ -17,6 +17,8 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @property (weak, nonatomic) IBOutlet UIProgressView *playProgressView;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 @property (strong, nonatomic) IBOutlet UISearchDisplayController *searchResultsDisplayController;
+
+@property (nonatomic, strong) NSArray *searchResults;
 
 @end
 
@@ -75,13 +77,20 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 1;
+  return self.searchResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier forIndexPath:indexPath];
-  cell.textLabel.text = @"Text";
+  cell.textLabel.text = self.searchResults[indexPath.row];
   return cell;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+  [self.searcher autocompleteSuggestionsForSearchString:searchBar.text completionBlock:^(NSArray *suggestions) {
+    self.searchResults = suggestions;
+    [self.searchResultsDisplayController.searchResultsTableView reloadData];
+  }];
 }
 
 @end
