@@ -128,7 +128,7 @@
 
 - (void)startPollingMediaPlayerForProgress {
   self.playerProgressTimer =
-  [NSTimer scheduledTimerWithTimeInterval:5
+  [NSTimer scheduledTimerWithTimeInterval:1
                                    target:self
                                  selector:@selector(progressTimerTick:)
                                  userInfo:nil
