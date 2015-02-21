@@ -44,6 +44,11 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [tableView registerNib:[UINib nibWithNibName:@"SearchResultTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:SearchResultCellIdentifier];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  [self showSearchDisplay];
+}
+
 - (void)updatePlayButtonImage {
   switch (self.player.playbackState) {
     case InvisibleYouTubeVideoPlayerPlaybackStateDeckEmpty:
