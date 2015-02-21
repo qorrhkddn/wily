@@ -48,14 +48,11 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   switch (self.player.playbackState) {
     case InvisibleYouTubeVideoPlayerPlaybackStateDeckEmpty:
       self.playControlsContainerView.hidden = YES;
-      // hide the whole playing view
       break;
     case InvisibleYouTubeVideoPlayerPlaybackStateLoading:
       self.playControlsContainerView.hidden = NO;
-      // show whole playing view
       self.playButton.hidden = YES;
       [self.loadingSpinner startAnimating];
-      // start animating indicator
       break;
     case InvisibleYouTubeVideoPlayerPlaybackStatePaused:
       self.playControlsContainerView.hidden = NO;
