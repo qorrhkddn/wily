@@ -121,6 +121,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (void)playVideoWithIdentifier:(NSString *)videoIdentifier {
+  [self changeWallPaper];
   [self.player loadVideoWithIdentifier:videoIdentifier];
 }
 
