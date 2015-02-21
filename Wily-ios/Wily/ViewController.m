@@ -109,7 +109,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (void)updatePlayButtonImage {
-  UIImage *image = self.player.isPlaying ? [UIImage imageNamed:@"play"] : [UIImage imageNamed:@"pause"];
+  UIImage *image = self.player.isPlaying ? [UIImage imageNamed:@"pause"] : [UIImage imageNamed:@"play"];
   [self.playButton setImage:image forState:UIControlStateNormal];
 }
 
