@@ -5,7 +5,7 @@
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
-@interface ViewController () <InvisibleYouTubeVideoPlayerDelegate, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate>
+@interface ViewController () <InvisibleYouTubeVideoPlayerDelegate, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UISearchDisplayDelegate>
 
 @property (nonatomic) InvisibleYouTubeVideoPlayer *player;
 @property (nonatomic) YoutubeSearcher *searcher;
@@ -79,7 +79,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [self.searcher firstVideoIdentifierForSearchString:self.searchResults[indexPath.row] completionBlock:^(NSString *videoIdentifier) {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.searchResultsDisplayController setActive:NO animated:YES];
+    [self hideSearchDisplay];
     if (videoIdentifier != nil) {
       [self playVideoWithIdentifier:videoIdentifier];
     }
@@ -146,8 +146,31 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   self.durationLabel.text = [self formattedStringForTimeInterval:player.duration];
 }
 
-- (IBAction)viewTapped:(UITapGestureRecognizer *)sender {
-  self.searchBarHeightConstraint.constant = (self.searchBarHeightConstraint.constant == 0) ? 44 : 0;
+- (IBAction)swipeDownDetected:(UISwipeGestureRecognizer *)sender {
+  [self showSearchDisplay];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+  [self hideSearchDisplay];
+}
+
+- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
+  [self hideSearchDisplay];
+}
+
+- (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller {
+  [self hideSearchDisplay];
+}
+
+- (void)showSearchDisplay {
+  self.searchBarHeightConstraint.constant = 44;
+  [self.searchResultsDisplayController setActive:YES animated:YES];
+  [self.searchResultsDisplayController.searchBar becomeFirstResponder];
+}
+
+- (void)hideSearchDisplay {
+  self.searchBarHeightConstraint.constant = 0;
+  [self.searchResultsDisplayController setActive:NO animated:YES];
 }
 
 @end
