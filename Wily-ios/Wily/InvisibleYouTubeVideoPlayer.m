@@ -3,13 +3,13 @@
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
 #import "MPMoviePlayerController+BackgroundPlayback.h"
 #import "PlayerEventLogger.h"
-#import "NowPlayingInfoCenterProvider.h"
+#import "NowPlayingInterface.h"
 
 @interface InvisibleYouTubeVideoPlayer ()
 
 @property (nonatomic, weak, readonly) UIView *containerView;
 @property (nonatomic, readonly) PlayerEventLogger *playerEventLogger;
-@property (nonatomic, readonly) NowPlayingInfoCenterProvider *nowPlayingInfoCenterProvider;
+@property (nonatomic, readonly) NowPlayingInterface *nowPlayingInterface;
 
 @property(nonatomic, readwrite) InvisibleYouTubeVideoPlayerPlaybackState playbackState;
 
@@ -28,7 +28,7 @@
   if (self) {
     _containerView = containerView;
     _playerEventLogger = [[PlayerEventLogger alloc] init];
-    _nowPlayingInfoCenterProvider = [[NowPlayingInfoCenterProvider alloc] init];
+    _nowPlayingInterface = [[NowPlayingInterface alloc] init];
 
     [self startObservingNotifications];
     [self enableAVAudioSessionCategoryPlayback];
@@ -55,6 +55,8 @@
 }
 
 - (void)loadVideoWithIdentifier:(NSString *)videoIdentifier {
+  [self.nowPlayingInterface clear];
+
   if (self.playbackState != InvisibleYouTubeVideoPlayerPlaybackStateDeckEmpty) {
     [self clearDeck];
   }
@@ -96,6 +98,8 @@
   self.videoPlayerViewController = nil;
   self.videoContainerView = nil;
   self.videoIdentifier = nil;
+
+  [self.nowPlayingInterface clear];
 }
 
 - (MPMoviePlayerController *)moviePlayer {
@@ -141,6 +145,9 @@
     progress = self.currentPlaybackTime / self.duration;
   }
   [self notifyDelegateOfProgress:progress];
+
+  [self.nowPlayingInterface setCurrentPlaybackTime:self.currentPlaybackTime];
+  [self.nowPlayingInterface setDuration:self.duration];
 }
 
 - (void)stopPollingMediaPlayerForProgress {
@@ -155,10 +162,16 @@
 }
 
 - (void)videoPlayerViewControllerDidReceiveVideo:(NSNotification *)notification {
+  XCDYouTubeVideo *video = notification.userInfo[XCDYouTubeVideoUserInfoKey];
+  NSString *title = video.title;
+  NSURL *thumbnailURL = video.mediumThumbnailURL;
+
   if ([self.delegate respondsToSelector:@selector(invisibleYouTubeVideoPlayer:didFetchVideoTitle:)]) {
-    NSString *title = [notification.userInfo[XCDYouTubeVideoUserInfoKey] title];
     [self.delegate invisibleYouTubeVideoPlayer:self didFetchVideoTitle:title];
   }
+
+  [self.nowPlayingInterface setTitle:title];
+  [self.nowPlayingInterface asynchronouslySetImageFromThumbnailURL:thumbnailURL];
 }
 
 - (void)moviePlayerPlaybackStateDidChange:(NSNotification *)notification {

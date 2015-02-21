@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6922E7011A9860D600F3344E /* NowPlayingInterface.m */; };
 		697CAF831A97222200FC917F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF821A97222200FC917F /* main.m */; };
 		697CAF861A97222200FC917F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF851A97222200FC917F /* AppDelegate.m */; };
 		697CAF891A97222200FC917F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF881A97222200FC917F /* ViewController.m */; };
@@ -16,7 +17,6 @@
 		697CAF9D1A97222300FC917F /* WilyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF9C1A97222300FC917F /* WilyTests.m */; };
 		697CAFA81A97335900FC917F /* InvisibleYouTubeVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFA71A97335900FC917F /* InvisibleYouTubeVideoPlayer.m */; };
 		697CAFBA1A97451800FC917F /* MPMoviePlayerController+BackgroundPlayback.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFB51A97451800FC917F /* MPMoviePlayerController+BackgroundPlayback.m */; };
-		697CAFBB1A97451800FC917F /* NowPlayingInfoCenterProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFB71A97451800FC917F /* NowPlayingInfoCenterProvider.m */; };
 		697CAFBC1A97451800FC917F /* PlayerEventLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFB91A97451800FC917F /* PlayerEventLogger.m */; };
 		697CAFBF1A974DEE00FC917F /* YoutubeSearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFBE1A974DEE00FC917F /* YoutubeSearcher.m */; };
 		697CAFC21A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFC11A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.m */; };
@@ -37,6 +37,8 @@
 
 /* Begin PBXFileReference section */
 		2C54D1BF18B538C9B9B6FB6E /* Pods-Wily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wily/Pods-Wily.debug.xcconfig"; sourceTree = "<group>"; };
+		6922E7001A9860D600F3344E /* NowPlayingInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingInterface.h; sourceTree = "<group>"; };
+		6922E7011A9860D600F3344E /* NowPlayingInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingInterface.m; sourceTree = "<group>"; };
 		697CAF7D1A97222200FC917F /* Wily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697CAF811A97222200FC917F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		697CAF821A97222200FC917F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -54,8 +56,6 @@
 		697CAFA71A97335900FC917F /* InvisibleYouTubeVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvisibleYouTubeVideoPlayer.m; sourceTree = "<group>"; };
 		697CAFB41A97451800FC917F /* MPMoviePlayerController+BackgroundPlayback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMoviePlayerController+BackgroundPlayback.h"; sourceTree = "<group>"; };
 		697CAFB51A97451800FC917F /* MPMoviePlayerController+BackgroundPlayback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMoviePlayerController+BackgroundPlayback.m"; sourceTree = "<group>"; };
-		697CAFB61A97451800FC917F /* NowPlayingInfoCenterProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingInfoCenterProvider.h; sourceTree = "<group>"; };
-		697CAFB71A97451800FC917F /* NowPlayingInfoCenterProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingInfoCenterProvider.m; sourceTree = "<group>"; };
 		697CAFB81A97451800FC917F /* PlayerEventLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerEventLogger.h; sourceTree = "<group>"; };
 		697CAFB91A97451800FC917F /* PlayerEventLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerEventLogger.m; sourceTree = "<group>"; };
 		697CAFBD1A974DEE00FC917F /* YoutubeSearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YoutubeSearcher.h; sourceTree = "<group>"; };
@@ -129,6 +129,8 @@
 				697CAFBE1A974DEE00FC917F /* YoutubeSearcher.m */,
 				697CAFC01A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.h */,
 				697CAFC11A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.m */,
+				6922E7001A9860D600F3344E /* NowPlayingInterface.h */,
+				6922E7011A9860D600F3344E /* NowPlayingInterface.m */,
 				697CAF8A1A97222200FC917F /* Main.storyboard */,
 				8ED145F31A97638800FD6A97 /* SearchResultTableViewCell.xib */,
 				697CAF8D1A97222200FC917F /* Images.xcassets */,
@@ -179,8 +181,6 @@
 			children = (
 				697CAFB41A97451800FC917F /* MPMoviePlayerController+BackgroundPlayback.h */,
 				697CAFB51A97451800FC917F /* MPMoviePlayerController+BackgroundPlayback.m */,
-				697CAFB61A97451800FC917F /* NowPlayingInfoCenterProvider.h */,
-				697CAFB71A97451800FC917F /* NowPlayingInfoCenterProvider.m */,
 				697CAFB81A97451800FC917F /* PlayerEventLogger.h */,
 				697CAFB91A97451800FC917F /* PlayerEventLogger.m */,
 			);
@@ -338,11 +338,11 @@
 				697CAF861A97222200FC917F /* AppDelegate.m in Sources */,
 				697CAFBA1A97451800FC917F /* MPMoviePlayerController+BackgroundPlayback.m in Sources */,
 				697CAFA81A97335900FC917F /* InvisibleYouTubeVideoPlayer.m in Sources */,
+				6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */,
 				697CAF831A97222200FC917F /* main.m in Sources */,
 				697CAFBC1A97451800FC917F /* PlayerEventLogger.m in Sources */,
 				697CAFC21A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.m in Sources */,
 				697CAFBF1A974DEE00FC917F /* YoutubeSearcher.m in Sources */,
-				697CAFBB1A97451800FC917F /* NowPlayingInfoCenterProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
