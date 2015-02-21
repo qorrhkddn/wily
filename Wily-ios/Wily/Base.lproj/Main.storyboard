@@ -24,7 +24,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="748" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xe-VA-zwg">
-                                <rect key="frame" x="20" y="25" width="560" height="430"/>
+                                <rect key="frame" x="20" y="25" width="560" height="431"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -32,6 +32,7 @@
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAq-gS-TyW" userLabel="Play Container">
+                                <rect key="frame" x="0.0" y="456" width="600" height="144"/>
                                 <subviews>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NGG-uo-p72" userLabel="Play Progress">
                                         <rect key="frame" x="0.0" y="23" width="600" height="2"/>
@@ -53,10 +54,10 @@
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Wb-VI-fJg" userLabel="Black translucent wrapper">
-                                        <rect key="frame" x="0.0" y="27" width="600" height="118"/>
+                                        <rect key="frame" x="0.0" y="27" width="600" height="117"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWQ-kt-XIt" userLabel="Play Button">
-                                                <rect key="frame" x="262" y="21" width="77" height="77"/>
+                                                <rect key="frame" x="262" y="20" width="77" height="77"/>
                                                 <state key="normal" image="play">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -64,12 +65,18 @@
                                                     <action selector="play:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RW8-wB-oxd"/>
                                                 </connections>
                                             </button>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7cX-mH-vBk" userLabel="Loading Spinner">
+                                                <rect key="frame" x="282" y="20" width="37" height="77"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="7cX-mH-vBk" secondAttribute="centerX" id="4JN-sn-HSs"/>
                                             <constraint firstAttribute="centerX" secondItem="oWQ-kt-XIt" secondAttribute="centerX" id="LPd-KZ-X7g"/>
+                                            <constraint firstItem="7cX-mH-vBk" firstAttribute="top" secondItem="1Wb-VI-fJg" secondAttribute="top" constant="20" id="VPL-Dt-Tpu"/>
                                             <constraint firstAttribute="bottom" secondItem="oWQ-kt-XIt" secondAttribute="bottom" constant="20" id="VhG-vk-cFp"/>
-                                            <constraint firstItem="oWQ-kt-XIt" firstAttribute="top" secondItem="1Wb-VI-fJg" secondAttribute="top" constant="21" id="xzw-0b-pk4"/>
+                                            <constraint firstAttribute="bottom" secondItem="7cX-mH-vBk" secondAttribute="bottom" constant="20" id="jVM-Sx-d0c"/>
+                                            <constraint firstItem="oWQ-kt-XIt" firstAttribute="top" secondItem="1Wb-VI-fJg" secondAttribute="top" constant="20" id="xzw-0b-pk4"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -100,7 +107,7 @@
                                 </connections>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXj-be-COv" userLabel="TappableView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="435"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="436"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -137,7 +144,9 @@
                     <connections>
                         <outlet property="currentPlaybackTimeLabel" destination="ydu-8C-JnR" id="Avl-Vi-Oht"/>
                         <outlet property="durationLabel" destination="yqy-op-okc" id="ZYn-0Y-NEs"/>
+                        <outlet property="loadingSpinner" destination="7cX-mH-vBk" id="uWi-ul-5Aa"/>
                         <outlet property="playButton" destination="oWQ-kt-XIt" id="l82-9j-Esu"/>
+                        <outlet property="playControlsContainerView" destination="dAq-gS-TyW" id="D7C-Yv-hjC"/>
                         <outlet property="playProgressView" destination="NGG-uo-p72" id="0Hl-oE-6ik"/>
                         <outlet property="searchBarHeightConstraint" destination="Yrf-VV-7mI" id="Fht-1N-CgC"/>
                         <outlet property="searchResultsDisplayController" destination="ypz-fb-ptg" id="7Oh-9e-A0K"/>

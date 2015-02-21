@@ -18,6 +18,8 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @property (weak, nonatomic) IBOutlet UILabel *currentPlaybackTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchBarHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIView *playControlsContainerView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingSpinner;
 
 @property (nonatomic, strong) NSArray *searchResults;
 
@@ -31,13 +33,10 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   self.player.delegate = self;
   self.searcher = [[YoutubeSearcher alloc] init];
 
-  [self disableControls];
-
   [self changeWallPaper];
   self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
 
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerPlayingStateChanged) name:
-   MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
+  [self.player addObserver:self forKeyPath:@"playbackState" options:NSKeyValueObservingOptionNew context:nil];
 
   UITableView *tableView = self.searchResultsDisplayController.searchResultsTableView;
   tableView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
@@ -45,12 +44,45 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [tableView registerNib:[UINib nibWithNibName:@"SearchResultTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:SearchResultCellIdentifier];
 }
 
-- (void)playerPlayingStateChanged {
+- (void)updatePlayButtonImage {
+  switch (self.player.playbackState) {
+    case InvisibleYouTubeVideoPlayerPlaybackStateDeckEmpty:
+      self.playControlsContainerView.hidden = YES;
+      // hide the whole playing view
+      break;
+    case InvisibleYouTubeVideoPlayerPlaybackStateLoading:
+      self.playControlsContainerView.hidden = NO;
+      // show whole playing view
+      self.playButton.hidden = YES;
+      [self.loadingSpinner startAnimating];
+      // start animating indicator
+      break;
+    case InvisibleYouTubeVideoPlayerPlaybackStatePaused:
+      self.playControlsContainerView.hidden = NO;
+      [self.loadingSpinner stopAnimating];
+      self.playButton.hidden = NO;
+      [self.playButton setImage:[UIImage imageNamed:@"play"]
+                       forState:UIControlStateNormal];
+      break;
+    case InvisibleYouTubeVideoPlayerPlaybackStatePlaying:
+      self.playControlsContainerView.hidden = NO;
+      [self.loadingSpinner stopAnimating];
+      self.playButton.hidden = NO;
+      [self.playButton setImage:[UIImage imageNamed:@"pause"]
+                       forState:UIControlStateNormal];
+      break;
+  }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
   [self updatePlayButtonImage];
 }
 
 - (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
+  [self.player removeObserver:self forKeyPath:@"playbackState"];
 }
 
 - (void)changeWallPaper {
@@ -86,32 +118,8 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   }];
 }
 
-- (void)disableControls {
-  self.playButton.hidden = YES;
-  self.currentPlaybackTimeLabel.text = @"-:-";
-  self.durationLabel.text = @"-:-";
-}
-
-- (void)enableControls {
-  self.playButton.hidden = NO;
-}
-
 - (void)playVideoWithIdentifier:(NSString *)videoIdentifier {
   [self.player loadVideoWithIdentifier:videoIdentifier];
-  [self enableControls];
-  [self updatePlayButtonImage];
-}
-
-- (void)updatePlayButtonImage {
-  UIImage *image;
-  if (self.player.playbackState == InvisibleYouTubeVideoPlayerPlaybackStatePlaying) {
-    image = [UIImage imageNamed:@"pause"];
-  } else if (self.player.playbackState == InvisibleYouTubeVideoPlayerPlaybackStatePaused) {
-    image = [UIImage imageNamed:@"play"];
-  }
-  if (image) {
-    [self.playButton setImage:image forState:UIControlStateNormal];
-  }
 }
 
 - (IBAction)play:(id)sender {
@@ -120,7 +128,6 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   } else if (self.player.playbackState == InvisibleYouTubeVideoPlayerPlaybackStatePaused) {
     [self.player play];
   }
-  [self updatePlayButtonImage];
 }
 
 - (void)invisibleYouTubeVideoPlayer:(InvisibleYouTubeVideoPlayer *)player
