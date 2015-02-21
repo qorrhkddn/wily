@@ -31,8 +31,7 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAq-gS-TyW" userLabel="Play Container">
-                                <rect key="frame" x="0.0" y="455" width="600" height="145"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAq-gS-TyW" userLabel="Play Container">
                                 <subviews>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NGG-uo-p72" userLabel="Play Progress">
                                         <rect key="frame" x="0.0" y="23" width="600" height="2"/>
