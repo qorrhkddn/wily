@@ -11,6 +11,8 @@
 @property (nonatomic, readonly) PlayerEventLogger *playerEventLogger;
 @property (nonatomic, readonly) NowPlayingInfoCenterProvider *nowPlayingInfoCenterProvider;
 
+@property(nonatomic, readwrite) InvisibleYouTubeVideoPlayerPlaybackState playbackState;
+
 // The following properties are valid only during playback.
 @property (nonatomic) UIView *videoContainerView;
 @property (nonatomic) XCDYouTubeVideoPlayerViewController *videoPlayerViewController;
@@ -28,14 +30,15 @@
     _playerEventLogger = [[PlayerEventLogger alloc] init];
     _nowPlayingInfoCenterProvider = [[NowPlayingInfoCenterProvider alloc] init];
 
-    [self startObservingVideoNotifications];
+    [self startObservingNotifications];
     [self enableAVAudioSessionCategoryPlayback];
   }
   return self;
 }
 
-- (void)startObservingVideoNotifications {
+- (void)startObservingNotifications {
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoPlayerViewControllerDidReceiveVideo:) name:XCDYouTubeVideoPlayerViewControllerDidReceiveVideoNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerPlaybackStateDidChange:) name:MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
 }
 
 - (void)enableAVAudioSessionCategoryPlayback {
@@ -52,7 +55,12 @@
 }
 
 - (void)loadVideoWithIdentifier:(NSString *)videoIdentifier {
-  NSAssert(self.playerProgressTimer == nil, @"`unloadVideo' must be called before calling `loadVideo' again");
+  if (self.playbackState != InvisibleYouTubeVideoPlayerPlaybackStateDeckEmpty) {
+    [self clearDeck];
+  }
+
+  NSLog(@"State transition: Loading [Video Identifier = %@]", videoIdentifier);
+  self.playbackState = InvisibleYouTubeVideoPlayerPlaybackStateLoading;
 
   self.videoIdentifier = videoIdentifier;
   self.videoContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
@@ -60,7 +68,6 @@
   [self.containerView addSubview:self.videoContainerView];
   self.videoContainerView.hidden = YES;
 
-  NSLog(@"Changing video [Video Identifier = %@]", self.videoIdentifier);
   [self.videoPlayerViewController presentInView:self.videoContainerView];
 
   self.moviePlayer.backgroundPlaybackEnabled = YES;
@@ -69,12 +76,22 @@
   [self startPollingMediaPlayerForProgress];
 }
 
-- (void)unloadVideo {
-  NSAssert(self.playerProgressTimer != nil, @"`loadVideo' must be called before calling `unloadVideo' again");
+- (void)invalidate {
+  if (self.playbackState != InvisibleYouTubeVideoPlayerPlaybackStateDeckEmpty) {
+    [self clearDeck];
+  }
+}
 
+- (void)clearDeck {
+  NSAssert(self.playbackState != InvisibleYouTubeVideoPlayerPlaybackStateDeckEmpty,
+           @"Attempt to unload video when the deck is empty");
+
+  NSLog(@"State transition: Clearing Deck");
+  self.playbackState = InvisibleYouTubeVideoPlayerPlaybackStateDeckEmpty;
+
+  [self stopPollingMediaPlayerForProgress];
   [self.moviePlayer stop];
   [self notifyDelegateOfProgress:0];
-  [self stopPollingMediaPlayerForProgress];
 
   self.videoPlayerViewController = nil;
   self.videoContainerView = nil;
@@ -85,20 +102,15 @@
   return self.videoPlayerViewController.moviePlayer;
 }
 
-- (BOOL)isPlaying {
-  if (self.videoIdentifier == nil) {
-    return NO;
-  }
-  return (self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying);
-}
-
 - (void)play {
-  NSAssert(!self.isPlaying, @"Attempting to play when already playing");
+  NSAssert(self.playbackState != InvisibleYouTubeVideoPlayerPlaybackStateDeckEmpty,
+           @"Attempting to play empty deck");
   [self.moviePlayer play];
 }
 
 - (void)pause {
-  NSAssert(self.isPlaying, @"Attempting to pause when not playing");
+  NSAssert(self.playbackState != InvisibleYouTubeVideoPlayerPlaybackStateDeckEmpty,
+           @"Attempting to pause an empty deck");
   [self.moviePlayer pause];
 }
 
@@ -120,7 +132,7 @@
 }
 
 - (void)progressTimerTick:(NSObject *)sender {
-  if (!self.isPlaying) {
+  if (self.playbackState != InvisibleYouTubeVideoPlayerPlaybackStatePlaying) {
     return;
   }
 
@@ -146,6 +158,24 @@
   if ([self.delegate respondsToSelector:@selector(invisibleYouTubeVideoPlayer:didFetchVideoTitle:)]) {
     NSString *title = [notification.userInfo[XCDYouTubeVideoUserInfoKey] title];
     [self.delegate invisibleYouTubeVideoPlayer:self didFetchVideoTitle:title];
+  }
+}
+
+- (void)moviePlayerPlaybackStateDidChange:(NSNotification *)notification {
+  MPMoviePlayerController *moviePlayerController = notification.object;
+  switch (moviePlayerController.playbackState)   {
+    case MPMoviePlaybackStateStopped:
+    case MPMoviePlaybackStatePaused:
+      NSLog(@"State transition: Pausing");
+      self.playbackState = InvisibleYouTubeVideoPlayerPlaybackStatePaused;
+      break;
+    case MPMoviePlaybackStatePlaying:
+      NSLog(@"State transition: Playing");
+      self.playbackState = InvisibleYouTubeVideoPlayerPlaybackStatePlaying;
+      break;
+    default:
+      NSLog(@"Ignoring unexpected movie player controller transition");
+      break;
   }
 }
 
