@@ -88,7 +88,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (void)changeWallPaper {
-  NSUInteger wallPaperNumber = arc4random() % 52;
+  NSUInteger wallPaperNumber = arc4random() % 37;
   NSString *wallPaperImageName = [NSString stringWithFormat:@"%@", @(wallPaperNumber)];
   self.wallPaperImageView.image = [UIImage imageNamed:wallPaperImageName];
 }
