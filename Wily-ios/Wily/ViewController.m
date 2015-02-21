@@ -81,9 +81,6 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.searchResultsDisplayController setActive:NO animated:YES];
     if (videoIdentifier != nil) {
-      if (self.player.isPlaying) {
-        [self.player unloadVideo];
-      }
       [self playVideoWithIdentifier:videoIdentifier];
     }
   }];
@@ -100,34 +97,29 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (void)playVideoWithIdentifier:(NSString *)videoIdentifier {
-  if (self.player.isPlaying) {
-    [self.player unloadVideo];
-  }
   [self.player loadVideoWithIdentifier:videoIdentifier];
   [self enableControls];
   [self updatePlayButtonImage];
 }
 
 - (void)updatePlayButtonImage {
-  UIImage *image = self.player.isPlaying ? [UIImage imageNamed:@"pause"] : [UIImage imageNamed:@"play"];
-  [self.playButton setImage:image forState:UIControlStateNormal];
-}
-
-- (IBAction)play:(id)sender {
-  if (self.player.isPlaying) {
-    [self pauseVideo];
-  } else {
-    [self playVideo];
+  UIImage *image;
+  if (self.player.playbackState == InvisibleYouTubeVideoPlayerPlaybackStatePlaying) {
+    image = [UIImage imageNamed:@"pause"];
+  } else if (self.player.playbackState == InvisibleYouTubeVideoPlayerPlaybackStatePaused) {
+    image = [UIImage imageNamed:@"play"];
+  }
+  if (image) {
+    [self.playButton setImage:image forState:UIControlStateNormal];
   }
 }
 
-- (void)playVideo {
-  [self.player play];
-  [self updatePlayButtonImage];
-}
-
-- (void)pauseVideo {
-  [self.player pause];
+- (IBAction)play:(id)sender {
+  if (self.player.playbackState == InvisibleYouTubeVideoPlayerPlaybackStatePlaying) {
+    [self.player pause];
+  } else if (self.player.playbackState == InvisibleYouTubeVideoPlayerPlaybackStatePaused) {
+    [self.player play];
+  }
   [self updatePlayButtonImage];
 }
 
