@@ -57,9 +57,16 @@
             android:background="@color/black_overlay"
             android:padding="25dp"
             >
-            <View
+            <EditText
+                android:id="@+id/searchbox"
+                android:singleLine="true"
+                android:drawableLeft="@android:drawable/ic_menu_search"
+                android:padding="5dp"
+                android:drawablePadding="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"/>
+                android:layout_height="40dp"
+                android:imeOptions="actionSearch"
+                android:background="@color/black_overlay"/>
 
             <TextView
                 android:id="@+id/song_title"

@@ -26,4 +26,6 @@ dependencies {
     compile project(':library')
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.google.api-client:google-api-client:1.18.0-rc'
+    compile 'com.google.apis:google-api-services-youtube:v3-rev128-1.19.1'
 }
