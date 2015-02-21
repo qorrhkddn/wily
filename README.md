@@ -6,7 +6,7 @@ enough to stash away the music streams for later offline playback. As
 of now, the former requirement has been fulfilled by the [ios](Wily-ios/)
 client, and work on the droid client is underway.
 
-![Wily iOS](screenshots/ios-0.png "Wily iOS")
+![Wily iOS](screenshots/ios-0.jpeg "Wily iOS")
 
 # Credits
 
