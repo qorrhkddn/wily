@@ -1,6 +1,7 @@
 #import "ViewController.h"
 #import "InvisibleYouTubeVideoPlayer.h"
 #import "YoutubeSearcher.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
@@ -35,10 +36,21 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [self changeWallPaper];
   self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
 
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerPlayingStateChanged) name:
+   MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
+
   UITableView *tableView = self.searchResultsDisplayController.searchResultsTableView;
   tableView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
   tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   [tableView registerNib:[UINib nibWithNibName:@"SearchResultTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:SearchResultCellIdentifier];
+}
+
+- (void)playerPlayingStateChanged {
+  [self updatePlayButtonImage];
+}
+
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)changeWallPaper {
