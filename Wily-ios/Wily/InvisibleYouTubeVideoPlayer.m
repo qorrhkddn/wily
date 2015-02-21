@@ -39,6 +39,8 @@
 - (void)startObservingNotifications {
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoPlayerViewControllerDidReceiveVideo:) name:XCDYouTubeVideoPlayerViewControllerDidReceiveVideoNotification object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerPlaybackStateDidChange:) name:MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(togglePlayPause:) name:NowPlayingInterfaceUIEventSubtypeRemoteControlTogglePlayPause object:nil];
+
 }
 
 - (void)enableAVAudioSessionCategoryPlayback {
@@ -189,6 +191,14 @@
     default:
       NSLog(@"Ignoring unexpected movie player controller transition");
       break;
+  }
+}
+
+- (void)togglePlayPause:(NSNotification *)notification {
+  if (self.playbackState == InvisibleYouTubeVideoPlayerPlaybackStatePaused) {
+    [self play];
+  } else if (self.playbackState == InvisibleYouTubeVideoPlayerPlaybackStatePlaying) {
+    [self pause];
   }
 }
 
