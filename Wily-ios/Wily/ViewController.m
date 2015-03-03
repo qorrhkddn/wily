@@ -99,6 +99,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier forIndexPath:indexPath];
+  cell.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
   cell.textLabel.text = self.searchResults[indexPath.row];
   return cell;
 }
