@@ -16,8 +16,8 @@
 		697CAF911A97222200FC917F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8F1A97222200FC917F /* LaunchScreen.xib */; };
 		697CAF9D1A97222300FC917F /* WilyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF9C1A97222300FC917F /* WilyTests.m */; };
 		697CAFA81A97335900FC917F /* YouTubeVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFA71A97335900FC917F /* YouTubeVideoPlayer.m */; };
-		697CAFBF1A974DEE00FC917F /* YoutubeSearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFBE1A974DEE00FC917F /* YoutubeSearcher.m */; };
-		697CAFC21A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFC11A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.m */; };
+		697CAFBF1A974DEE00FC917F /* YouTubeSearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFBE1A974DEE00FC917F /* YouTubeSearcher.m */; };
+		697CAFC21A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFC11A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.m */; };
 		69D41F241AAB2DE000914A3E /* XCDYouTubeVideo+PreferredStreamURLExtraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D41F231AAB2DE000914A3E /* XCDYouTubeVideo+PreferredStreamURLExtraction.m */; };
 		8ED145E81A972C4600FD6A97 /* Wallpapers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */; };
 		8ED145F51A97638800FD6A97 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED145F31A97638800FD6A97 /* SearchResultTableViewCell.xib */; };
@@ -53,10 +53,10 @@
 		697CAF9C1A97222300FC917F /* WilyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WilyTests.m; sourceTree = "<group>"; };
 		697CAFA61A97335900FC917F /* YouTubeVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeVideoPlayer.h; sourceTree = "<group>"; };
 		697CAFA71A97335900FC917F /* YouTubeVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeVideoPlayer.m; sourceTree = "<group>"; };
-		697CAFBD1A974DEE00FC917F /* YoutubeSearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YoutubeSearcher.h; sourceTree = "<group>"; };
-		697CAFBE1A974DEE00FC917F /* YoutubeSearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YoutubeSearcher.m; sourceTree = "<group>"; };
-		697CAFC01A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YoutubeSearcherAutocompleteXMLResultsParser.h; sourceTree = "<group>"; };
-		697CAFC11A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YoutubeSearcherAutocompleteXMLResultsParser.m; sourceTree = "<group>"; };
+		697CAFBD1A974DEE00FC917F /* YouTubeSearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeSearcher.h; sourceTree = "<group>"; };
+		697CAFBE1A974DEE00FC917F /* YouTubeSearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeSearcher.m; sourceTree = "<group>"; };
+		697CAFC01A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeSearcherAutocompleteXMLResultsParser.h; sourceTree = "<group>"; };
+		697CAFC11A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeSearcherAutocompleteXMLResultsParser.m; sourceTree = "<group>"; };
 		69D41F221AAB2DE000914A3E /* XCDYouTubeVideo+PreferredStreamURLExtraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCDYouTubeVideo+PreferredStreamURLExtraction.h"; sourceTree = "<group>"; };
 		69D41F231AAB2DE000914A3E /* XCDYouTubeVideo+PreferredStreamURLExtraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCDYouTubeVideo+PreferredStreamURLExtraction.m"; sourceTree = "<group>"; };
 		8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Wallpapers.xcassets; sourceTree = "<group>"; };
@@ -123,10 +123,10 @@
 				697CAFA71A97335900FC917F /* YouTubeVideoPlayer.m */,
 				69D41F221AAB2DE000914A3E /* XCDYouTubeVideo+PreferredStreamURLExtraction.h */,
 				69D41F231AAB2DE000914A3E /* XCDYouTubeVideo+PreferredStreamURLExtraction.m */,
-				697CAFBD1A974DEE00FC917F /* YoutubeSearcher.h */,
-				697CAFBE1A974DEE00FC917F /* YoutubeSearcher.m */,
-				697CAFC01A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.h */,
-				697CAFC11A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.m */,
+				697CAFBD1A974DEE00FC917F /* YouTubeSearcher.h */,
+				697CAFBE1A974DEE00FC917F /* YouTubeSearcher.m */,
+				697CAFC01A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.h */,
+				697CAFC11A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.m */,
 				6922E7001A9860D600F3344E /* NowPlayingInterface.h */,
 				6922E7011A9860D600F3344E /* NowPlayingInterface.m */,
 				697CAF8A1A97222200FC917F /* Main.storyboard */,
@@ -316,9 +316,9 @@
 				697CAFA81A97335900FC917F /* YouTubeVideoPlayer.m in Sources */,
 				6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */,
 				697CAF831A97222200FC917F /* main.m in Sources */,
-				697CAFC21A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.m in Sources */,
+				697CAFC21A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.m in Sources */,
 				69D41F241AAB2DE000914A3E /* XCDYouTubeVideo+PreferredStreamURLExtraction.m in Sources */,
-				697CAFBF1A974DEE00FC917F /* YoutubeSearcher.m in Sources */,
+				697CAFBF1A974DEE00FC917F /* YouTubeSearcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

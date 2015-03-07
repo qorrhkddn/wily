@@ -1,6 +1,6 @@
 #import "ViewController.h"
 #import "YouTubeVideoPlayer.h"
-#import "YoutubeSearcher.h"
+#import "YouTubeSearcher.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
@@ -8,7 +8,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @interface ViewController () <YouTubeVideoPlayerPlayerDelegate, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UISearchDisplayDelegate>
 
 @property (nonatomic) YouTubeVideoPlayer *player;
-@property (nonatomic) YoutubeSearcher *searcher;
+@property (nonatomic) YouTubeSearcher *searcher;
 
 @property (weak, nonatomic) IBOutlet UIImageView *wallPaperImageView;
 @property (weak, nonatomic) IBOutlet UIProgressView *playProgressView;
@@ -31,7 +31,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [super viewDidLoad];
   self.player = [[YouTubeVideoPlayer alloc] init];
   self.player.delegate = self;
-  self.searcher = [[YoutubeSearcher alloc] init];
+  self.searcher = [[YouTubeSearcher alloc] init];
 
   [self changeWallPaper];
   self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);

@@ -1,12 +1,12 @@
-#import "YoutubeSearcherAutocompleteXMLResultsParser.h"
+#import "YouTubeSearcherAutocompleteXMLResultsParser.h"
 
-@interface YoutubeSearcherAutocompleteXMLResultsParser () <NSXMLParserDelegate>
+@interface YouTubeSearcherAutocompleteXMLResultsParser () <NSXMLParserDelegate>
 @property (nonatomic, readonly) NSXMLParser *xmlParser;
 @property (nonatomic, readonly) void (^completionBlock)(NSArray *suggestions);
 @property (nonatomic) NSMutableArray *result;
 @end
 
-@implementation YoutubeSearcherAutocompleteXMLResultsParser
+@implementation YouTubeSearcherAutocompleteXMLResultsParser
 
 - (instancetype)initWithResponseXMLParser:(NSXMLParser *)xmlParser
                           completionBlock:(void (^)(NSArray *suggestions))completionBlock {

@@ -1,16 +1,16 @@
-#import "YoutubeSearcher.h"
+#import "YouTubeSearcher.h"
 #import <iOS-GTLYouTube/GTLYouTube.h>
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
-#import "YoutubeSearcherAutocompleteXMLResultsParser.h"
+#import "YouTubeSearcherAutocompleteXMLResultsParser.h"
 
 static NSString * const GoogleAPIKey = @"AIzaSyD2Otqd_OlhLfZekoXGMSuibDgGcagp-3Y";
 
-@interface YoutubeSearcher ()
+@interface YouTubeSearcher ()
 @property (nonatomic, readonly) GTLServiceYouTube *service;
 @end
 
-@implementation YoutubeSearcher
+@implementation YouTubeSearcher
 
 - (instancetype)init {
   self = [super init];
@@ -32,7 +32,7 @@ static NSString * const GoogleAPIKey = @"AIzaSyD2Otqd_OlhLfZekoXGMSuibDgGcagp-3Y
   NSString *queryURL = [baseURL stringByAppendingString:encodedSearchString];
   [manager setResponseSerializer:[AFXMLParserResponseSerializer serializer]];
   [manager GET:queryURL parameters:nil success:^(AFHTTPRequestOperation *operation, NSXMLParser *responseParser) {
-    __block YoutubeSearcherAutocompleteXMLResultsParser *parser = [[YoutubeSearcherAutocompleteXMLResultsParser alloc] initWithResponseXMLParser:responseParser completionBlock:^(NSArray *suggestions) {
+    __block YouTubeSearcherAutocompleteXMLResultsParser *parser = [[YouTubeSearcherAutocompleteXMLResultsParser alloc] initWithResponseXMLParser:responseParser completionBlock:^(NSArray *suggestions) {
       parser = nil; // To ensure that we hold on to the parser until it completes.
       completionBlock(suggestions);
     }];
@@ -49,10 +49,10 @@ static NSString * const GoogleAPIKey = @"AIzaSyD2Otqd_OlhLfZekoXGMSuibDgGcagp-3Y
   [self.service executeQuery:query
            completionHandler:^(GTLServiceTicket *ticket, GTLYouTubeSearchListResponse *searchListResponse, NSError *error) {
              if (error != nil) {
-               NSLog(@"Youtube search failed: %@", [error localizedDescription]);
+               NSLog(@"YouTube search failed: %@", [error localizedDescription]);
                completionBlock(nil);
              } else {
-               NSLog(@"Youtube search completed: %@", searchListResponse);
+               NSLog(@"YouTube search completed: %@", searchListResponse);
                GTLYouTubeSearchResult *searchResult = [[searchListResponse items] firstObject];
                NSString *videoId = [[searchResult identifier] JSONValueForKey:@"videoId"];
                completionBlock(videoId);

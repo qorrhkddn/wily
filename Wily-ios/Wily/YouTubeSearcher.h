@@ -1,6 +1,6 @@
 @import Foundation;
 
-@interface YoutubeSearcher : NSObject
+@interface YouTubeSearcher : NSObject
 
 /**
  If the the search fails, the @p suggestions array will be @p nil.
