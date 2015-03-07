@@ -1,13 +1,13 @@
 #import "ViewController.h"
-#import "InvisibleYouTubeVideoPlayer.h"
+#import "YouTubeVideoPlayer.h"
 #import "YoutubeSearcher.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
-@interface ViewController () <InvisibleYouTubeVideoPlayerDelegate, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UISearchDisplayDelegate>
+@interface ViewController () <YouTubeVideoPlayerPlayerDelegate, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UISearchDisplayDelegate>
 
-@property (nonatomic) InvisibleYouTubeVideoPlayer *player;
+@property (nonatomic) YouTubeVideoPlayer *player;
 @property (nonatomic) YoutubeSearcher *searcher;
 
 @property (weak, nonatomic) IBOutlet UIImageView *wallPaperImageView;
@@ -29,7 +29,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.player = [[InvisibleYouTubeVideoPlayer alloc] initWithContainerView:self.view];
+  self.player = [[YouTubeVideoPlayer alloc] init];
   self.player.delegate = self;
   self.searcher = [[YoutubeSearcher alloc] init];
 
@@ -51,22 +51,22 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 - (void)updatePlayButtonImage {
   switch (self.player.playbackState) {
-    case InvisibleYouTubeVideoPlayerPlaybackStateDeckEmpty:
+    case YouTubeVideoPlayerPlaybackStateDeckEmpty:
       self.playControlsContainerView.hidden = YES;
       break;
-    case InvisibleYouTubeVideoPlayerPlaybackStateLoading:
+    case YouTubeVideoPlayerPlaybackStateLoading:
       self.playControlsContainerView.hidden = NO;
       self.playButton.hidden = YES;
       [self.loadingSpinner startAnimating];
       break;
-    case InvisibleYouTubeVideoPlayerPlaybackStatePaused:
+    case YouTubeVideoPlayerPlaybackStatePaused:
       self.playControlsContainerView.hidden = NO;
       [self.loadingSpinner stopAnimating];
       self.playButton.hidden = NO;
       [self.playButton setImage:[UIImage imageNamed:@"play"]
                        forState:UIControlStateNormal];
       break;
-    case InvisibleYouTubeVideoPlayerPlaybackStatePlaying:
+    case YouTubeVideoPlayerPlaybackStatePlaying:
       self.playControlsContainerView.hidden = NO;
       [self.loadingSpinner stopAnimating];
       self.playButton.hidden = NO;
@@ -127,15 +127,15 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (IBAction)play:(id)sender {
-  if (self.player.playbackState == InvisibleYouTubeVideoPlayerPlaybackStatePlaying) {
+  if (self.player.playbackState == YouTubeVideoPlayerPlaybackStatePlaying) {
     [self.player pause];
-  } else if (self.player.playbackState == InvisibleYouTubeVideoPlayerPlaybackStatePaused) {
+  } else if (self.player.playbackState == YouTubeVideoPlayerPlaybackStatePaused) {
     [self.player play];
   }
 }
 
-- (void)invisibleYouTubeVideoPlayer:(InvisibleYouTubeVideoPlayer *)player
-                 didFetchVideoTitle:(NSString *)title {
+- (void)youTubeVideoPlayer:(YouTubeVideoPlayer *)player
+        didFetchVideoTitle:(NSString *)title {
   NSLog(@"title: %@", title);
   self.titleLabel.text = title;
 }
@@ -149,8 +149,8 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   return [NSString stringWithFormat:@"%@:%@", @(minutes), @(seconds)];
 }
 
-- (void)invisibleYouTubeVideoPlayer:(InvisibleYouTubeVideoPlayer *)player
-             didChangeVideoProgress:(float)progress {
+- (void)youTubeVideoPlayer:(YouTubeVideoPlayer *)player
+    didChangeVideoProgress:(float)progress {
   NSLog(@"progress: %@", @(progress));
   [self.playProgressView setProgress:progress animated:YES];
   self.currentPlaybackTimeLabel.text = [self formattedStringForTimeInterval:player.currentPlaybackTime];
