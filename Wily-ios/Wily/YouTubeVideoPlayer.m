@@ -4,6 +4,7 @@
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
 #import "NowPlayingInterface.h"
 #import "XCDYouTubeVideo+PreferredStreamURLExtraction.h"
+#import "CachingAVPlayerItem.h"
 
 @interface YouTubeVideoPlayer ()
 
@@ -16,6 +17,7 @@
 @property (nonatomic) NSString *videoIdentifier;
 @property (nonatomic) id playerTimeObserver;
 @property (nonatomic) AVPlayer *player;
+@property (nonatomic) AVPlayerItem *playerItem;
 
 @end
 
@@ -85,7 +87,10 @@
   }
 
   [self willPlayVideo:video];
-  self.player = [AVPlayer playerWithURL:streamURL];
+
+  self.playerItem = [[CachingAVPlayerItem alloc] initWithURL:streamURL];
+  [self observePlayerItem];
+  self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
 
   [self notifyDelegateOfProgress:0];
   [self observePlayer];
@@ -109,11 +114,13 @@
   NSAssert(self.playbackState != YouTubeVideoPlayerPlaybackStateDeckEmpty,
            @"Attempt to unload video when the deck is empty");
 
+  [self unobservePlayerItem];
   [self unobservePlayer];
   [self pause];
   [self notifyDelegateOfProgress:0];
 
   self.player = nil;
+  self.playerItem = nil;
 
   [self.nowPlayingInterface clear];
 
@@ -187,16 +194,37 @@
   [self.player addObserver:self
                 forKeyPath:NSStringFromSelector(@selector(rate))
                    options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
-                   context:NULL];
+                   context:(__bridge void *)self];
 }
 
 - (void)unobservePlaybackOfPlayer {
-  [self.player removeObserver:self forKeyPath:NSStringFromSelector(@selector(rate))];
+  [self.player removeObserver:self
+                   forKeyPath:NSStringFromSelector(@selector(rate))
+                      context:(__bridge void *)self];
+}
+
+- (void)observePlayerItem {
+  [self.playerItem addObserver:self
+                    forKeyPath:NSStringFromSelector(@selector(status))
+                       options:0
+                       context:(__bridge void *)self];
+}
+
+- (void)unobservePlayerItem {
+  [self.playerItem removeObserver:self
+                       forKeyPath:NSStringFromSelector(@selector(status))
+                          context:(__bridge void *)self];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+  if (context != ((__bridge void *)self)) {
+    return;
+  }
   if ([keyPath isEqualToString:NSStringFromSelector(@selector(rate))]) {
     [self playerRateDidChange];
+  }
+  if ([keyPath isEqualToString:NSStringFromSelector(@selector(status))]) {
+    [self playerItemStatusDidChange];
   }
 }
 
@@ -208,6 +236,22 @@
   } else {
     NSLog(@"State transition: Pausing");
     self.playbackState = YouTubeVideoPlayerPlaybackStatePaused;
+  }
+}
+
+- (void)playerItemStatusDidChange {
+  switch (self.playerItem.status) {
+    case AVPlayerStatusUnknown:
+      NSLog(@"Unexpected transition of player item to unknown");
+      break;
+    case AVPlayerStatusReadyToPlay:
+      NSLog(@"Player item ready to play");
+      // XXX invoke play from here?
+      break;
+    case AVPlayerItemStatusFailed:
+      NSLog(@"Player item failed to load [error = %@]",
+            [self.playerItem.error localizedDescription]);
+      break;
   }
 }
 
