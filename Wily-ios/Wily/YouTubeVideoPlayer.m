@@ -6,7 +6,7 @@
 #import "XCDYouTubeVideo+PreferredStreamURLExtraction.h"
 #import "CacheableAVPlayerItem.h"
 
-@interface YouTubeVideoPlayer ()
+@interface YouTubeVideoPlayer () <CacheableAVPlayerItemDelegate>
 
 @property (nonatomic, readonly) NowPlayingInterface *nowPlayingInterface;
 
@@ -17,7 +17,7 @@
 @property (nonatomic) NSString *videoIdentifier;
 @property (nonatomic) id playerTimeObserver;
 @property (nonatomic) AVPlayer *player;
-@property (nonatomic) AVPlayerItem *playerItem;
+@property (nonatomic) CacheableAVPlayerItem *playerItem;
 
 @end
 
@@ -89,6 +89,7 @@
   [self willPlayVideo:video];
 
   self.playerItem = [[CacheableAVPlayerItem alloc] initWithURL:streamURL];
+  self.playerItem.delegate = self;
   [self observePlayerItem];
   self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
 
@@ -279,6 +280,11 @@
   } else if (self.playbackState == YouTubeVideoPlayerPlaybackStatePlaying) {
     [self pause];
   }
+}
+
+- (void)cacheableAVPlayerItem:(CacheableAVPlayerItem *)playerItem
+       didDownloadURLContents:(NSData *)data {
+  NSLog(@"Download completed [Size = %@ bytes]", @([data length]));
 }
 
 @end

@@ -52,10 +52,7 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
   [self processPendingRequests];
-
-  NSString *cachedFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"cached.mp3"];
-
-  [self.receivedData writeToFile:cachedFilePath atomically:YES];
+  [self.delegate cacheableAVPlayerItem:self didDownloadURLContents:self.receivedData];
 }
 
 #pragma mark - AVURLAsset resource loading
