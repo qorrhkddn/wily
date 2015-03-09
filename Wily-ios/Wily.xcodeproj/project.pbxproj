@@ -20,6 +20,7 @@
 		697CAFBC1A97451800FC917F /* PlayerEventLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFB91A97451800FC917F /* PlayerEventLogger.m */; };
 		697CAFBF1A974DEE00FC917F /* YoutubeSearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFBE1A974DEE00FC917F /* YoutubeSearcher.m */; };
 		697CAFC21A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFC11A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.m */; };
+		8E6E69591AA8D4860081C32F /* meow.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E6E69581AA8D4860081C32F /* meow.wav */; };
 		8ED145E81A972C4600FD6A97 /* Wallpapers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */; };
 		8ED145F51A97638800FD6A97 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED145F31A97638800FD6A97 /* SearchResultTableViewCell.xib */; };
 		C351799DE10AF7A3706E09BF /* libPods-Wily.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99487907B0430D1E74C6A687 /* libPods-Wily.a */; };
@@ -62,6 +63,7 @@
 		697CAFBE1A974DEE00FC917F /* YoutubeSearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YoutubeSearcher.m; sourceTree = "<group>"; };
 		697CAFC01A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YoutubeSearcherAutocompleteXMLResultsParser.h; sourceTree = "<group>"; };
 		697CAFC11A97631500FC917F /* YoutubeSearcherAutocompleteXMLResultsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YoutubeSearcherAutocompleteXMLResultsParser.m; sourceTree = "<group>"; };
+		8E6E69581AA8D4860081C32F /* meow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meow.wav; sourceTree = "<group>"; };
 		8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Wallpapers.xcassets; sourceTree = "<group>"; };
 		8ED145F31A97638800FD6A97 /* SearchResultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultTableViewCell.xib; sourceTree = "<group>"; };
 		99487907B0430D1E74C6A687 /* libPods-Wily.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wily.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
 		697CAF7F1A97222200FC917F /* Wily */ = {
 			isa = PBXGroup;
 			children = (
+				8E6E69581AA8D4860081C32F /* meow.wav */,
 				697CAF841A97222200FC917F /* AppDelegate.h */,
 				697CAF851A97222200FC917F /* AppDelegate.m */,
 				697CAF871A97222200FC917F /* ViewController.h */,
@@ -279,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E6E69591AA8D4860081C32F /* meow.wav in Resources */,
 				697CAF8C1A97222200FC917F /* Main.storyboard in Resources */,
 				8ED145F51A97638800FD6A97 /* SearchResultTableViewCell.xib in Resources */,
 				697CAF911A97222200FC917F /* LaunchScreen.xib in Resources */,
