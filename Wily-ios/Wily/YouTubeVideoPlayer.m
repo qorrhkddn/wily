@@ -4,7 +4,7 @@
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
 #import "NowPlayingInterface.h"
 #import "XCDYouTubeVideo+PreferredStreamURLExtraction.h"
-#import "CachingAVPlayerItem.h"
+#import "CacheableAVPlayerItem.h"
 
 @interface YouTubeVideoPlayer ()
 
@@ -88,7 +88,7 @@
 
   [self willPlayVideo:video];
 
-  self.playerItem = [[CachingAVPlayerItem alloc] initWithURL:streamURL];
+  self.playerItem = [[CacheableAVPlayerItem alloc] initWithURL:streamURL];
   [self observePlayerItem];
   self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
 

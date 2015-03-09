@@ -1,7 +1,7 @@
-#import "CachingAVPlayerItem.h"
+#import "CacheableAVPlayerItem.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface CachingAVPlayerItem () <AVAssetResourceLoaderDelegate, NSURLConnectionDataDelegate>
+@interface CacheableAVPlayerItem () <AVAssetResourceLoaderDelegate, NSURLConnectionDataDelegate>
 @property (nonatomic, readonly) NSMutableArray *pendingRequests;
 
 @property (nonatomic, strong) NSMutableData *receivedData;
@@ -10,18 +10,18 @@
 
 @end
 
-@implementation CachingAVPlayerItem
+@implementation CacheableAVPlayerItem
 
 - (instancetype)initWithURL:(NSURL *)URL {
   _pendingRequests = [NSMutableArray array];
 
-  AVURLAsset *asset = [CachingAVPlayerItem assetForURL:URL];
+  AVURLAsset *asset = [CacheableAVPlayerItem assetForURL:URL];
   [asset.resourceLoader setDelegate:self queue:dispatch_get_main_queue()];
   return [super initWithAsset:asset];
 }
 
 + (AVURLAsset *)assetForURL:(NSURL *)URL {
-  NSURL *customURL = [CachingAVPlayerItem customURLForURL:URL];
+  NSURL *customURL = [CacheableAVPlayerItem customURLForURL:URL];
   return [AVURLAsset URLAssetWithURL:customURL options:nil];
 }
 
@@ -119,7 +119,7 @@
 - (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest {
   if (self.connection == nil) {
     NSURL *interceptedURL = [loadingRequest.request URL];
-    NSURL *URL = [CachingAVPlayerItem URLfromCustomURL:interceptedURL];
+    NSURL *URL = [CacheableAVPlayerItem URLfromCustomURL:interceptedURL];
 
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
