@@ -32,6 +32,11 @@
           [NSStringFromClass(self) stringByAppendingString:URL.absoluteString]];
 }
 
++ (NSURL *)URLfromCustomURL:(NSURL *)customURL {
+  return [NSURL URLWithString:
+          [customURL.absoluteString substringFromIndex:[NSStringFromClass(self) length]]];
+}
+
 #pragma mark - NSURLConnection delegate
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -116,10 +121,9 @@
 - (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest {
   if (self.connection == nil) {
     NSURL *interceptedURL = [loadingRequest.request URL];
-    NSURLComponents *actualURLComponents = [[NSURLComponents alloc] initWithURL:interceptedURL resolvingAgainstBaseURL:NO];
-    actualURLComponents.scheme = @"http";
+    NSURL *URL = [CachingAVPlayerItem URLfromCustomURL:interceptedURL];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[actualURLComponents URL]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
     [self.connection setDelegateQueue:[NSOperationQueue mainQueue]];
 
