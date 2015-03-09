@@ -4,11 +4,9 @@
 @interface CachingAVPlayerItem () <AVAssetResourceLoaderDelegate, NSURLConnectionDataDelegate>
 @property (nonatomic, readonly) NSMutableArray *pendingRequests;
 
-@property (nonatomic, strong) NSMutableData *songData;
-@property (nonatomic, strong) AVPlayer *player;
-@property (nonatomic, strong) NSURLConnection *connection;
-
+@property (nonatomic, strong) NSMutableData *receivedData;
 @property (nonatomic, strong) NSHTTPURLResponse *response;
+@property (nonatomic, strong) NSURLConnection *connection;
 
 @end
 
@@ -40,14 +38,14 @@
 #pragma mark - NSURLConnection delegate
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-  self.songData = [NSMutableData data];
+  self.receivedData = [NSMutableData data];
   self.response = (NSHTTPURLResponse *)response;
 
   [self processPendingRequests];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-  [self.songData appendData:data];
+  [self.receivedData appendData:data];
 
   [self processPendingRequests];
 }
@@ -57,7 +55,7 @@
 
   NSString *cachedFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"cached.mp3"];
 
-  [self.songData writeToFile:cachedFilePath atomically:YES];
+  [self.receivedData writeToFile:cachedFilePath atomically:YES];
 }
 
 #pragma mark - AVURLAsset resource loading
@@ -100,20 +98,20 @@
   }
 
   // Don't have any data at all for this request
-  if (self.songData.length < startOffset) {
+  if (self.receivedData.length < startOffset) {
     return NO;
   }
 
   // This is the total data we have from startOffset to whatever has been downloaded so far
-  NSUInteger unreadBytes = self.songData.length - (NSUInteger)startOffset;
+  NSUInteger unreadBytes = self.receivedData.length - (NSUInteger)startOffset;
 
   // Respond with whatever is available if we can't satisfy the request fully yet
   NSUInteger numberOfBytesToRespondWith = MIN((NSUInteger)dataRequest.requestedLength, unreadBytes);
 
-  [dataRequest respondWithData:[self.songData subdataWithRange:NSMakeRange((NSUInteger)startOffset, numberOfBytesToRespondWith)]];
+  [dataRequest respondWithData:[self.receivedData subdataWithRange:NSMakeRange((NSUInteger)startOffset, numberOfBytesToRespondWith)]];
 
   long long endOffset = startOffset + dataRequest.requestedLength;
-  BOOL didRespondFully = self.songData.length >= endOffset;
+  BOOL didRespondFully = self.receivedData.length >= endOffset;
 
   return didRespondFully;
 }
