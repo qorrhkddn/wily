@@ -7,4 +7,5 @@ target :Wily do
   pod 'iOS-GTLYouTube', '~> 0.0', :inhibit_warnings => true
   pod 'AFNetworking', '~> 2.5'
   pod 'AFNetworkActivityLogger', '~> 2.0'
+  pod 'MXPersistentCache', '~> 0.1'
 end
