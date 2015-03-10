@@ -5,9 +5,12 @@
 #import "NowPlayingInterface.h"
 #import "XCDYouTubeVideo+PreferredStreamURLExtraction.h"
 #import "CacheableAVPlayerItem.h"
+#import <MXPersistentCache/MXPersistentCache.h>
 
 @interface YouTubeVideoPlayer () <CacheableAVPlayerItemDelegate>
 
+@property (nonatomic, readonly) MXPersistentCache *mediaCache;
+@property (nonatomic, readonly) NSUserDefaults *keyValueStore;
 @property (nonatomic, readonly) NowPlayingInterface *nowPlayingInterface;
 
 @property (nonatomic, readwrite) YouTubeVideoPlayerPlaybackState playbackState;
@@ -17,7 +20,8 @@
 @property (nonatomic) NSString *videoIdentifier;
 @property (nonatomic) id playerTimeObserver;
 @property (nonatomic) AVPlayer *player;
-@property (nonatomic) CacheableAVPlayerItem *playerItem;
+@property (nonatomic) AVPlayerItem *playerItem;
+@property (nonatomic) NSDictionary *unsavedMetadata;
 
 @end
 
@@ -26,6 +30,8 @@
 - (instancetype)init {
   self = [super init];
   if (self) {
+    _mediaCache = [[MXPersistentCache alloc] initWithPrefix:@"media-v0" extension:@"mp4"];
+    _keyValueStore = [NSUserDefaults standardUserDefaults];
     _nowPlayingInterface = [[NowPlayingInterface alloc] init];
 
     [self startObservingNotifications];
@@ -62,34 +68,52 @@
   self.playbackState = YouTubeVideoPlayerPlaybackStateLoading;
   self.videoIdentifier = videoIdentifier;
 
-  [self.videoOperation cancel];
+  NSURL *fileURL = [self.mediaCache fileURLForKey:videoIdentifier];
+  NSDictionary *metadata = [self.keyValueStore dictionaryForKey:videoIdentifier];
+  if (fileURL && metadata) {
+    NSLog(@"Found existing metadata and downloaded file for video [videoId = %@]", videoIdentifier);
+    [self playDownloadedFileURL:fileURL withMetadata:metadata];
+  } else {
+    NSLog(@"Video not found; will fetch metadata and stream [videoId = %@]", videoIdentifier);
+    [self fetchMetadataForIdentifier:videoIdentifier];
+  }
+}
+
+- (void)fetchMetadataForIdentifier:(NSString *)videoIdentifier {
   self.videoOperation = [[XCDYouTubeClient defaultClient] getVideoWithIdentifier:videoIdentifier completionHandler:^(XCDYouTubeVideo *video, NSError *error) {
     self.videoOperation = nil;
     if (video) {
-      [self playVideo:video];
+      [self streamVideo:video];
     } else {
-      [self cancelLoadWithError:error];
+      [self cancelPlaybackWithError:error];
     }
   }];
 }
 
-- (void)cancelLoadWithError:(NSError *)error {
+- (void)cancelPlaybackWithError:(NSError *)error {
   NSLog(@"State transition: Clearing Deck [error = %@]", error);
   self.playbackState = YouTubeVideoPlayerPlaybackStateDeckEmpty;
   self.videoIdentifier = nil;
 }
 
-- (void)playVideo:(XCDYouTubeVideo *)video {
+- (void)streamVideo:(XCDYouTubeVideo *)video {
   NSURL *streamURL = [video lowestQualityStreamURL];
   if (streamURL == nil) {
-    [self cancelLoadWithError:[self noStreamError]];
+    [self cancelPlaybackWithError:[self noStreamError]];
     return;
   }
 
-  [self willPlayVideo:video];
+  NSDictionary *metadata = [YouTubeVideoPlayer metadataFromVideo:video];
+  self.unsavedMetadata = metadata;
+  [self willPlayVideoWithMetadata:metadata];
 
-  self.playerItem = [[CacheableAVPlayerItem alloc] initWithURL:streamURL];
-  self.playerItem.delegate = self;
+  CacheableAVPlayerItem *cacheablePlayerItem = [[CacheableAVPlayerItem alloc] initWithURL:streamURL];
+  cacheablePlayerItem.delegate = self;
+  [self beginPlayingItem:cacheablePlayerItem];
+}
+
+- (void)beginPlayingItem:(AVPlayerItem *)playerItem {
+  self.playerItem  = playerItem;
   [self observePlayerItem];
   self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
 
@@ -97,6 +121,23 @@
   [self observePlayer];
 
   [self play];
+}
+
++ (NSDictionary *)metadataFromVideo:(XCDYouTubeVideo *)video {
+  NSString *title = video.title;
+  NSURL *thumbnailURL = video.mediumThumbnailURL;
+
+  return @{@"title": title, @"thumbnailURL": [thumbnailURL absoluteString]};
+}
+
+- (void)playDownloadedFileURL:(NSURL *)fileURL withMetadata:(NSDictionary *)metadata {
+  NSParameterAssert(fileURL);
+  NSParameterAssert(metadata);
+
+  [self willPlayVideoWithMetadata:metadata];
+
+  AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithURL:fileURL];
+  [self beginPlayingItem:playerItem];
 }
 
 - (NSError *)noStreamError {
@@ -114,6 +155,9 @@
 - (void)clearDeck {
   NSAssert(self.playbackState != YouTubeVideoPlayerPlaybackStateDeckEmpty,
            @"Attempt to unload video when the deck is empty");
+
+  self.unsavedMetadata = nil;
+  [self.videoOperation cancel];
 
   [self unobservePlayerItem];
   [self unobservePlayer];
@@ -262,9 +306,9 @@
   }
 }
 
-- (void)willPlayVideo:(XCDYouTubeVideo *)video {
-  NSString *title = video.title;
-  NSURL *thumbnailURL = video.mediumThumbnailURL;
+- (void)willPlayVideoWithMetadata:(NSDictionary *)metadata {
+  NSString *title = metadata[@"title"];
+  NSURL *thumbnailURL = [NSURL URLWithString:metadata[@"thumbnailURL"]];
 
   if ([self.delegate respondsToSelector:@selector(youTubeVideoPlayer:didFetchVideoTitle:)]) {
     [self.delegate youTubeVideoPlayer:self didFetchVideoTitle:title];
@@ -284,7 +328,15 @@
 
 - (void)cacheableAVPlayerItem:(CacheableAVPlayerItem *)playerItem
        didDownloadURLContents:(NSData *)data {
-  NSLog(@"Download completed [Size = %@ bytes]", @([data length]));
+  NSLog(@"Download completed [Size = %@ bytes, videoId = %@]", @([data length]), self.videoIdentifier);
+  if (self.unsavedMetadata == nil) {
+    NSLog(@"Unexpected state: Have downloaded data without corresponding metadata; will ignore");
+    return;
+  }
+
+  [self.mediaCache persistFileForKey:self.videoIdentifier withData:data];
+  [self.keyValueStore setObject:self.unsavedMetadata forKey:self.videoIdentifier];
+  self.unsavedMetadata = nil;
 }
 
 @end
