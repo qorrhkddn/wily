@@ -3,14 +3,16 @@
 @import AVKit;
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
 #import "NowPlayingInterface.h"
+#import "RemoteControlEvents.h"
 #import "XCDYouTubeVideo+PreferredStreamURLExtraction.h"
 #import "CacheableAVPlayerItem.h"
 #import <MXPersistentCache/MXPersistentCache.h>
 
-@interface YouTubeVideoPlayer () <CacheableAVPlayerItemDelegate>
+@interface YouTubeVideoPlayer () <RemoteControlEventsDelegate, CacheableAVPlayerItemDelegate>
 
 @property (nonatomic, readonly) MXPersistentCache *mediaCache;
 @property (nonatomic, readonly) NSUserDefaults *keyValueStore;
+@property (nonatomic, readonly) RemoteControlEvents *remoteControlEvents;
 @property (nonatomic, readonly) NowPlayingInterface *nowPlayingInterface;
 
 @property (nonatomic, readwrite) YouTubeVideoPlayerPlaybackState playbackState;
@@ -32,16 +34,13 @@
   if (self) {
     _mediaCache = [[MXPersistentCache alloc] initWithPrefix:@"media-v0" extension:@"mp4"];
     _keyValueStore = [NSUserDefaults standardUserDefaults];
+    _remoteControlEvents = [[RemoteControlEvents alloc] init];
     _nowPlayingInterface = [[NowPlayingInterface alloc] init];
 
-    [self startObservingNotifications];
+    _remoteControlEvents.delegate = self;
     [self enableAVAudioSessionCategoryPlayback];
   }
   return self;
-}
-
-- (void)startObservingNotifications {
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(togglePlayPause:) name:NowPlayingInterfaceUIEventSubtypeRemoteControlTogglePlayPause object:nil];
 }
 
 - (void)enableAVAudioSessionCategoryPlayback {
@@ -51,10 +50,6 @@
   if (!success) {
     NSLog(@"Audio Session Category error: %@", error);
   }
-}
-
-- (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)loadVideoWithIdentifier:(NSString *)videoIdentifier {
@@ -318,12 +313,21 @@
   [self.nowPlayingInterface asynchronouslySetImageFromThumbnailURL:thumbnailURL];
 }
 
-- (void)togglePlayPause:(NSNotification *)notification {
+- (void)remoteControlEventsDidTogglePlayPause:(RemoteControlEvents *)events {
+  NSLog(@"Remote control: did toggle play/pause");
   if (self.playbackState == YouTubeVideoPlayerPlaybackStatePaused) {
     [self play];
   } else if (self.playbackState == YouTubeVideoPlayerPlaybackStatePlaying) {
     [self pause];
   }
+}
+
+- (void)remoteControlEventsDidPressNext:(RemoteControlEvents *)events {
+  NSLog(@"Remote control: did press next");
+}
+
+- (void)remoteControlEventsDidPressPrevious:(RemoteControlEvents *)events {
+  NSLog(@"Remote control: did press previous");
 }
 
 - (void)cacheableAVPlayerItem:(CacheableAVPlayerItem *)playerItem

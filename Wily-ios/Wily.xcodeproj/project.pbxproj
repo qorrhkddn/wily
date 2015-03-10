@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		691A50321AAF12D3006CC53A /* RemoteControlEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 691A50311AAF12D3006CC53A /* RemoteControlEvents.m */; };
 		6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6922E7011A9860D600F3344E /* NowPlayingInterface.m */; };
 		697CAF831A97222200FC917F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF821A97222200FC917F /* main.m */; };
 		697CAF861A97222200FC917F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF851A97222200FC917F /* AppDelegate.m */; };
@@ -37,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		2C54D1BF18B538C9B9B6FB6E /* Pods-Wily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wily/Pods-Wily.debug.xcconfig"; sourceTree = "<group>"; };
+		691A50301AAF12D2006CC53A /* RemoteControlEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteControlEvents.h; sourceTree = "<group>"; };
+		691A50311AAF12D3006CC53A /* RemoteControlEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteControlEvents.m; sourceTree = "<group>"; };
 		6922E7001A9860D600F3344E /* NowPlayingInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingInterface.h; sourceTree = "<group>"; };
 		6922E7011A9860D600F3344E /* NowPlayingInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingInterface.m; sourceTree = "<group>"; };
 		697CAF7D1A97222200FC917F /* Wily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wily.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +127,8 @@
 				697CAF881A97222200FC917F /* ViewController.m */,
 				697CAFA61A97335900FC917F /* YouTubeVideoPlayer.h */,
 				697CAFA71A97335900FC917F /* YouTubeVideoPlayer.m */,
+				691A50301AAF12D2006CC53A /* RemoteControlEvents.h */,
+				691A50311AAF12D3006CC53A /* RemoteControlEvents.m */,
 				69C802C11AABFD7500E89320 /* CacheableAVPlayerItem.h */,
 				69C802C21AABFD7500E89320 /* CacheableAVPlayerItem.m */,
 				69D41F221AAB2DE000914A3E /* XCDYouTubeVideo+PreferredStreamURLExtraction.h */,
@@ -320,6 +325,7 @@
 				697CAF861A97222200FC917F /* AppDelegate.m in Sources */,
 				697CAFA81A97335900FC917F /* YouTubeVideoPlayer.m in Sources */,
 				6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */,
+				691A50321AAF12D3006CC53A /* RemoteControlEvents.m in Sources */,
 				697CAF831A97222200FC917F /* main.m in Sources */,
 				697CAFC21A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.m in Sources */,
 				69C802C31AABFD7500E89320 /* CacheableAVPlayerItem.m in Sources */,

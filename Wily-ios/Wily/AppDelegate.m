@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-#import "NowPlayingInterface.h"
+#import "RemoteControlEvents.h"
 
 @interface AppDelegate ()
 
@@ -12,17 +12,7 @@
 }
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event {
-  if (event.type == UIEventTypeRemoteControl) {
-    switch (event.subtype) {
-      case UIEventSubtypeRemoteControlPause:
-      case UIEventSubtypeRemoteControlPlay:
-      case UIEventSubtypeRemoteControlTogglePlayPause:
-        [[NSNotificationCenter defaultCenter] postNotificationName:NowPlayingInterfaceUIEventSubtypeRemoteControlTogglePlayPause object:nil];
-        break;
-      default:
-        break;
-    }
-  }
+  [RemoteControlEvents consumeEvent:event];
 }
 
 @end
