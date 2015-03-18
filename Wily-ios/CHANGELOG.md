@@ -2,6 +2,7 @@
 
 * Use the lowest available quality stream to reduce bandwidth and
   initial playback latency.
+* The cat meows when you touch it.
 
 ## [1.1][]
 
