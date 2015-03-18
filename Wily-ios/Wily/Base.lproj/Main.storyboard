@@ -130,10 +130,12 @@
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="F8U-lm-DGX" appends="YES" id="god-fC-UYG"/>
                                     <outletCollection property="gestureRecognizers" destination="mHy-8h-9WZ" appends="YES" id="oVr-HP-Rbl"/>
+                                    <outletCollection property="gestureRecognizers" destination="vkf-fd-HUj" appends="YES" id="W2W-vu-xTs"/>
                                 </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dIP-DL-htw" secondAttribute="trailing" constant="20" id="1Dr-Wg-CRb"/>
                             <constraint firstAttribute="trailing" secondItem="OwN-m9-EVv" secondAttribute="trailing" id="3h6-28-bZ9"/>
@@ -158,6 +160,9 @@
                             <constraint firstItem="dAq-gS-TyW" firstAttribute="top" secondItem="dIP-DL-htw" secondAttribute="bottom" id="ywY-V7-6PC"/>
                             <constraint firstItem="j5M-7D-R66" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="zYW-B4-Ntn"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="vkf-fd-HUj" appends="YES" id="LDg-Fy-OXq"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="catImageView" destination="fJl-3a-IcH" id="URv-KC-8x4"/>
@@ -193,8 +198,39 @@
                         <action selector="tapDetected:" destination="vXZ-lx-hvc" id="71F-B8-JNR"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="vkf-fd-HUj" userLabel="SwipeLeft">
+                    <connections>
+                        <segue destination="sij-6w-dUb" kind="presentation" modalTransitionStyle="flipHorizontal" id="0i1-NA-5gR"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-221" y="-106"/>
+        </scene>
+        <!--Playlist Table View Controller-->
+        <scene sceneID="ljr-kJ-dIQ">
+            <objects>
+                <tableViewController id="sij-6w-dUb" customClass="PlaylistTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1vy-5e-qEo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaylistTableViewCellReuseIdentifier" id="8GV-8e-qoa">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8GV-8e-qoa" id="hl7-9w-sRG">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sij-6w-dUb" id="DZt-oi-bNa"/>
+                            <outlet property="delegate" destination="sij-6w-dUb" id="TDG-FL-heI"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uVp-zT-fU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="493" y="-106"/>
         </scene>
     </scenes>
     <resources>
