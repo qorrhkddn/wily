@@ -1,6 +1,6 @@
 #import "WallpaperManager.h"
 
-static const NSUInteger NumberOfWallpapers = 37;
+static const NSUInteger NumberOfWallpapers = 41;
 
 @implementation WallpaperManager
 
