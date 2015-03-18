@@ -3,6 +3,7 @@
 #import "YouTubeSearcher.h"
 #import "SFXPlayer.h"
 #import "DurationFormatter.h"
+#import "WallpaperManager.h"
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
@@ -10,6 +11,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 @property (nonatomic) YouTubeVideoPlayer *player;
 @property (nonatomic) YouTubeSearcher *searcher;
+@property (nonatomic) WallpaperManager *wallpaperManager;
 
 @property (weak, nonatomic) IBOutlet UIImageView *wallPaperImageView;
 @property (weak, nonatomic) IBOutlet UIProgressView *playProgressView;
@@ -22,6 +24,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @property (weak, nonatomic) IBOutlet UIView *playControlsContainerView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingSpinner;
 
+@property (nonatomic) NSString *wallpaperId;
 @property (nonatomic, strong) NSArray *searchResults;
 
 @end
@@ -33,8 +36,9 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   self.player = [[YouTubeVideoPlayer alloc] init];
   self.player.delegate = self;
   self.searcher = [[YouTubeSearcher alloc] init];
+  self.wallpaperManager = [[WallpaperManager alloc] init];
 
-  [self changeWallPaper];
+  [self setWallpaper];
   self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
 
   [self.player addObserver:self forKeyPath:@"playbackState" options:NSKeyValueObservingOptionNew context:nil];
@@ -88,10 +92,9 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [self.player removeObserver:self forKeyPath:@"playbackState"];
 }
 
-- (void)changeWallPaper {
-  NSUInteger wallPaperNumber = arc4random() % 37;
-  NSString *wallPaperImageName = [NSString stringWithFormat:@"%@", @(wallPaperNumber)];
-  self.wallPaperImageView.image = [UIImage imageNamed:wallPaperImageName];
+- (void)setWallpaper {
+  self.wallpaperId = [self.wallpaperManager randomWallpaperId];
+  self.wallPaperImageView.image = [self.wallpaperManager wallpaperWithId:self.wallpaperId];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -123,7 +126,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (void)playVideoWithIdentifier:(NSString *)videoIdentifier {
-  [self changeWallPaper];
+  [self setWallpaper];
   [self.player loadVideoWithIdentifier:videoIdentifier];
 }
 

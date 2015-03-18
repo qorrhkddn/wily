@@ -11,6 +11,7 @@
 		6913D8F01AB9BFBD0012EE7D /* SFXPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8EF1AB9BFBD0012EE7D /* SFXPlayer.m */; };
 		6913D8F31AB9C4580012EE7D /* DurationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8F21AB9C4580012EE7D /* DurationFormatter.m */; };
 		6913D8F51AB9C4820012EE7D /* DurationFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8F41AB9C4820012EE7D /* DurationFormatterTests.m */; };
+		6913D8FB1AB9C91F0012EE7D /* WallpaperManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8FA1AB9C91F0012EE7D /* WallpaperManager.m */; };
 		691A50321AAF12D3006CC53A /* RemoteControlEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 691A50311AAF12D3006CC53A /* RemoteControlEvents.m */; };
 		6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6922E7011A9860D600F3344E /* NowPlayingInterface.m */; };
 		697CAF831A97222200FC917F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF821A97222200FC917F /* main.m */; };
@@ -50,6 +51,8 @@
 		6913D8F11AB9C4580012EE7D /* DurationFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DurationFormatter.h; sourceTree = "<group>"; };
 		6913D8F21AB9C4580012EE7D /* DurationFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DurationFormatter.m; sourceTree = "<group>"; };
 		6913D8F41AB9C4820012EE7D /* DurationFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DurationFormatterTests.m; sourceTree = "<group>"; };
+		6913D8F91AB9C91F0012EE7D /* WallpaperManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallpaperManager.h; sourceTree = "<group>"; };
+		6913D8FA1AB9C91F0012EE7D /* WallpaperManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallpaperManager.m; sourceTree = "<group>"; };
 		691A50301AAF12D2006CC53A /* RemoteControlEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteControlEvents.h; sourceTree = "<group>"; };
 		691A50311AAF12D3006CC53A /* RemoteControlEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteControlEvents.m; sourceTree = "<group>"; };
 		6922E7001A9860D600F3344E /* NowPlayingInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingInterface.h; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 				6913D8EF1AB9BFBD0012EE7D /* SFXPlayer.m */,
 				6913D8F11AB9C4580012EE7D /* DurationFormatter.h */,
 				6913D8F21AB9C4580012EE7D /* DurationFormatter.m */,
+				6913D8F91AB9C91F0012EE7D /* WallpaperManager.h */,
+				6913D8FA1AB9C91F0012EE7D /* WallpaperManager.m */,
 				697CAF8A1A97222200FC917F /* Main.storyboard */,
 				8ED145F31A97638800FD6A97 /* SearchResultTableViewCell.xib */,
 				697CAF8D1A97222200FC917F /* Images.xcassets */,
@@ -351,6 +356,7 @@
 				697CAF831A97222200FC917F /* main.m in Sources */,
 				697CAFC21A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.m in Sources */,
 				6913D8ED1AB9B5360012EE7D /* PlaylistTableViewController.m in Sources */,
+				6913D8FB1AB9C91F0012EE7D /* WallpaperManager.m in Sources */,
 				6913D8F01AB9BFBD0012EE7D /* SFXPlayer.m in Sources */,
 				6913D8F31AB9C4580012EE7D /* DurationFormatter.m in Sources */,
 				69C802C31AABFD7500E89320 /* CacheableAVPlayerItem.m in Sources */,
