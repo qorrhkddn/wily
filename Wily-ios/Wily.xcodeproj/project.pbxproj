@@ -12,7 +12,7 @@
 		6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6922E7011A9860D600F3344E /* NowPlayingInterface.m */; };
 		697CAF831A97222200FC917F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF821A97222200FC917F /* main.m */; };
 		697CAF861A97222200FC917F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF851A97222200FC917F /* AppDelegate.m */; };
-		697CAF891A97222200FC917F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF881A97222200FC917F /* ViewController.m */; };
+		697CAF891A97222200FC917F /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF881A97222200FC917F /* PlayerViewController.m */; };
 		697CAF8C1A97222200FC917F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8A1A97222200FC917F /* Main.storyboard */; };
 		697CAF8E1A97222200FC917F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8D1A97222200FC917F /* Images.xcassets */; };
 		697CAF911A97222200FC917F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8F1A97222200FC917F /* LaunchScreen.xib */; };
@@ -51,8 +51,8 @@
 		697CAF821A97222200FC917F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		697CAF841A97222200FC917F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		697CAF851A97222200FC917F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		697CAF871A97222200FC917F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		697CAF881A97222200FC917F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		697CAF871A97222200FC917F /* PlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
+		697CAF881A97222200FC917F /* PlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
 		697CAF8B1A97222200FC917F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		697CAF8D1A97222200FC917F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		697CAF901A97222200FC917F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -129,8 +129,8 @@
 				8E6E69581AA8D4860081C32F /* meow.wav */,
 				697CAF841A97222200FC917F /* AppDelegate.h */,
 				697CAF851A97222200FC917F /* AppDelegate.m */,
-				697CAF871A97222200FC917F /* ViewController.h */,
-				697CAF881A97222200FC917F /* ViewController.m */,
+				697CAF871A97222200FC917F /* PlayerViewController.h */,
+				697CAF881A97222200FC917F /* PlayerViewController.m */,
 				697CAFA61A97335900FC917F /* YouTubeVideoPlayer.h */,
 				697CAFA71A97335900FC917F /* YouTubeVideoPlayer.m */,
 				691A50301AAF12D2006CC53A /* RemoteControlEvents.h */,
@@ -330,7 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				697CAF891A97222200FC917F /* ViewController.m in Sources */,
+				697CAF891A97222200FC917F /* PlayerViewController.m in Sources */,
 				697CAF861A97222200FC917F /* AppDelegate.m in Sources */,
 				697CAFA81A97335900FC917F /* YouTubeVideoPlayer.m in Sources */,
 				6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */,

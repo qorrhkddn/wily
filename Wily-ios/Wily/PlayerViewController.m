@@ -1,4 +1,4 @@
-#import "ViewController.h"
+#import "PlayerViewController.h"
 #import "YouTubeVideoPlayer.h"
 #import "YouTubeSearcher.h"
 #import <MediaPlayer/MediaPlayer.h>
@@ -6,7 +6,7 @@
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
-@interface ViewController () <YouTubeVideoPlayerPlayerDelegate, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UISearchDisplayDelegate>
+@interface PlayerViewController () <YouTubeVideoPlayerPlayerDelegate, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UISearchDisplayDelegate>
 
 @property (nonatomic) YouTubeVideoPlayer *player;
 @property (nonatomic) YouTubeSearcher *searcher;
@@ -28,7 +28,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 @end
 
-@implementation ViewController
+@implementation PlayerViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
