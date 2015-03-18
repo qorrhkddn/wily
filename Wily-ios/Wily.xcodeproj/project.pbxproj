@@ -126,7 +126,6 @@
 		697CAF7F1A97222200FC917F /* Wily */ = {
 			isa = PBXGroup;
 			children = (
-				8E6E69581AA8D4860081C32F /* meow.wav */,
 				697CAF841A97222200FC917F /* AppDelegate.h */,
 				697CAF851A97222200FC917F /* AppDelegate.m */,
 				697CAF871A97222200FC917F /* PlayerViewController.h */,
@@ -152,6 +151,7 @@
 				697CAF8D1A97222200FC917F /* Images.xcassets */,
 				8ED145E71A972C4600FD6A97 /* Wallpapers.xcassets */,
 				697CAF8F1A97222200FC917F /* LaunchScreen.xib */,
+				8E6E69581AA8D4860081C32F /* meow.wav */,
 				697CAF801A97222200FC917F /* Supporting Files */,
 			);
 			path = Wily;
