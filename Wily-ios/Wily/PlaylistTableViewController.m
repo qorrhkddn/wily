@@ -30,6 +30,10 @@
   return cell;
 }
 
+- (IBAction)swipeLeft:(id)sender {
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 /*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

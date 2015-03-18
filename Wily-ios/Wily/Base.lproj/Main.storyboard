@@ -130,7 +130,6 @@
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="F8U-lm-DGX" appends="YES" id="god-fC-UYG"/>
                                     <outletCollection property="gestureRecognizers" destination="mHy-8h-9WZ" appends="YES" id="oVr-HP-Rbl"/>
-                                    <outletCollection property="gestureRecognizers" destination="vkf-fd-HUj" appends="YES" id="W2W-vu-xTs"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -162,6 +161,7 @@
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="vkf-fd-HUj" appends="YES" id="LDg-Fy-OXq"/>
+                            <outletCollection property="gestureRecognizers" destination="HSf-vp-U9P" appends="YES" id="td7-U4-OIf"/>
                         </connections>
                     </view>
                     <connections>
@@ -200,7 +200,12 @@
                 </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="left" id="vkf-fd-HUj" userLabel="SwipeLeft">
                     <connections>
-                        <segue destination="sij-6w-dUb" kind="presentation" modalTransitionStyle="flipHorizontal" id="0i1-NA-5gR"/>
+                        <segue destination="sij-6w-dUb" kind="presentation" modalTransitionStyle="crossDissolve" id="0i1-NA-5gR"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="HSf-vp-U9P" userLabel="SwipeRight">
+                    <connections>
+                        <segue destination="sij-6w-dUb" kind="presentation" modalTransitionStyle="crossDissolve" id="tqy-as-6Jo"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -214,6 +219,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaylistTableViewCellReuseIdentifier" id="8GV-8e-qoa">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -225,10 +231,22 @@
                         <connections>
                             <outlet property="dataSource" destination="sij-6w-dUb" id="DZt-oi-bNa"/>
                             <outlet property="delegate" destination="sij-6w-dUb" id="TDG-FL-heI"/>
+                            <outletCollection property="gestureRecognizers" destination="PWr-dl-7Dx" appends="YES" id="04V-uh-SfQ"/>
+                            <outletCollection property="gestureRecognizers" destination="mxe-jd-gHV" appends="YES" id="dVC-MF-roA"/>
                         </connections>
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uVp-zT-fU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="PWr-dl-7Dx" userLabel="SwipeLeft">
+                    <connections>
+                        <action selector="swipeLeft:" destination="sij-6w-dUb" id="doC-jG-iLn"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="mxe-jd-gHV" userLabel="SwipeRight">
+                    <connections>
+                        <action selector="swipeLeft:" destination="sij-6w-dUb" id="4xy-U1-0iL"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="493" y="-106"/>
         </scene>
@@ -237,4 +255,7 @@
         <image name="play" width="77" height="77"/>
         <image name="wily-icon" width="24" height="47"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="tqy-as-6Jo"/>
+    </inferredMetricsTieBreakers>
 </document>
