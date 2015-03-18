@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OwN-m9-EVv" userLabel="WallPaper">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OwN-m9-EVv" userLabel="Wallpaper">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8HB-8H-OA6" userLabel="Black overlay">
@@ -168,7 +168,7 @@
                         <outlet property="searchBarHeightConstraint" destination="Yrf-VV-7mI" id="Fht-1N-CgC"/>
                         <outlet property="searchResultsDisplayController" destination="ypz-fb-ptg" id="7Oh-9e-A0K"/>
                         <outlet property="titleLabel" destination="0Xe-VA-zwg" id="AQQ-6O-JE5"/>
-                        <outlet property="wallPaperImageView" destination="OwN-m9-EVv" id="1y6-WJ-u72"/>
+                        <outlet property="wallpaperImageView" destination="OwN-m9-EVv" id="eqn-oJ-Mwy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

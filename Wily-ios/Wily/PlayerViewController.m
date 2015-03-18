@@ -13,7 +13,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @property (nonatomic) YouTubeSearcher *searcher;
 @property (nonatomic) WallpaperManager *wallpaperManager;
 
-@property (weak, nonatomic) IBOutlet UIImageView *wallPaperImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *wallpaperImageView;
 @property (weak, nonatomic) IBOutlet UIProgressView *playProgressView;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 @property (strong, nonatomic) IBOutlet UISearchDisplayController *searchResultsDisplayController;
@@ -94,7 +94,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 - (void)setWallpaper {
   self.wallpaperId = [self.wallpaperManager randomWallpaperId];
-  self.wallPaperImageView.image = [self.wallpaperManager wallpaperWithId:self.wallpaperId];
+  self.wallpaperImageView.image = [self.wallpaperManager wallpaperWithId:self.wallpaperId];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
