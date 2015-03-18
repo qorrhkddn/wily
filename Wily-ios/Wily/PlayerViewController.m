@@ -1,8 +1,7 @@
 #import "PlayerViewController.h"
 #import "YouTubeVideoPlayer.h"
 #import "YouTubeSearcher.h"
-#import <MediaPlayer/MediaPlayer.h>
-#import <AudioToolbox/AudioToolbox.h>
+#import "SFXPlayer.h"
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
@@ -24,7 +23,6 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingSpinner;
 
 @property (nonatomic, strong) NSArray *searchResults;
-@property (nonatomic) SystemSoundID meowSound;
 
 @end
 
@@ -36,7 +34,6 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   self.player.delegate = self;
   self.searcher = [[YouTubeSearcher alloc] init];
 
-  [self loadMeowSound];
   [self changeWallPaper];
   self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
 
@@ -88,8 +85,6 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (void)dealloc {
-  OSStatus status = AudioServicesDisposeSystemSoundID(self.meowSound);
-  NSLog(@"Dispose meow sound, status: %@", @(status));
   [self.player removeObserver:self forKeyPath:@"playbackState"];
 }
 
@@ -172,20 +167,11 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   return CGRectContainsPoint(containingRect, point);
 }
 
-- (void)loadMeowSound {
-  NSString *path = [[NSBundle mainBundle] pathForResource:@"meow" ofType:@"wav"];
-  NSURL *fileURL = [NSURL fileURLWithPath:path];
-  SystemSoundID soundID;
-  OSStatus status = AudioServicesCreateSystemSoundID((__bridge CFURLRef)(fileURL), &soundID);
-  NSLog(@"Load meow sound, status: %@", @(status));
-  self.meowSound = soundID;
-}
-
 - (IBAction)tapDetected:(UITapGestureRecognizer *)sender {
   CGPoint tappedPoint = [sender locationInView:sender.view];
   CGPoint tappedPointInImageView = [self.catImageView convertPoint:tappedPoint fromView:sender.view];
   if ([self isInCatImageViewPoint:tappedPointInImageView]) {
-    AudioServicesPlaySystemSound(self.meowSound);
+    [SFXPlayer playMeowSound];
   }
 }
 

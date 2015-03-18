@@ -8,4 +8,5 @@ target :Wily do
   pod 'AFNetworking', '~> 2.5'
   pod 'AFNetworkActivityLogger', '~> 2.0'
   pod 'MXPersistentCache', '~> 0.1'
+  pod 'BRYSoundEffectPlayer', '~> 1.0.0'
 end
