@@ -2,6 +2,7 @@
 #import "YouTubeVideoPlayer.h"
 #import "YouTubeSearcher.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
@@ -11,6 +12,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @property (nonatomic) YouTubeSearcher *searcher;
 
 @property (weak, nonatomic) IBOutlet UIImageView *wallPaperImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *catImageView;
 @property (weak, nonatomic) IBOutlet UIProgressView *playProgressView;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 @property (strong, nonatomic) IBOutlet UISearchDisplayController *searchResultsDisplayController;
@@ -22,6 +24,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingSpinner;
 
 @property (nonatomic, strong) NSArray *searchResults;
+@property (nonatomic) SystemSoundID meowSound;
 
 @end
 
@@ -33,6 +36,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   self.player.delegate = self;
   self.searcher = [[YouTubeSearcher alloc] init];
 
+  [self loadMeowSound];
   [self changeWallPaper];
   self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
 
@@ -84,6 +88,8 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (void)dealloc {
+  OSStatus status = AudioServicesDisposeSystemSoundID(self.meowSound);
+  NSLog(@"Dispose meow sound, status: %@", @(status));
   [self.player removeObserver:self forKeyPath:@"playbackState"];
 }
 
@@ -159,6 +165,28 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 - (IBAction)swipeDownDetected:(UISwipeGestureRecognizer *)sender {
   [self showSearchDisplay];
+}
+
+- (BOOL)isInCatImageViewPoint:(CGPoint)point {
+  CGRect containingRect = CGRectInset(self.catImageView.bounds, -5, -5);
+  return CGRectContainsPoint(containingRect, point);
+}
+
+- (void)loadMeowSound {
+  NSString *path = [[NSBundle mainBundle] pathForResource:@"meow" ofType:@"wav"];
+  NSURL *fileURL = [NSURL fileURLWithPath:path];
+  SystemSoundID soundID;
+  OSStatus status = AudioServicesCreateSystemSoundID((__bridge CFURLRef)(fileURL), &soundID);
+  NSLog(@"Load meow sound, status: %@", @(status));
+  self.meowSound = soundID;
+}
+
+- (IBAction)tapDetected:(UITapGestureRecognizer *)sender {
+  CGPoint tappedPoint = [sender locationInView:sender.view];
+  CGPoint tappedPointInImageView = [self.catImageView convertPoint:tappedPoint fromView:sender.view];
+  if ([self isInCatImageViewPoint:tappedPointInImageView]) {
+    AudioServicesPlaySystemSound(self.meowSound);
+  }
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {

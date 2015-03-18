@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -113,7 +113,7 @@
                                     <constraint firstAttribute="trailing" secondItem="1Wb-VI-fJg" secondAttribute="trailing" id="vnY-5o-i4S"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="j5M-7D-R66">
+                            <searchBar contentMode="redraw" misplaced="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="j5M-7D-R66">
                                 <constraints>
                                     <constraint firstAttribute="height" id="Yrf-VV-7mI"/>
                                 </constraints>
@@ -129,6 +129,7 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="F8U-lm-DGX" appends="YES" id="god-fC-UYG"/>
+                                    <outletCollection property="gestureRecognizers" destination="mHy-8h-9WZ" appends="YES" id="oVr-HP-Rbl"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -159,6 +160,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="catImageView" destination="fJl-3a-IcH" id="URv-KC-8x4"/>
                         <outlet property="currentPlaybackTimeLabel" destination="ydu-8C-JnR" id="Avl-Vi-Oht"/>
                         <outlet property="durationLabel" destination="yqy-op-okc" id="ZYn-0Y-NEs"/>
                         <outlet property="loadingSpinner" destination="7cX-mH-vBk" id="uWi-ul-5Aa"/>
@@ -186,6 +188,11 @@
                         <action selector="swipeDownDetected:" destination="vXZ-lx-hvc" id="mx8-ZU-Tma"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="mHy-8h-9WZ">
+                    <connections>
+                        <action selector="tapDetected:" destination="vXZ-lx-hvc" id="71F-B8-JNR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-221" y="-106"/>
         </scene>
