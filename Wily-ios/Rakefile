@@ -1,0 +1,5 @@
+task :bootstrap do
+  sh "type -t pod >/dev/null || gem install cocoapods"
+  sh "pod keys >/dev/null || gem install cocoapods-keys"
+  sh "pod install"
+end
