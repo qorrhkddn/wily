@@ -7,9 +7,9 @@
 
 @implementation DurationFormatterTests
 
-- (void)testTimeIntervalIsConvertedToMinutesSeconds {
+- (void)testTimeIntervalIsConvertedToMinutesSecondsWithLeadingZeroes {
   XCTAssertEqualObjects(@"0:59", [DurationFormatter stringForTimeInterval:59]);
-  XCTAssertEqualObjects(@"1:1", [DurationFormatter stringForTimeInterval:61]);
+  XCTAssertEqualObjects(@"1:01", [DurationFormatter stringForTimeInterval:61]);
 }
 
 @end
