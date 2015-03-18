@@ -11,7 +11,6 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @property (nonatomic) YouTubeSearcher *searcher;
 
 @property (weak, nonatomic) IBOutlet UIImageView *wallPaperImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *catImageView;
 @property (weak, nonatomic) IBOutlet UIProgressView *playProgressView;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 @property (strong, nonatomic) IBOutlet UISearchDisplayController *searchResultsDisplayController;
@@ -162,17 +161,8 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [self showSearchDisplay];
 }
 
-- (BOOL)isInCatImageViewPoint:(CGPoint)point {
-  CGRect containingRect = CGRectInset(self.catImageView.bounds, -5, -5);
-  return CGRectContainsPoint(containingRect, point);
-}
-
-- (IBAction)tapDetected:(UITapGestureRecognizer *)sender {
-  CGPoint tappedPoint = [sender locationInView:sender.view];
-  CGPoint tappedPointInImageView = [self.catImageView convertPoint:tappedPoint fromView:sender.view];
-  if ([self isInCatImageViewPoint:tappedPointInImageView]) {
-    [SFXPlayer playMeowSound];
-  }
+- (IBAction)wilyIconTapped:(id)sender {
+  [SFXPlayer playMeowSound];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
