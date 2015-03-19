@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D072F77EBE1CF26ADCE018A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6ECE23FC2492A5F8D777F4A /* libPods.a */; };
 		6913D8ED1AB9B5360012EE7D /* PlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8EC1AB9B5360012EE7D /* PlaylistTableViewController.m */; };
 		6913D8F01AB9BFBD0012EE7D /* SFXPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8EF1AB9BFBD0012EE7D /* SFXPlayer.m */; };
 		6913D8F31AB9C4580012EE7D /* DurationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8F21AB9C4580012EE7D /* DurationFormatter.m */; };
@@ -85,6 +86,7 @@
 		8ED145F31A97638800FD6A97 /* SearchResultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultTableViewCell.xib; sourceTree = "<group>"; };
 		99487907B0430D1E74C6A687 /* libPods-Wily.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wily.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88926DEC784DE3F59570B53 /* Pods-Wily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wily.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wily/Pods-Wily.release.xcconfig"; sourceTree = "<group>"; };
+		D6ECE23FC2492A5F8D777F4A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C351799DE10AF7A3706E09BF /* libPods-Wily.a in Frameworks */,
+				0D072F77EBE1CF26ADCE018A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				99487907B0430D1E74C6A687 /* libPods-Wily.a */,
+				D6ECE23FC2492A5F8D777F4A /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

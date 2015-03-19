@@ -2,11 +2,17 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '7.0'
 
-target :Wily do
+target :Wily, :exclusive => true do
   pod 'XCDYouTubeKit', '~> 2.1.1', :inhibit_warnings => true
   pod 'iOS-GTLYouTube', '~> 0.0', :inhibit_warnings => true
   pod 'AFNetworking', '~> 2.5'
   pod 'AFNetworkActivityLogger', '~> 2.0'
   pod 'MXPersistentCache', '~> 0.1'
   pod 'BRYSoundEffectPlayer', '~> 1.0.0'
+
+  plugin 'cocoapods-keys', {
+           project: 'Wily.xcodeproj',
+           target: 'Wily',
+           keys: [ 'googleAPIKey' ]
+         }
 end

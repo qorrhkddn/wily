@@ -3,8 +3,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
 #import "YouTubeSearcherAutocompleteXMLResultsParser.h"
-
-static NSString * const GoogleAPIKey = @"AIzaSyD2Otqd_OlhLfZekoXGMSuibDgGcagp-3Y";
+#import <Keys/WilyXcodeprojKeys.h>
 
 @interface YouTubeSearcher ()
 @property (nonatomic, readonly) GTLServiceYouTube *service;
@@ -18,9 +17,13 @@ static NSString * const GoogleAPIKey = @"AIzaSyD2Otqd_OlhLfZekoXGMSuibDgGcagp-3Y
     [[AFNetworkActivityLogger sharedLogger] startLogging];
 
     _service = [[GTLServiceYouTube alloc] init];
-    _service.APIKey = GoogleAPIKey;
+    _service.APIKey = [YouTubeSearcher googleAPIKey];
   }
   return self;
+}
+
++ (NSString *)googleAPIKey {
+  return [[[WilyXcodeprojKeys alloc] init] googleAPIKey];
 }
 
 - (void)autocompleteSuggestionsForSearchString:(NSString *)searchString
