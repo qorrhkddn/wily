@@ -14,6 +14,8 @@
 		6913D8FB1AB9C91F0012EE7D /* WallpaperManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8FA1AB9C91F0012EE7D /* WallpaperManager.m */; };
 		691A50321AAF12D3006CC53A /* RemoteControlEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 691A50311AAF12D3006CC53A /* RemoteControlEvents.m */; };
 		6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6922E7011A9860D600F3344E /* NowPlayingInterface.m */; };
+		69413A171ABDB5630003A7B8 /* WilyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 69413A161ABDB5630003A7B8 /* WilyPlayer.m */; };
+		69413A1A1ABDB5B30003A7B8 /* WilyMusicSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 69413A191ABDB5B30003A7B8 /* WilyMusicSystem.m */; };
 		697CAF831A97222200FC917F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF821A97222200FC917F /* main.m */; };
 		697CAF861A97222200FC917F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF851A97222200FC917F /* AppDelegate.m */; };
 		697CAF891A97222200FC917F /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF881A97222200FC917F /* PlayerViewController.m */; };
@@ -21,7 +23,7 @@
 		697CAF8E1A97222200FC917F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8D1A97222200FC917F /* Images.xcassets */; };
 		697CAF911A97222200FC917F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697CAF8F1A97222200FC917F /* LaunchScreen.xib */; };
 		697CAF9D1A97222300FC917F /* WilyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF9C1A97222300FC917F /* WilyTests.m */; };
-		697CAFA81A97335900FC917F /* YouTubeVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFA71A97335900FC917F /* YouTubeVideoPlayer.m */; };
+		697CAFA81A97335900FC917F /* WilyYouTube.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFA71A97335900FC917F /* WilyYouTube.m */; };
 		697CAFBF1A974DEE00FC917F /* YouTubeSearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFBE1A974DEE00FC917F /* YouTubeSearcher.m */; };
 		697CAFC21A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAFC11A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.m */; };
 		69C802C31AABFD7500E89320 /* CacheableAVPlayerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C802C21AABFD7500E89320 /* CacheableAVPlayerItem.m */; };
@@ -57,6 +59,11 @@
 		691A50311AAF12D3006CC53A /* RemoteControlEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteControlEvents.m; sourceTree = "<group>"; };
 		6922E7001A9860D600F3344E /* NowPlayingInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingInterface.h; sourceTree = "<group>"; };
 		6922E7011A9860D600F3344E /* NowPlayingInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingInterface.m; sourceTree = "<group>"; };
+		69413A151ABDB5630003A7B8 /* WilyPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WilyPlayer.h; sourceTree = "<group>"; };
+		69413A161ABDB5630003A7B8 /* WilyPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WilyPlayer.m; sourceTree = "<group>"; };
+		69413A181ABDB5B30003A7B8 /* WilyMusicSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WilyMusicSystem.h; sourceTree = "<group>"; };
+		69413A191ABDB5B30003A7B8 /* WilyMusicSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WilyMusicSystem.m; sourceTree = "<group>"; };
+		69413A1E1ABDC4F60003A7B8 /* WilyPlayer+Playback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WilyPlayer+Playback.h"; sourceTree = "<group>"; };
 		697CAF7D1A97222200FC917F /* Wily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697CAF811A97222200FC917F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		697CAF821A97222200FC917F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -70,8 +77,8 @@
 		697CAF961A97222300FC917F /* WilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		697CAF9B1A97222300FC917F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		697CAF9C1A97222300FC917F /* WilyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WilyTests.m; sourceTree = "<group>"; };
-		697CAFA61A97335900FC917F /* YouTubeVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeVideoPlayer.h; sourceTree = "<group>"; };
-		697CAFA71A97335900FC917F /* YouTubeVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeVideoPlayer.m; sourceTree = "<group>"; };
+		697CAFA61A97335900FC917F /* WilyYouTube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WilyYouTube.h; sourceTree = "<group>"; };
+		697CAFA71A97335900FC917F /* WilyYouTube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WilyYouTube.m; sourceTree = "<group>"; };
 		697CAFBD1A974DEE00FC917F /* YouTubeSearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeSearcher.h; sourceTree = "<group>"; };
 		697CAFBE1A974DEE00FC917F /* YouTubeSearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeSearcher.m; sourceTree = "<group>"; };
 		697CAFC01A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeSearcherAutocompleteXMLResultsParser.h; sourceTree = "<group>"; };
@@ -141,8 +148,13 @@
 				697CAF851A97222200FC917F /* AppDelegate.m */,
 				697CAF871A97222200FC917F /* PlayerViewController.h */,
 				697CAF881A97222200FC917F /* PlayerViewController.m */,
-				697CAFA61A97335900FC917F /* YouTubeVideoPlayer.h */,
-				697CAFA71A97335900FC917F /* YouTubeVideoPlayer.m */,
+				697CAFA61A97335900FC917F /* WilyYouTube.h */,
+				697CAFA71A97335900FC917F /* WilyYouTube.m */,
+				69413A151ABDB5630003A7B8 /* WilyPlayer.h */,
+				69413A161ABDB5630003A7B8 /* WilyPlayer.m */,
+				69413A1E1ABDC4F60003A7B8 /* WilyPlayer+Playback.h */,
+				69413A181ABDB5B30003A7B8 /* WilyMusicSystem.h */,
+				69413A191ABDB5B30003A7B8 /* WilyMusicSystem.m */,
 				691A50301AAF12D2006CC53A /* RemoteControlEvents.h */,
 				691A50311AAF12D3006CC53A /* RemoteControlEvents.m */,
 				69C802C11AABFD7500E89320 /* CacheableAVPlayerItem.h */,
@@ -350,10 +362,12 @@
 			files = (
 				697CAF891A97222200FC917F /* PlayerViewController.m in Sources */,
 				697CAF861A97222200FC917F /* AppDelegate.m in Sources */,
-				697CAFA81A97335900FC917F /* YouTubeVideoPlayer.m in Sources */,
+				697CAFA81A97335900FC917F /* WilyYouTube.m in Sources */,
 				6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */,
+				69413A171ABDB5630003A7B8 /* WilyPlayer.m in Sources */,
 				691A50321AAF12D3006CC53A /* RemoteControlEvents.m in Sources */,
 				697CAF831A97222200FC917F /* main.m in Sources */,
+				69413A1A1ABDB5B30003A7B8 /* WilyMusicSystem.m in Sources */,
 				697CAFC21A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.m in Sources */,
 				6913D8ED1AB9B5360012EE7D /* PlaylistTableViewController.m in Sources */,
 				6913D8FB1AB9C91F0012EE7D /* WallpaperManager.m in Sources */,

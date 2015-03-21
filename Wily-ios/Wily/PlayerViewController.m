@@ -1,5 +1,6 @@
 #import "PlayerViewController.h"
-#import "YouTubeVideoPlayer.h"
+#import "WilyMusicSystem.h"
+#import "WilyPlayer.h"
 #import "YouTubeSearcher.h"
 #import "SFXPlayer.h"
 #import "DurationFormatter.h"
@@ -7,9 +8,9 @@
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
-@interface PlayerViewController () <YouTubeVideoPlayerPlayerDelegate, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UISearchDisplayDelegate>
+@interface PlayerViewController () <WilyMusicSystemDelegate, WilyPlayerDelegate, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UISearchDisplayDelegate>
 
-@property (nonatomic) YouTubeVideoPlayer *player;
+@property (nonatomic) WilyMusicSystem *musicSystem;
 @property (nonatomic) YouTubeSearcher *searcher;
 @property (nonatomic) WallpaperManager *wallpaperManager;
 
@@ -33,15 +34,14 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.player = [[YouTubeVideoPlayer alloc] init];
-  self.player.delegate = self;
+  self.musicSystem = [[WilyMusicSystem alloc] init];
+  self.musicSystem.delegate = self;
   self.searcher = [[YouTubeSearcher alloc] init];
   self.wallpaperManager = [[WallpaperManager alloc] init];
 
-  [self setWallpaper];
+  [self changeWallpaper];
   self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
-
-  [self.player addObserver:self forKeyPath:@"playbackState" options:NSKeyValueObservingOptionNew context:nil];
+  self.playControlsContainerView.hidden = YES;
 
   UITableView *tableView = self.searchResultsDisplayController.searchResultsTableView;
   tableView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
@@ -54,45 +54,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [self showSearchDisplay];
 }
 
-- (void)updatePlayButtonImage {
-  switch (self.player.playbackState) {
-    case YouTubeVideoPlayerPlaybackStateDeckEmpty:
-      self.playControlsContainerView.hidden = YES;
-      break;
-    case YouTubeVideoPlayerPlaybackStateLoading:
-      self.playControlsContainerView.hidden = NO;
-      self.playButton.hidden = YES;
-      [self.loadingSpinner startAnimating];
-      break;
-    case YouTubeVideoPlayerPlaybackStatePaused:
-      self.playControlsContainerView.hidden = NO;
-      [self.loadingSpinner stopAnimating];
-      self.playButton.hidden = NO;
-      [self.playButton setImage:[UIImage imageNamed:@"play"]
-                       forState:UIControlStateNormal];
-      break;
-    case YouTubeVideoPlayerPlaybackStatePlaying:
-      self.playControlsContainerView.hidden = NO;
-      [self.loadingSpinner stopAnimating];
-      self.playButton.hidden = NO;
-      [self.playButton setImage:[UIImage imageNamed:@"pause"]
-                       forState:UIControlStateNormal];
-      break;
-  }
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context {
-  [self updatePlayButtonImage];
-}
-
-- (void)dealloc {
-  [self.player removeObserver:self forKeyPath:@"playbackState"];
-}
-
-- (void)setWallpaper {
+- (void)changeWallpaper {
   self.wallpaperId = [self.wallpaperManager randomWallpaperId];
   self.wallpaperImageView.image = [self.wallpaperManager wallpaperWithId:self.wallpaperId];
 }
@@ -125,33 +87,6 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   }];
 }
 
-- (void)playVideoWithIdentifier:(NSString *)videoIdentifier {
-  [self setWallpaper];
-  [self.player loadVideoWithIdentifier:videoIdentifier];
-}
-
-- (IBAction)play:(id)sender {
-  if (self.player.playbackState == YouTubeVideoPlayerPlaybackStatePlaying) {
-    [self.player pause];
-  } else if (self.player.playbackState == YouTubeVideoPlayerPlaybackStatePaused) {
-    [self.player play];
-  }
-}
-
-- (void)youTubeVideoPlayer:(YouTubeVideoPlayer *)player
-        didFetchVideoTitle:(NSString *)title {
-  NSLog(@"title: %@", title);
-  self.titleLabel.text = title;
-}
-
-- (void)youTubeVideoPlayer:(YouTubeVideoPlayer *)player
-    didChangeVideoProgress:(float)progress {
-  NSLog(@"progress: %@", @(progress));
-  [self.playProgressView setProgress:progress animated:YES];
-  self.currentPlaybackTimeLabel.text = [DurationFormatter stringForTimeInterval:player.currentPlaybackTime];
-  self.durationLabel.text = [DurationFormatter stringForTimeInterval:player.duration];
-}
-
 - (IBAction)swipeDownDetected:(UISwipeGestureRecognizer *)sender {
   [self showSearchDisplay];
 }
@@ -181,6 +116,54 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 - (void)hideSearchDisplay {
   self.searchBarHeightConstraint.constant = 0;
   [self.searchResultsDisplayController setActive:NO animated:YES];
+}
+
+- (void)playVideoWithIdentifier:(NSString *)videoIdentifier {
+  [self changeWallpaper];
+  [self.musicSystem enqueueItemForYouTubeVideoWithId:videoIdentifier];
+}
+
+- (void)musicSystem:(WilyMusicSystem *)musicSystem playerDidChange:(WilyPlayer *)player {
+  if (player) {
+    player.delegate = self;
+    self.titleLabel.text = player.song[@"title"];
+  } else {
+    self.playControlsContainerView.hidden = YES;
+  }
+}
+
+- (void)player:(WilyPlayer *)player didChangePlaybackState:(WilyPlayerPlaybackState)playbackState {
+  switch (playbackState) {
+    case WilyPlayerPlaybackStateLoading:
+      self.playControlsContainerView.hidden = NO;
+      self.playButton.hidden = YES;
+      [self.loadingSpinner startAnimating];
+      break;
+    case WilyPlayerPlaybackStatePaused:
+      self.playControlsContainerView.hidden = NO;
+      [self.loadingSpinner stopAnimating];
+      self.playButton.hidden = NO;
+      [self.playButton setImage:[UIImage imageNamed:@"play"]
+                       forState:UIControlStateNormal];
+      break;
+    case WilyPlayerPlaybackStatePlaying:
+      self.playControlsContainerView.hidden = NO;
+      [self.loadingSpinner stopAnimating];
+      self.playButton.hidden = NO;
+      [self.playButton setImage:[UIImage imageNamed:@"pause"]
+                       forState:UIControlStateNormal];
+      break;
+  }
+}
+
+- (void)player:(WilyPlayer *)player didChangeProgress:(float)progress {
+  [self.playProgressView setProgress:progress animated:YES];
+  self.currentPlaybackTimeLabel.text = [DurationFormatter stringForTimeInterval:player.currentPlaybackTime];
+  self.durationLabel.text = [DurationFormatter stringForTimeInterval:player.duration];
+}
+
+- (IBAction)play:(id)sender {
+  [self.musicSystem.player togglePlayPause];
 }
 
 @end
