@@ -129,32 +129,37 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
     player.delegate = self;
     self.titleLabel.text = player.song[@"title"];
   } else {
-    self.playControlsContainerView.hidden = YES;
+    [self showControlsForLoadingState];
   }
 }
 
 - (void)player:(WilyPlayer *)player didChangePlaybackState:(WilyPlayerPlaybackState)playbackState {
   switch (playbackState) {
     case WilyPlayerPlaybackStateLoading:
-      self.playControlsContainerView.hidden = NO;
-      self.playButton.hidden = YES;
-      [self.loadingSpinner startAnimating];
+      [self showControlsForLoadingState];
       break;
     case WilyPlayerPlaybackStatePaused:
-      self.playControlsContainerView.hidden = NO;
-      [self.loadingSpinner stopAnimating];
-      self.playButton.hidden = NO;
-      [self.playButton setImage:[UIImage imageNamed:@"play"]
-                       forState:UIControlStateNormal];
+      [self showControlsForPlaybackStateWithIsPlaying:NO];
       break;
     case WilyPlayerPlaybackStatePlaying:
-      self.playControlsContainerView.hidden = NO;
-      [self.loadingSpinner stopAnimating];
-      self.playButton.hidden = NO;
-      [self.playButton setImage:[UIImage imageNamed:@"pause"]
-                       forState:UIControlStateNormal];
+      [self showControlsForPlaybackStateWithIsPlaying:YES];
       break;
   }
+}
+
+- (void)showControlsForLoadingState {
+  self.playControlsContainerView.hidden = NO;
+  self.playButton.hidden = YES;
+  [self.loadingSpinner startAnimating];
+}
+
+- (void)showControlsForPlaybackStateWithIsPlaying:(BOOL)isPlaying {
+  self.playControlsContainerView.hidden = NO;
+  [self.loadingSpinner stopAnimating];
+  self.playButton.hidden = NO;
+  NSString *imageName = isPlaying ? @"play" : @"pause";
+  [self.playButton setImage:[UIImage imageNamed:imageName]
+                   forState:UIControlStateNormal];
 }
 
 - (void)player:(WilyPlayer *)player didChangeProgress:(float)progress {
