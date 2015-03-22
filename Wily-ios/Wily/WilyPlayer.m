@@ -28,6 +28,8 @@
 }
 
 - (void)startPlayingItem {
+  [self updateNowPlayingInterface];
+
   [self observePlayerItem];
   self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
 
@@ -181,7 +183,7 @@
   }
 }
 
-- (void)willPlayVideo {
+- (void)updateNowPlayingInterface {
   [self.nowPlayingInterface setTitle:self.song[@"title"]];
   [self.nowPlayingInterface asynchronouslySetImageFromThumbnailURL:self.song[@"thumbnailURL"]];
 }
