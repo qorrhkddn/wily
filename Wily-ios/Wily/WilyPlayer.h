@@ -18,6 +18,7 @@ typedef enum : NSUInteger {
                               song:(NSDictionary *)song;
 
 @property (nonatomic, readonly) NSDictionary *song;
+@property (nonatomic) BOOL shouldRepeat;
 
 @property (nonatomic, weak) id<WilyPlayerDelegate> delegate;
 

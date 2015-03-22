@@ -80,6 +80,7 @@
   self.currentlyDownloadingVideoId = nil;
   [self.player stopPlayingItem];
   self.player = player;
+  self.player.shouldRepeat = YES;
   [self.player startPlayingItem];
 
   if ([self.delegate respondsToSelector:@selector(musicSystem:playerDidChange:)]) {

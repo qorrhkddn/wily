@@ -32,6 +32,7 @@
 
   [self observePlayerItem];
   self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
+  self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
 
   [self notifyDelegateOfProgress:0];
   [self observePlayer];
@@ -123,9 +124,15 @@
                     forKeyPath:NSStringFromSelector(@selector(status))
                        options:0
                        context:(__bridge void *)self];
+
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(playerItemDidReachEnd:)
+                                               name:AVPlayerItemDidPlayToEndTimeNotification
+                                             object:self.playerItem];
 }
 
 - (void)unobservePlayerItem {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
   [self.playerItem removeObserver:self
                        forKeyPath:NSStringFromSelector(@selector(status))
                           context:(__bridge void *)self];
@@ -187,6 +194,12 @@
   NSURL *thumbnailURL = [NSURL URLWithString:self.song[@"thumbnailURL"]];
   [self.nowPlayingInterface setTitle:self.song[@"title"]];
   [self.nowPlayingInterface asynchronouslySetImageFromThumbnailURL:thumbnailURL];
+}
+
+- (void)playerItemDidReachEnd:(NSNotification *)note {
+  if (self.shouldRepeat) {
+    [self.playerItem seekToTime:kCMTimeZero];
+  }
 }
 
 @end
