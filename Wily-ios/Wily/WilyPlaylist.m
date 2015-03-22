@@ -101,7 +101,7 @@
       [self.delegate playlistDidDeleteCurrentlyPlayingSong:self];
     }
   } else if (self.currentlyPlayingIndex > index) {
-    self.currentlyPlayingIndex -= 1;
+    [self setCurrentlyPlayingIndexNoNotify:self.currentlyPlayingIndex - 1];
   }
   [self savePlaylistToStore];
 }
