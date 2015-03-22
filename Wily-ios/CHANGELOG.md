@@ -3,6 +3,8 @@
 * Use the lowest available quality stream to reduce bandwidth and
   initial playback latency.
 * The cat meows when you touch it.
+* Add support for offline playback, with a rudimentary playlist.
+* Repeat the current song indefinitely.
 
 ## [1.1][]
 
