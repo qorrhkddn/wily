@@ -21,6 +21,4 @@
 
 - (void)musicSystem:(WilyMusicSystem *)musicSystem playerDidChange:(WilyPlayer *)player;
 
-- (void)musicSystem:(WilyMusicSystem *)musicSystem playlistDidAddItem:(NSDictionary *)playlistItem;
-
 @end
