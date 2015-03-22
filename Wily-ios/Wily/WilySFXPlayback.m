@@ -1,11 +1,7 @@
-#import "SFXPlayer.h"
+#import "WilySFXPlayback.h"
 #import <BRYSoundEffectPlayer/BRYSoundEffectPlayer.h>
 
-@implementation SFXPlayer
-
-+ (void)playMeowSound {
+void WilySFXPlayMeowSound() {
   NSString *path = [[NSBundle mainBundle] pathForResource:@"meow" ofType:@"wav"];
   [[BRYSoundEffectPlayer sharedInstance] playSound:path];
 }
-
-@end

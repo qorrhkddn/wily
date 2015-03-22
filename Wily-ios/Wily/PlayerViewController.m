@@ -2,8 +2,8 @@
 #import "WilyMusicSystem.h"
 #import "WilyPlayer.h"
 #import "YouTubeSearcher.h"
-#import "SFXPlayer.h"
-#import "DurationFormatter.h"
+#import "WilySFXPlayback.h"
+#import "WilyDurationFormatting.h"
 #import "WallpaperManager.h"
 #import "PlaylistTableViewController.h"
 
@@ -93,7 +93,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (IBAction)wilyIconTapped:(id)sender {
-  [SFXPlayer playMeowSound];
+  WilySFXPlayMeowSound();
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
@@ -164,8 +164,8 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 - (void)player:(WilyPlayer *)player didChangeProgress:(float)progress {
   [self.playProgressView setProgress:progress animated:YES];
-  self.currentPlaybackTimeLabel.text = [DurationFormatter stringForTimeInterval:player.currentPlaybackTime];
-  self.durationLabel.text = [DurationFormatter stringForTimeInterval:player.duration];
+  self.currentPlaybackTimeLabel.text = WilyDurationStringForTimeInterval(player.currentPlaybackTime);
+  self.durationLabel.text = WilyDurationStringForTimeInterval(player.duration);
 }
 
 - (IBAction)play:(id)sender {

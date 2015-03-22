@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6913D8ED1AB9B5360012EE7D /* PlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8EC1AB9B5360012EE7D /* PlaylistTableViewController.m */; };
-		6913D8F01AB9BFBD0012EE7D /* SFXPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8EF1AB9BFBD0012EE7D /* SFXPlayer.m */; };
-		6913D8F31AB9C4580012EE7D /* DurationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8F21AB9C4580012EE7D /* DurationFormatter.m */; };
-		6913D8F51AB9C4820012EE7D /* DurationFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8F41AB9C4820012EE7D /* DurationFormatterTests.m */; };
+		6913D8F01AB9BFBD0012EE7D /* WilySFXPlayback.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8EF1AB9BFBD0012EE7D /* WilySFXPlayback.m */; };
+		6913D8F31AB9C4580012EE7D /* WilyDurationFormatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8F21AB9C4580012EE7D /* WilyDurationFormatting.m */; };
+		6913D8F51AB9C4820012EE7D /* WilyDurationFormattingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8F41AB9C4820012EE7D /* WilyDurationFormattingTests.m */; };
 		6913D8FB1AB9C91F0012EE7D /* WallpaperManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8FA1AB9C91F0012EE7D /* WallpaperManager.m */; };
 		691A50321AAF12D3006CC53A /* RemoteControlEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 691A50311AAF12D3006CC53A /* RemoteControlEvents.m */; };
 		6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6922E7011A9860D600F3344E /* NowPlayingInterface.m */; };
@@ -49,11 +49,11 @@
 		2C54D1BF18B538C9B9B6FB6E /* Pods-Wily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wily/Pods-Wily.debug.xcconfig"; sourceTree = "<group>"; };
 		6913D8EB1AB9B5360012EE7D /* PlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistTableViewController.h; sourceTree = "<group>"; };
 		6913D8EC1AB9B5360012EE7D /* PlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistTableViewController.m; sourceTree = "<group>"; };
-		6913D8EE1AB9BFBD0012EE7D /* SFXPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFXPlayer.h; sourceTree = "<group>"; };
-		6913D8EF1AB9BFBD0012EE7D /* SFXPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFXPlayer.m; sourceTree = "<group>"; };
-		6913D8F11AB9C4580012EE7D /* DurationFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DurationFormatter.h; sourceTree = "<group>"; };
-		6913D8F21AB9C4580012EE7D /* DurationFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DurationFormatter.m; sourceTree = "<group>"; };
-		6913D8F41AB9C4820012EE7D /* DurationFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DurationFormatterTests.m; sourceTree = "<group>"; };
+		6913D8EE1AB9BFBD0012EE7D /* WilySFXPlayback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WilySFXPlayback.h; sourceTree = "<group>"; };
+		6913D8EF1AB9BFBD0012EE7D /* WilySFXPlayback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WilySFXPlayback.m; sourceTree = "<group>"; };
+		6913D8F11AB9C4580012EE7D /* WilyDurationFormatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WilyDurationFormatting.h; sourceTree = "<group>"; };
+		6913D8F21AB9C4580012EE7D /* WilyDurationFormatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WilyDurationFormatting.m; sourceTree = "<group>"; };
+		6913D8F41AB9C4820012EE7D /* WilyDurationFormattingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WilyDurationFormattingTests.m; sourceTree = "<group>"; };
 		6913D8F91AB9C91F0012EE7D /* WallpaperManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallpaperManager.h; sourceTree = "<group>"; };
 		6913D8FA1AB9C91F0012EE7D /* WallpaperManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallpaperManager.m; sourceTree = "<group>"; };
 		691A50301AAF12D2006CC53A /* RemoteControlEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteControlEvents.h; sourceTree = "<group>"; };
@@ -176,10 +176,10 @@
 				6922E7011A9860D600F3344E /* NowPlayingInterface.m */,
 				6913D8EB1AB9B5360012EE7D /* PlaylistTableViewController.h */,
 				6913D8EC1AB9B5360012EE7D /* PlaylistTableViewController.m */,
-				6913D8EE1AB9BFBD0012EE7D /* SFXPlayer.h */,
-				6913D8EF1AB9BFBD0012EE7D /* SFXPlayer.m */,
-				6913D8F11AB9C4580012EE7D /* DurationFormatter.h */,
-				6913D8F21AB9C4580012EE7D /* DurationFormatter.m */,
+				6913D8EE1AB9BFBD0012EE7D /* WilySFXPlayback.h */,
+				6913D8EF1AB9BFBD0012EE7D /* WilySFXPlayback.m */,
+				6913D8F11AB9C4580012EE7D /* WilyDurationFormatting.h */,
+				6913D8F21AB9C4580012EE7D /* WilyDurationFormatting.m */,
 				6913D8F91AB9C91F0012EE7D /* WallpaperManager.h */,
 				6913D8FA1AB9C91F0012EE7D /* WallpaperManager.m */,
 				697CAF8A1A97222200FC917F /* Main.storyboard */,
@@ -206,7 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				697CAF9C1A97222300FC917F /* WilyTests.m */,
-				6913D8F41AB9C4820012EE7D /* DurationFormatterTests.m */,
+				6913D8F41AB9C4820012EE7D /* WilyDurationFormattingTests.m */,
 				697CAF9A1A97222300FC917F /* Supporting Files */,
 			);
 			path = WilyTests;
@@ -379,8 +379,8 @@
 				6913D8ED1AB9B5360012EE7D /* PlaylistTableViewController.m in Sources */,
 				6913D8FB1AB9C91F0012EE7D /* WallpaperManager.m in Sources */,
 				69413A231ABE53320003A7B8 /* WilyPlaylist.m in Sources */,
-				6913D8F01AB9BFBD0012EE7D /* SFXPlayer.m in Sources */,
-				6913D8F31AB9C4580012EE7D /* DurationFormatter.m in Sources */,
+				6913D8F01AB9BFBD0012EE7D /* WilySFXPlayback.m in Sources */,
+				6913D8F31AB9C4580012EE7D /* WilyDurationFormatting.m in Sources */,
 				69C802C31AABFD7500E89320 /* CacheableAVPlayerItem.m in Sources */,
 				69D41F241AAB2DE000914A3E /* XCDYouTubeVideo+PreferredStreamURLExtraction.m in Sources */,
 				697CAFBF1A974DEE00FC917F /* YouTubeSearcher.m in Sources */,
@@ -391,7 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6913D8F51AB9C4820012EE7D /* DurationFormatterTests.m in Sources */,
+				6913D8F51AB9C4820012EE7D /* WilyDurationFormattingTests.m in Sources */,
 				697CAF9D1A97222300FC917F /* WilyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

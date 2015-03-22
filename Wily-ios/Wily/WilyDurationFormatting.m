@@ -1,8 +1,6 @@
-#import "DurationFormatter.h"
+#import "WilyDurationFormatting.h"
 
-@implementation DurationFormatter
-
-+ (NSString *)stringForTimeInterval:(NSTimeInterval)interval {
+NSString *WilyDurationStringForTimeInterval(NSTimeInterval interval) {
   if (isnan(interval)) {
     return @"-:--";
   }
@@ -10,5 +8,3 @@
   unsigned seconds = round(interval - minutes * 60);
   return [NSString stringWithFormat:@"%@:%02u", @(minutes), seconds];
 }
-
-@end
