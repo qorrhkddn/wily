@@ -1,6 +1,6 @@
 @import Foundation;
 
-@interface YoutubeSearcherAutocompleteXMLResultsParser : NSObject
+@interface YouTubeSearcherAutocompleteXMLResultsParser : NSObject
 
 - (instancetype)initWithResponseXMLParser:(NSXMLParser *)xmlParser
                           completionBlock:(void (^)(NSArray *suggestions))completionBlock;

@@ -1,8 +1,6 @@
 #import "NowPlayingInterface.h"
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
 
-NSString * const NowPlayingInterfaceUIEventSubtypeRemoteControlTogglePlayPause = @"NowPlayingInterfaceUIEventSubtypeRemoteControlTogglePlayPause";
-
 @implementation NSDictionary (NowPlayingInterfaceExtensions)
 
 - (NSDictionary *)tdt_dictionaryByMergingDictionary:(NSDictionary *)dict {
@@ -20,7 +18,7 @@ NSString * const NowPlayingInterfaceUIEventSubtypeRemoteControlTogglePlayPause =
 }
 
 - (void)updateNowPlayingInfoDictionaryWithDictionary:(NSDictionary *)dict {
-  NSDictionary *result = [[MPNowPlayingInfoCenter defaultCenter] nowPlayingInfo];
+  NSDictionary *result = [[MPNowPlayingInfoCenter defaultCenter] nowPlayingInfo] ?: @{};
   result = [result tdt_dictionaryByMergingDictionary:dict];
   [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:result];
 }
