@@ -12,7 +12,7 @@
 - (instancetype)initWithSongs:(NSArray *)songs {
   self = [super init];
   if (self) {
-    _songs = songs;
+    _songs = songs ?: @[];
   }
   return self;
 }
