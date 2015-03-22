@@ -223,7 +223,7 @@
                             <outletCollection property="gestureRecognizers" destination="mxe-jd-gHV" appends="YES" id="dVC-MF-roA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="cGI-o4-za5"/>
+                    <navigationItem key="navigationItem" title="Playlist" id="cGI-o4-za5"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uVp-zT-fU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="PWr-dl-7Dx" userLabel="SwipeLeft">
