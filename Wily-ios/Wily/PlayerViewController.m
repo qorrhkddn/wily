@@ -60,8 +60,12 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 - (NSString *)setRandomWallpaper {
   NSString *wallpaperId = [self.wallpaperManager randomWallpaperId];
-  self.wallpaperImageView.image = [self.wallpaperManager wallpaperWithId:wallpaperId];
+  [self setWallpaperWithId:wallpaperId];
   return wallpaperId;
+}
+
+- (void)setWallpaperWithId:(NSString *)wallpaperId {
+  self.wallpaperImageView.image = [self.wallpaperManager wallpaperWithId:wallpaperId];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -134,6 +138,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   if (player) {
     player.delegate = self;
     self.titleLabel.text = player.song[@"title"];
+    [self setWallpaperWithId:player.song[@"wallpaperId"]];
   } else {
     [self showControlsForLoadingState];
   }
