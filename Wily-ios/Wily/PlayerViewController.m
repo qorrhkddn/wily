@@ -26,7 +26,6 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @property (weak, nonatomic) IBOutlet UIView *playControlsContainerView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingSpinner;
 
-@property (nonatomic) NSString *wallpaperId;
 @property (nonatomic, strong) NSArray *searchResults;
 
 @end
@@ -40,7 +39,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   self.searcher = [[YouTubeSearcher alloc] init];
   self.wallpaperManager = [[WallpaperManager alloc] init];
 
-  [self changeWallpaper];
+  [self setRandomWallpaper];
   self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
   self.playControlsContainerView.hidden = YES;
 
@@ -55,9 +54,10 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [self showSearchDisplay];
 }
 
-- (void)changeWallpaper {
-  self.wallpaperId = [self.wallpaperManager randomWallpaperId];
-  self.wallpaperImageView.image = [self.wallpaperManager wallpaperWithId:self.wallpaperId];
+- (NSString *)setRandomWallpaper {
+  NSString *wallpaperId = [self.wallpaperManager randomWallpaperId];
+  self.wallpaperImageView.image = [self.wallpaperManager wallpaperWithId:wallpaperId];
+  return wallpaperId;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -79,11 +79,12 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  [self.searcher firstVideoIdentifierForSearchString:self.searchResults[indexPath.row] completionBlock:^(NSString *videoIdentifier) {
+  NSString *searchSuggestion = self.searchResults[indexPath.row];
+  [self.searcher firstVideoIdentifierForSearchString:searchSuggestion completionBlock:^(NSString *videoId) {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self hideSearchDisplay];
-    if (videoIdentifier != nil) {
-      [self playVideoWithIdentifier:videoIdentifier];
+    if (videoId != nil) {
+      [self playVideoWithId:videoId forSearchSuggestion:searchSuggestion];
     }
   }];
 }
@@ -119,9 +120,10 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [self.searchResultsDisplayController setActive:NO animated:YES];
 }
 
-- (void)playVideoWithIdentifier:(NSString *)videoIdentifier {
-  [self changeWallpaper];
-  [self.musicSystem enqueueItemForYouTubeVideoWithId:videoIdentifier];
+- (void)playVideoWithId:(NSString *)videoId forSearchSuggestion:(NSString *)searchSuggestion {
+  NSString *wallpaperId = [self setRandomWallpaper];
+  NSDictionary *song = @{@"id": videoId, @"wallpaperId": wallpaperId, @"title": searchSuggestion};
+  [self.musicSystem playSong:song];
 }
 
 - (void)musicSystem:(WilyMusicSystem *)musicSystem playerDidChange:(WilyPlayer *)player {

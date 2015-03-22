@@ -14,6 +14,7 @@
 		6913D8FB1AB9C91F0012EE7D /* WallpaperManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6913D8FA1AB9C91F0012EE7D /* WallpaperManager.m */; };
 		691A50321AAF12D3006CC53A /* RemoteControlEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 691A50311AAF12D3006CC53A /* RemoteControlEvents.m */; };
 		6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6922E7011A9860D600F3344E /* NowPlayingInterface.m */; };
+		69295E7C1ABE71CF00065D83 /* NSDictionary+WilyExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 69295E7B1ABE71CF00065D83 /* NSDictionary+WilyExtensions.m */; };
 		69413A171ABDB5630003A7B8 /* WilyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 69413A161ABDB5630003A7B8 /* WilyPlayer.m */; };
 		69413A1A1ABDB5B30003A7B8 /* WilyMusicSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 69413A191ABDB5B30003A7B8 /* WilyMusicSystem.m */; };
 		69413A231ABE53320003A7B8 /* WilyPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 69413A221ABE53320003A7B8 /* WilyPlaylist.m */; };
@@ -60,6 +61,8 @@
 		691A50311AAF12D3006CC53A /* RemoteControlEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteControlEvents.m; sourceTree = "<group>"; };
 		6922E7001A9860D600F3344E /* NowPlayingInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingInterface.h; sourceTree = "<group>"; };
 		6922E7011A9860D600F3344E /* NowPlayingInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingInterface.m; sourceTree = "<group>"; };
+		69295E7A1ABE71CF00065D83 /* NSDictionary+WilyExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+WilyExtensions.h"; sourceTree = "<group>"; };
+		69295E7B1ABE71CF00065D83 /* NSDictionary+WilyExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+WilyExtensions.m"; sourceTree = "<group>"; };
 		69413A151ABDB5630003A7B8 /* WilyPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WilyPlayer.h; sourceTree = "<group>"; };
 		69413A161ABDB5630003A7B8 /* WilyPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WilyPlayer.m; sourceTree = "<group>"; };
 		69413A181ABDB5B30003A7B8 /* WilyMusicSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WilyMusicSystem.h; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				6913D8EF1AB9BFBD0012EE7D /* WilySFXPlayback.m */,
 				6913D8F11AB9C4580012EE7D /* WilyDurationFormatting.h */,
 				6913D8F21AB9C4580012EE7D /* WilyDurationFormatting.m */,
+				69295E7A1ABE71CF00065D83 /* NSDictionary+WilyExtensions.h */,
+				69295E7B1ABE71CF00065D83 /* NSDictionary+WilyExtensions.m */,
 				6913D8F91AB9C91F0012EE7D /* WallpaperManager.h */,
 				6913D8FA1AB9C91F0012EE7D /* WallpaperManager.m */,
 				697CAF8A1A97222200FC917F /* Main.storyboard */,
@@ -382,6 +387,7 @@
 				6913D8F01AB9BFBD0012EE7D /* WilySFXPlayback.m in Sources */,
 				6913D8F31AB9C4580012EE7D /* WilyDurationFormatting.m in Sources */,
 				69C802C31AABFD7500E89320 /* CacheableAVPlayerItem.m in Sources */,
+				69295E7C1ABE71CF00065D83 /* NSDictionary+WilyExtensions.m in Sources */,
 				69D41F241AAB2DE000914A3E /* XCDYouTubeVideo+PreferredStreamURLExtraction.m in Sources */,
 				697CAFBF1A974DEE00FC917F /* YouTubeSearcher.m in Sources */,
 			);

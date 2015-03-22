@@ -3,15 +3,17 @@
 @interface WilyPlaylist : NSObject
 
 - (NSArray *)songs;
-- (NSString *)currentlyPlayingSongId;
 
-/**
- If @p previousSongId is @p nil, then song is moved to the top of the list.
- */
-- (void)moveSongWithId:(NSString *)songId afterSongWithId:(NSString *)previousSongId;
+- (NSUInteger)invalidIndex;
+- (NSUInteger)currentlyPlayingIndex;
+- (NSUInteger)previousSongIndex;
+- (NSUInteger)nextSongIndex;
+- (NSUInteger)existingIndexForSong:(NSDictionary *)song;
 
-- (void)deleteSongWithId:(NSString *)songId;
+- (void)moveSongAtIndex:(NSUInteger)index toIndex:(NSUInteger)toIndex;
+- (void)deleteSongAtIndex:(NSUInteger)index;
 
-- (void)insertAsCurrentlyPlayingSong:(NSDictionary *)song;
+- (void)setCurrentlyPlayingIndex:(NSUInteger)index;
+- (void)appendSong:(NSDictionary *)song;
 
 @end

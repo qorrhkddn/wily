@@ -4,7 +4,7 @@
 
 @interface WilyPlaylist (MusicSystem)
 
-- (instancetype)initWithSongs:(NSArray *)songs;
+- (instancetype)initWithStore:(NSUserDefaults *)store;
 
 @property (nonatomic) id<WilyPlaylistDelegate> delegate;
 
@@ -14,6 +14,6 @@
 
 @optional
 
-- (void)playlist:(WilyPlaylist *)playlist didUpdateSongs:(NSArray *)songs;
+- (void)playlistDidDeleteCurrentlyPlayingSong:(WilyPlaylist *)playlist;
 
 @end

@@ -11,7 +11,7 @@
 
 @property (nonatomic, weak) id<WilyMusicSystemDelegate> delegate;
 
-- (void)enqueueItemForYouTubeVideoWithId:(NSString *)videoId;
+- (void)playSong:(NSDictionary *)song;
 
 @end
 

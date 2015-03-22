@@ -184,8 +184,9 @@
 }
 
 - (void)updateNowPlayingInterface {
+  NSURL *thumbnailURL = [NSURL URLWithString:self.song[@"thumbnailURL"]];
   [self.nowPlayingInterface setTitle:self.song[@"title"]];
-  [self.nowPlayingInterface asynchronouslySetImageFromThumbnailURL:self.song[@"thumbnailURL"]];
+  [self.nowPlayingInterface asynchronouslySetImageFromThumbnailURL:thumbnailURL];
 }
 
 @end

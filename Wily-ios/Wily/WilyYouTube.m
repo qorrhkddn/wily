@@ -1,13 +1,13 @@
 #import "WilyYouTube.h"
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
 #import "XCDYouTubeVideo+PreferredStreamURLExtraction.h"
+#import "NSDictionary+WilyExtensions.h"
 
 @implementation XCDYouTubeVideo (WilyYouTubeExtension)
 
 - (NSDictionary *)wily_song {
-  return @{@"id": self.identifier,
-           @"title": self.title,
-           @"thumbnailURL": self.mediumThumbnailURL};
+  return @{@"title": self.title,
+           @"thumbnailURL": [self.mediumThumbnailURL absoluteString]};
 }
 
 @end
@@ -22,7 +22,8 @@
 
 @end
 
-void WilyYouTubeFetchVideoWithId(NSString *videoId, void (^completionBlock)(NSError *error, NSURL *streamURL, NSDictionary *song)) {
+void WilyYouTubeFetchSong(NSDictionary *song, void (^completionBlock)(NSError *error, NSURL *streamURL, NSDictionary *song)) {
+  NSString *videoId = song[@"id"];
   NSLog(@"Fetching [videoId = %@]", videoId);
   [[XCDYouTubeClient defaultClient] getVideoWithIdentifier:videoId completionHandler:^(XCDYouTubeVideo *video, NSError *error) {
     NSURL *streamURL;
@@ -39,7 +40,7 @@ void WilyYouTubeFetchVideoWithId(NSString *videoId, void (^completionBlock)(NSEr
       completionBlock(error, nil, nil);
     } else {
       NSLog(@"Fetch Completed [videoId = %@, streamURL = %@]", videoId, streamURL);
-      completionBlock(nil, streamURL, [video wily_song]);
+      completionBlock(nil, streamURL, [song wily_dictionaryByMergingDictionary:[video wily_song]]);
     }
   }];
 }
