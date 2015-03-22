@@ -1,4 +1,5 @@
 #import "PlaylistTableViewController.h"
+#import "WilyPlaylist.h"
 
 @interface PlaylistTableViewController ()
 
@@ -20,12 +21,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 1;
+  return [self.playlist.songs count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlaylistTableViewCellReuseIdentifier"
-                                                          forIndexPath:indexPath];
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlaylistTableViewCellReuseIdentifier" forIndexPath:indexPath];
+  NSDictionary *song = self.playlist.songs[indexPath.row];
+
+  cell.textLabel.text = song[@"title"];
 
   return cell;
 }
@@ -49,16 +52,6 @@
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 */
 

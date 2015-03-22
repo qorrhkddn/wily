@@ -5,18 +5,18 @@
 #import "CacheableAVPlayerItem.h"
 #import <MXPersistentCache/MXPersistentCache.h>
 #import "WilyYouTube.h"
+#import "WilyPlaylist.h"
+#import "WilyPlaylist+MusicSystem.h"
 
-@interface WilyMusicSystem () <RemoteControlEventsDelegate, CacheableAVPlayerItemDelegate>
+@interface WilyMusicSystem () <RemoteControlEventsDelegate, CacheableAVPlayerItemDelegate, WilyPlaylistDelegate>
 
 @property (nonatomic, readonly) MXPersistentCache *mediaCache;
 @property (nonatomic, readonly) NSUserDefaults *keyValueStore;
 @property (nonatomic, readonly) RemoteControlEvents *remoteControlEvents;
+@property (nonatomic) WilyPlaylist *playlist;
 
-@property (nonatomic) NSArray *playlist;
 @property (nonatomic) WilyPlayer *player;
-
-@property (nonatomic) NSString *unsavedVideoId;
-@property (nonatomic) NSDictionary *unsavedSong;
+@property (nonatomic) NSString *currentlyDownloadingVideoId;
 
 @end
 
@@ -28,6 +28,10 @@
     _mediaCache = [[MXPersistentCache alloc] initWithPrefix:@"media" extension:@"mp4"];
     _keyValueStore = [NSUserDefaults standardUserDefaults];
     _remoteControlEvents = [[RemoteControlEvents alloc] init];
+
+    NSArray *songs = [self.keyValueStore arrayForKey:@"songs"];
+    _playlist = [[WilyPlaylist alloc] initWithSongs:songs];
+    _playlist.delegate = self;
 
     _remoteControlEvents.delegate = self;
     [self enableAVAudioSessionCategoryPlayback];
@@ -68,9 +72,7 @@
 }
 
 - (void)changePlayer:(WilyPlayer *)player {
-  self.unsavedVideoId = nil;
-  self.unsavedSong = nil;
-
+  self.currentlyDownloadingVideoId = nil;
   [self.player stopPlayingItem];
   self.player = player;
   if ([self.delegate respondsToSelector:@selector(musicSystem:playerDidChange:)]) {
@@ -81,19 +83,20 @@
 - (void)fetchSongWithId:(NSString *)videoId {
   [self changePlayer:nil];
   __weak typeof(self) weakSelf = self;
-  WilyYouTubeFetchVideoWithId(videoId, ^(NSError *error, NSURL *streamURL, NSDictionary *metadata) {
+  WilyYouTubeFetchVideoWithId(videoId, ^(NSError *error, NSURL *streamURL, NSDictionary *song) {
     if (error == nil) {
-      [weakSelf playSong:metadata withStreamURL:streamURL videoId:videoId];
+      [weakSelf playSong:song withStreamURL:streamURL];
     }
   });
 }
 
-- (void)playSong:(NSDictionary *)song withStreamURL:(NSURL *)streamURL videoId:(NSString *)videoId {
-  self.unsavedVideoId = videoId;
-  self.unsavedSong = song;
+- (void)playSong:(NSDictionary *)song withStreamURL:(NSURL *)streamURL {
+  [self.playlist insertAsCurrentlyPlayingSong:song];
+
   CacheableAVPlayerItem *cacheablePlayerItem = [[CacheableAVPlayerItem alloc] initWithURL:streamURL];
   cacheablePlayerItem.delegate = self;
   [self playSong:song withPlayerItem:cacheablePlayerItem];
+  self.currentlyDownloadingVideoId = song[@"id"];
 }
 
 - (void)remoteControlEventsDidTogglePlayPause:(RemoteControlEvents *)events {
@@ -111,20 +114,18 @@
 
 - (void)cacheableAVPlayerItem:(CacheableAVPlayerItem *)playerItem
        didDownloadURLContents:(NSData *)data {
-  NSLog(@"Download completed [Size = %@ bytes, videoId = %@]", @([data length]), self.unsavedVideoId);
-  if (self.unsavedSong == nil) {
-    NSLog(@"Unexpected state: Have downloaded data without corresponding metadata; will ignore");
+  NSLog(@"Download completed [Size = %@ bytes, videoId = %@]", @([data length]), self.currentlyDownloadingVideoId);
+  if (self.currentlyDownloadingVideoId == nil) {
+    NSLog(@"Unexpected state: Have downloaded data without corresponding videoId; will ignore");
     return;
   }
 
-  [self.mediaCache persistFileForKey:self.unsavedVideoId withData:data];
-  [self.keyValueStore setObject:self.unsavedSong forKey:self.unsavedVideoId];
-  self.unsavedVideoId = nil;
-  self.unsavedSong = nil;
+  [self.mediaCache persistFileForKey:self.currentlyDownloadingVideoId withData:data];
+  self.currentlyDownloadingVideoId = nil;
 }
 
-- (void)updatePlaylist:(NSArray *)playlist {
-  NSLog(@"TODO");
+- (void)playlist:(WilyPlaylist *)playlist didUpdateSongs:(NSArray *)songs {
+  [self.keyValueStore setObject:songs forKey:@"songs"];
 }
 
 @end

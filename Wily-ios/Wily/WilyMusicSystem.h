@@ -1,17 +1,17 @@
 @import Foundation;
 
 @class WilyPlayer;
+@class WilyPlaylist;
 @protocol WilyMusicSystemDelegate;
 
 @interface WilyMusicSystem : NSObject
 
 @property (nonatomic, readonly) WilyPlayer *player;
+@property (nonatomic, readonly) WilyPlaylist *playlist;
 
 @property (nonatomic, weak) id<WilyMusicSystemDelegate> delegate;
 
 - (void)enqueueItemForYouTubeVideoWithId:(NSString *)videoId;
-
-- (void)updatePlaylist:(NSArray *)playlist;
 
 @end
 

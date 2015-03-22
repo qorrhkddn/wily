@@ -5,6 +5,7 @@
 #import "SFXPlayer.h"
 #import "DurationFormatter.h"
 #import "WallpaperManager.h"
+#import "PlaylistTableViewController.h"
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
@@ -164,6 +165,13 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 - (IBAction)play:(id)sender {
   [self.musicSystem.player togglePlayPause];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  if ([[segue destinationViewController] isKindOfClass:[PlaylistTableViewController class]]) {
+    PlaylistTableViewController *playlistTableViewController = (PlaylistTableViewController *)[segue destinationViewController];
+    playlistTableViewController.playlist = self.musicSystem.playlist;
+  }
 }
 
 @end

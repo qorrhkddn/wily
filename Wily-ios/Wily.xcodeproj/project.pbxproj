@@ -16,6 +16,7 @@
 		6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6922E7011A9860D600F3344E /* NowPlayingInterface.m */; };
 		69413A171ABDB5630003A7B8 /* WilyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 69413A161ABDB5630003A7B8 /* WilyPlayer.m */; };
 		69413A1A1ABDB5B30003A7B8 /* WilyMusicSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 69413A191ABDB5B30003A7B8 /* WilyMusicSystem.m */; };
+		69413A231ABE53320003A7B8 /* WilyPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 69413A221ABE53320003A7B8 /* WilyPlaylist.m */; };
 		697CAF831A97222200FC917F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF821A97222200FC917F /* main.m */; };
 		697CAF861A97222200FC917F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF851A97222200FC917F /* AppDelegate.m */; };
 		697CAF891A97222200FC917F /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF881A97222200FC917F /* PlayerViewController.m */; };
@@ -64,6 +65,9 @@
 		69413A181ABDB5B30003A7B8 /* WilyMusicSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WilyMusicSystem.h; sourceTree = "<group>"; };
 		69413A191ABDB5B30003A7B8 /* WilyMusicSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WilyMusicSystem.m; sourceTree = "<group>"; };
 		69413A1E1ABDC4F60003A7B8 /* WilyPlayer+Playback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WilyPlayer+Playback.h"; sourceTree = "<group>"; };
+		69413A211ABE53320003A7B8 /* WilyPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WilyPlaylist.h; sourceTree = "<group>"; };
+		69413A221ABE53320003A7B8 /* WilyPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WilyPlaylist.m; sourceTree = "<group>"; };
+		69413A241ABE59BD0003A7B8 /* WilyPlaylist+MusicSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WilyPlaylist+MusicSystem.h"; sourceTree = "<group>"; };
 		697CAF7D1A97222200FC917F /* Wily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697CAF811A97222200FC917F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		697CAF821A97222200FC917F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -155,6 +159,9 @@
 				69413A1E1ABDC4F60003A7B8 /* WilyPlayer+Playback.h */,
 				69413A181ABDB5B30003A7B8 /* WilyMusicSystem.h */,
 				69413A191ABDB5B30003A7B8 /* WilyMusicSystem.m */,
+				69413A211ABE53320003A7B8 /* WilyPlaylist.h */,
+				69413A221ABE53320003A7B8 /* WilyPlaylist.m */,
+				69413A241ABE59BD0003A7B8 /* WilyPlaylist+MusicSystem.h */,
 				691A50301AAF12D2006CC53A /* RemoteControlEvents.h */,
 				691A50311AAF12D3006CC53A /* RemoteControlEvents.m */,
 				69C802C11AABFD7500E89320 /* CacheableAVPlayerItem.h */,
@@ -371,6 +378,7 @@
 				697CAFC21A97631500FC917F /* YouTubeSearcherAutocompleteXMLResultsParser.m in Sources */,
 				6913D8ED1AB9B5360012EE7D /* PlaylistTableViewController.m in Sources */,
 				6913D8FB1AB9C91F0012EE7D /* WallpaperManager.m in Sources */,
+				69413A231ABE53320003A7B8 /* WilyPlaylist.m in Sources */,
 				6913D8F01AB9BFBD0012EE7D /* SFXPlayer.m in Sources */,
 				6913D8F31AB9C4580012EE7D /* DurationFormatter.m in Sources */,
 				69C802C31AABFD7500E89320 /* CacheableAVPlayerItem.m in Sources */,

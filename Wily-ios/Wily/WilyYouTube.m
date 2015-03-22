@@ -4,8 +4,10 @@
 
 @implementation XCDYouTubeVideo (WilyYouTubeExtension)
 
-- (NSDictionary *)wily_metadata {
-  return @{ @"title": self.title, @"thumbnailURL": self.mediumThumbnailURL };
+- (NSDictionary *)wily_song {
+  return @{@"id": self.identifier,
+           @"title": self.title,
+           @"thumbnailURL": self.mediumThumbnailURL};
 }
 
 @end
@@ -20,7 +22,7 @@
 
 @end
 
-void WilyYouTubeFetchVideoWithId(NSString *videoId, void (^completionBlock)(NSError *error, NSURL *streamURL, NSDictionary *metadata)) {
+void WilyYouTubeFetchVideoWithId(NSString *videoId, void (^completionBlock)(NSError *error, NSURL *streamURL, NSDictionary *song)) {
   NSLog(@"Fetching [videoId = %@]", videoId);
   [[XCDYouTubeClient defaultClient] getVideoWithIdentifier:videoId completionHandler:^(XCDYouTubeVideo *video, NSError *error) {
     NSURL *streamURL;
@@ -37,7 +39,7 @@ void WilyYouTubeFetchVideoWithId(NSString *videoId, void (^completionBlock)(NSEr
       completionBlock(error, nil, nil);
     } else {
       NSLog(@"Fetch Completed [videoId = %@, streamURL = %@]", videoId, streamURL);
-      completionBlock(nil, streamURL, [video wily_metadata]);
+      completionBlock(nil, streamURL, [video wily_song]);
     }
   }];
 }
