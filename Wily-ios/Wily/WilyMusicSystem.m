@@ -88,7 +88,9 @@
 }
 
 - (void)fetchStreamURLForSong:(NSDictionary *)song {
-  [self changePlayer:nil];
+  WilyPlayer *dummyPlayerForFetchingState = [[WilyPlayer alloc] initWithPlayerItem:nil song:song];
+  [self changePlayer:dummyPlayerForFetchingState];
+
   __weak typeof(self) weakSelf = self;
   WilyYouTubeFetchSong(song, ^(NSError *error, NSURL *streamURL, NSDictionary *updatedSong) {
     if (error == nil) {

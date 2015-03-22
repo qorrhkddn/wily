@@ -42,7 +42,6 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
   [self setRandomWallpaper];
   self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
-  self.playControlsContainerView.hidden = YES;
 
   UITableView *tableView = self.searchResultsDisplayController.searchResultsTableView;
   tableView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
@@ -140,7 +139,8 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
     self.titleLabel.text = player.song[@"title"];
     [self setWallpaperWithId:player.song[@"wallpaperId"]];
   } else {
-    [self showControlsForLoadingState];
+    self.titleLabel.text = @"";
+    [self hideControls];
   }
 }
 
@@ -156,6 +156,10 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
       [self showControlsForPlaybackStateWithIsPlaying:YES];
       break;
   }
+}
+
+- (void)hideControls {
+  self.playControlsContainerView.hidden = YES;
 }
 
 - (void)showControlsForLoadingState {
