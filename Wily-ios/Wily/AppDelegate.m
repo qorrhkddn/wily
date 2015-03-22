@@ -8,6 +8,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [application beginReceivingRemoteControlEvents];
   return YES;
 }
 
