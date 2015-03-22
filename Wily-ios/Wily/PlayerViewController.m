@@ -163,7 +163,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   self.playControlsContainerView.hidden = NO;
   [self.loadingSpinner stopAnimating];
   self.playButton.hidden = NO;
-  NSString *imageName = isPlaying ? @"play" : @"pause";
+  NSString *imageName = isPlaying ? @"pause" : @"play";
   [self.playButton setImage:[UIImage imageNamed:imageName]
                    forState:UIControlStateNormal];
 }
