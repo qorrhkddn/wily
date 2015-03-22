@@ -1,17 +1,11 @@
 #import "PlaylistTableViewController.h"
 #import "WilyPlaylist.h"
 
-@interface PlaylistTableViewController ()
-
-@end
-
 @implementation PlaylistTableViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-
-  // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-  // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 #pragma mark Table View Data Source
@@ -37,22 +31,19 @@
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
+  if (editingStyle == UITableViewCellEditingStyleDelete) {
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [self.playlist deleteSongAtIndex:indexPath.row];
+  }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+  [self.playlist moveSongAtIndex:fromIndexPath.row toIndex:toIndexPath.row];
 }
-*/
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [self.playlist setCurrentlyPlayingIndex:indexPath.row];
+}
 
 @end

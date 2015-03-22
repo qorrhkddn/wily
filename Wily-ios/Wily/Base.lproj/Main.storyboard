@@ -183,12 +183,12 @@
                 </searchDisplayController>
                 <swipeGestureRecognizer direction="left" id="vkf-fd-HUj" userLabel="SwipeLeft">
                     <connections>
-                        <segue destination="sij-6w-dUb" kind="presentation" modalTransitionStyle="crossDissolve" id="0i1-NA-5gR"/>
+                        <segue destination="He9-bY-x7b" kind="presentation" modalTransitionStyle="crossDissolve" id="0i1-NA-5gR"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="right" id="HSf-vp-U9P" userLabel="SwipeRight">
                     <connections>
-                        <segue destination="sij-6w-dUb" kind="presentation" modalTransitionStyle="crossDissolve" id="tqy-as-6Jo"/>
+                        <segue destination="He9-bY-x7b" kind="presentation" modalTransitionStyle="crossDissolve" id="tqy-as-6Jo"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="down" id="F8U-lm-DGX" userLabel="SwipeDown">
@@ -199,17 +199,17 @@
             </objects>
             <point key="canvasLocation" x="-221" y="-106"/>
         </scene>
-        <!--Playlist Table View Controller-->
+        <!--Playlist-->
         <scene sceneID="ljr-kJ-dIQ">
             <objects>
-                <tableViewController id="sij-6w-dUb" customClass="PlaylistTableViewController" sceneMemberID="viewController">
+                <tableViewController title="Playlist" id="sij-6w-dUb" customClass="PlaylistTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1vy-5e-qEo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaylistTableViewCellReuseIdentifier" id="8GV-8e-qoa">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaylistTableViewCellReuseIdentifier" rowHeight="88" id="8GV-8e-qoa">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8GV-8e-qoa" id="hl7-9w-sRG">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -223,6 +223,7 @@
                             <outletCollection property="gestureRecognizers" destination="mxe-jd-gHV" appends="YES" id="dVC-MF-roA"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="cGI-o4-za5"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uVp-zT-fU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="PWr-dl-7Dx" userLabel="SwipeLeft">
@@ -235,6 +236,24 @@
                         <action selector="swipeLeft:" destination="sij-6w-dUb" id="4xy-U1-0iL"/>
                     </connections>
                 </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1305" y="-106"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BhP-op-Qf7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="He9-bY-x7b" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a3a-xh-S4M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sij-6w-dUb" kind="relationship" relationship="rootViewController" id="TH4-3p-Jrg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cTM-4y-fir" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="493" y="-106"/>
         </scene>

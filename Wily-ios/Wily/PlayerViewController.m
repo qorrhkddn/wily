@@ -175,9 +175,14 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  if ([[segue destinationViewController] isKindOfClass:[PlaylistTableViewController class]]) {
-    PlaylistTableViewController *playlistTableViewController = (PlaylistTableViewController *)[segue destinationViewController];
-    playlistTableViewController.playlist = self.musicSystem.playlist;
+  UIViewController *destinationViewController = [segue destinationViewController];
+  if ([destinationViewController isKindOfClass:[UINavigationController class]]) {
+    UINavigationController *navigationController = (UINavigationController *)destinationViewController;
+    destinationViewController = [navigationController topViewController];
+    if ([destinationViewController isKindOfClass:[PlaylistTableViewController class]]) {
+      PlaylistTableViewController *playlistTableViewController = (PlaylistTableViewController *)destinationViewController;
+      playlistTableViewController.playlist = self.musicSystem.playlist;
+    }
   }
 }
 

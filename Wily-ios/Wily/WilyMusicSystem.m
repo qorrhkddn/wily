@@ -66,7 +66,7 @@
   if (fileURL == nil) {
     [self fetchStreamURLForSong:song];
   } else {
-    [self.playlist setCurrentlyPlayingIndex:index];
+    [self.playlist setCurrentlyPlayingIndexNoNotify:index];
     [self playSong:song withFileURL:fileURL];
   }
 }
@@ -101,7 +101,7 @@
   NSUInteger index = [self.playlist existingIndexForSong:song];
   if (index == self.playlist.invalidIndex) {
     [self.playlist appendSong:song];
-    [self.playlist setCurrentlyPlayingIndex:(self.playlist.songs.count - 1)];
+    [self.playlist setCurrentlyPlayingIndexNoNotify:(self.playlist.songs.count - 1)];
   }
 
   CacheableAVPlayerItem *cacheablePlayerItem = [[CacheableAVPlayerItem alloc] initWithURL:streamURL];
@@ -140,6 +140,10 @@
 
 - (void)playlistDidDeleteCurrentlyPlayingSong:(WilyPlaylist *)playlist {
   [self changePlayer:nil];
+}
+
+- (void)playlist:(WilyPlaylist *)playlist didChangeCurrentlyPlayingIndex:(NSUInteger)index {
+  [self playSongAtIndex:index];
 }
 
 @end

@@ -14,7 +14,7 @@
   self = [super init];
   if (self) {
     _store = store;
-    [self reloadSongsFromStore:store];
+    _mutableSongs = [self loadSongsFromStore:store];
     _currentlyPlayingIndex = self.invalidIndex;
   }
   return self;
@@ -24,7 +24,7 @@
   return self.mutableSongs;
 }
 
-- (NSMutableArray *)reloadSongsFromStore:(NSUserDefaults *)store {
+- (NSMutableArray *)loadSongsFromStore:(NSUserDefaults *)store {
   NSMutableArray *result = [@[] mutableCopy];
   for (NSString *songId in [store arrayForKey:@"playlist"]) {
     [result addObject:[store dictionaryForKey:songId]];
@@ -106,9 +106,16 @@
   [self savePlaylistToStore];
 }
 
-- (void)setCurrentlyPlayingIndex:(NSUInteger)index {
+- (void)setCurrentlyPlayingIndexNoNotify:(NSUInteger)index {
   _currentlyPlayingIndex = index;
   [self savePlaylistToStore];
+}
+
+- (void)setCurrentlyPlayingIndex:(NSUInteger)index {
+  [self setCurrentlyPlayingIndexNoNotify:index];
+  if ([self.delegate respondsToSelector:@selector(playlist:didChangeCurrentlyPlayingIndex:)]) {
+    [self.delegate playlist:self didChangeCurrentlyPlayingIndex:index];
+  }
 }
 
 - (void)appendSong:(NSDictionary *)song {
