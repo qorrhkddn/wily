@@ -280,8 +280,9 @@
 		697CAF751A97222200FC917F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = Wily;
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = Riva;
+				ORGANIZATIONNAME = Wily;
 				TargetAttributes = {
 					697CAF7C1A97222200FC917F = {
 						CreatedOnToolsVersion = 6.1.1;
