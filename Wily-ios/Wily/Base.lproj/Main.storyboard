@@ -189,6 +189,7 @@
                         <outlet property="playButton" destination="oWQ-kt-XIt" id="l82-9j-Esu"/>
                         <outlet property="playControlsContainerView" destination="dAq-gS-TyW" id="D7C-Yv-hjC"/>
                         <outlet property="playProgressView" destination="NGG-uo-p72" id="0Hl-oE-6ik"/>
+                        <outlet property="playlistTableView" destination="MX9-AP-ecf" id="dcZ-aY-4YE"/>
                         <outlet property="searchBarHeightConstraint" destination="Yrf-VV-7mI" id="Fht-1N-CgC"/>
                         <outlet property="searchResultsDisplayController" destination="ypz-fb-ptg" id="7Oh-9e-A0K"/>
                         <outlet property="titleLabel" destination="0Xe-VA-zwg" id="AQQ-6O-JE5"/>

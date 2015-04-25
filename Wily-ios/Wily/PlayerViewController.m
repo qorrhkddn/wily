@@ -25,6 +25,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchBarHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *playControlsContainerView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingSpinner;
+@property (weak, nonatomic) IBOutlet UITableView *playlistTableView;
 
 @property (nonatomic, strong) NSArray *searchResults;
 @property (nonatomic) BOOL hasShownInitialSearch;
