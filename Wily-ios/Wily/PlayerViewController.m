@@ -47,7 +47,11 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   UITableView *tableView = self.searchResultsDisplayController.searchResultsTableView;
   tableView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
   tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-  [tableView registerNib:[UINib nibWithNibName:@"SearchResultTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:SearchResultCellIdentifier];
+
+  UINib *cellNib = [UINib nibWithNibName:@"SearchResultTableViewCell" bundle:[NSBundle mainBundle]];
+  [tableView registerNib:cellNib forCellReuseIdentifier:SearchResultCellIdentifier];
+  [self.playlistTableView registerNib:cellNib
+               forCellReuseIdentifier:SearchResultCellIdentifier];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
