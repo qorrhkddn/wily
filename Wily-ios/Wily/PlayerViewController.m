@@ -72,32 +72,10 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   self.wallpaperImageView.image = [self.wallpaperManager wallpaperWithId:wallpaperId];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return self.searchResults.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier forIndexPath:indexPath];
-  cell.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
-  cell.textLabel.text = self.searchResults[indexPath.row];
-  return cell;
-}
-
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
   [self.searcher autocompleteSuggestionsForSearchString:searchBar.text completionBlock:^(NSArray *suggestions) {
     self.searchResults = suggestions;
     [self.searchResultsDisplayController.searchResultsTableView reloadData];
-  }];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSString *searchSuggestion = self.searchResults[indexPath.row];
-  [self.searcher firstVideoIdentifierForSearchString:searchSuggestion completionBlock:^(NSString *videoId) {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self hideSearchDisplay];
-    if (videoId != nil) {
-      [self playVideoWithId:videoId forSearchSuggestion:searchSuggestion];
-    }
   }];
 }
 
@@ -190,6 +168,28 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 - (IBAction)play:(id)sender {
   [self.musicSystem.player togglePlayPause];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  return self.searchResults.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier forIndexPath:indexPath];
+  cell.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+  cell.textLabel.text = self.searchResults[indexPath.row];
+  return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  NSString *searchSuggestion = self.searchResults[indexPath.row];
+  [self.searcher firstVideoIdentifierForSearchString:searchSuggestion completionBlock:^(NSString *videoId) {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self hideSearchDisplay];
+    if (videoId != nil) {
+      [self playVideoWithId:videoId forSearchSuggestion:searchSuggestion];
+    }
+  }];
 }
 
 @end
