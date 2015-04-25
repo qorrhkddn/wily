@@ -155,7 +155,6 @@
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="vkf-fd-HUj" appends="YES" id="LDg-Fy-OXq"/>
-                            <outletCollection property="gestureRecognizers" destination="HSf-vp-U9P" appends="YES" id="td7-U4-OIf"/>
                             <outletCollection property="gestureRecognizers" destination="F8U-lm-DGX" appends="YES" id="GbQ-Ed-OtG"/>
                         </connections>
                     </view>
@@ -185,11 +184,6 @@
                 <swipeGestureRecognizer direction="left" id="vkf-fd-HUj" userLabel="SwipeLeft">
                     <connections>
                         <segue destination="He9-bY-x7b" kind="presentation" modalTransitionStyle="crossDissolve" id="0i1-NA-5gR"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="HSf-vp-U9P" userLabel="SwipeRight">
-                    <connections>
-                        <segue destination="He9-bY-x7b" kind="presentation" modalTransitionStyle="crossDissolve" id="tqy-as-6Jo"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="down" id="F8U-lm-DGX" userLabel="SwipeDown">
@@ -263,7 +257,4 @@
         <image name="play" width="77" height="77"/>
         <image name="wily-icon" width="24" height="47"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="tqy-as-6Jo"/>
-    </inferredMetricsTieBreakers>
 </document>
