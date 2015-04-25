@@ -134,7 +134,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MX9-AP-ecf" userLabel="Playlist table view">
-                                        <rect key="frame" x="580" y="0.0" width="560" height="52"/>
+                                        <rect key="frame" x="560" y="0.0" width="560" height="52"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -145,7 +145,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="dIP-DL-htw" firstAttribute="leading" secondItem="309-42-G8L" secondAttribute="leading" id="07z-lj-Myb"/>
-                                    <constraint firstItem="MX9-AP-ecf" firstAttribute="leading" secondItem="dIP-DL-htw" secondAttribute="trailing" constant="20" id="C2k-2F-DUJ"/>
+                                    <constraint firstItem="MX9-AP-ecf" firstAttribute="leading" secondItem="dIP-DL-htw" secondAttribute="trailing" id="C2k-2F-DUJ"/>
                                     <constraint firstItem="dIP-DL-htw" firstAttribute="top" secondItem="309-42-G8L" secondAttribute="top" id="Gt2-kM-l2d"/>
                                     <constraint firstItem="MX9-AP-ecf" firstAttribute="width" secondItem="309-42-G8L" secondAttribute="width" id="HCh-tU-Wke"/>
                                     <constraint firstAttribute="bottom" secondItem="MX9-AP-ecf" secondAttribute="bottom" id="Yeq-UN-b10"/>
