@@ -133,9 +133,10 @@
                                             <constraint firstItem="1L0-Ta-A3t" firstAttribute="leading" secondItem="dIP-DL-htw" secondAttribute="leading" id="mI5-ih-b1q"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MX9-AP-ecf" userLabel="Playlist table view">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MX9-AP-ecf" userLabel="Playlist table view">
                                         <rect key="frame" x="580" y="0.0" width="560" height="52"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="dataSource" destination="vXZ-lx-hvc" id="dIP-pl-ZXL"/>
                                             <outlet property="delegate" destination="vXZ-lx-hvc" id="uwx-Am-ihE"/>
