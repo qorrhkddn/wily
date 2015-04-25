@@ -175,25 +175,37 @@ static NSInteger const PlaylistTableViewTag = 100;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  if (tableView.tag == PlaylistTableViewTag) {
+    return [self.musicSystem.playlist.songs count];
+  }
   return self.searchResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier forIndexPath:indexPath];
   cell.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
-  cell.textLabel.text = self.searchResults[indexPath.row];
+  if (tableView.tag == PlaylistTableViewTag) {
+    NSDictionary *song = self.musicSystem.playlist.songs[indexPath.row];
+    cell.textLabel.text = song[@"title"];
+  } else {
+    cell.textLabel.text = self.searchResults[indexPath.row];
+  }
   return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSString *searchSuggestion = self.searchResults[indexPath.row];
-  [self.searcher firstVideoIdentifierForSearchString:searchSuggestion completionBlock:^(NSString *videoId) {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self hideSearchDisplay];
-    if (videoId != nil) {
-      [self playVideoWithId:videoId forSearchSuggestion:searchSuggestion];
-    }
-  }];
+  if (tableView.tag == PlaylistTableViewTag) {
+    [self.musicSystem.playlist setCurrentlyPlayingIndex:indexPath.row];
+  } else {
+    NSString *searchSuggestion = self.searchResults[indexPath.row];
+    [self.searcher firstVideoIdentifierForSearchString:searchSuggestion completionBlock:^(NSString *videoId) {
+      [tableView deselectRowAtIndexPath:indexPath animated:YES];
+      [self hideSearchDisplay];
+      if (videoId != nil) {
+        [self playVideoWithId:videoId forSearchSuggestion:searchSuggestion];
+      }
+    }];
+  }
 }
 
 @end
