@@ -187,16 +187,4 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [self.musicSystem.player togglePlayPause];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  UIViewController *destinationViewController = [segue destinationViewController];
-  if ([destinationViewController isKindOfClass:[UINavigationController class]]) {
-    UINavigationController *navigationController = (UINavigationController *)destinationViewController;
-    destinationViewController = [navigationController topViewController];
-    if ([destinationViewController isKindOfClass:[PlaylistTableViewController class]]) {
-      PlaylistTableViewController *playlistTableViewController = (PlaylistTableViewController *)destinationViewController;
-      playlistTableViewController.playlist = self.musicSystem.playlist;
-    }
-  }
-}
-
 @end
