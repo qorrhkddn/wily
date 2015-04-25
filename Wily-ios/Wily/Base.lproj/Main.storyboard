@@ -136,6 +136,10 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MX9-AP-ecf" userLabel="Playlist table view">
                                         <rect key="frame" x="580" y="0.0" width="560" height="52"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="dIP-pl-ZXL"/>
+                                            <outlet property="delegate" destination="vXZ-lx-hvc" id="uwx-Am-ihE"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <constraints>
