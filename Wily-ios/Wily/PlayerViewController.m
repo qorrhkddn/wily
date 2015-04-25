@@ -6,8 +6,11 @@
 #import "WilyDurationFormatting.h"
 #import "WallpaperManager.h"
 #import "PlaylistTableViewController.h"
+#import "WilyPlaylist.h"
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
+
+static NSInteger const PlaylistTableViewTag = 100;
 
 @interface PlayerViewController () <WilyMusicSystemDelegate, WilyPlayerDelegate, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UISearchDisplayDelegate>
 
@@ -52,6 +55,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   [tableView registerNib:cellNib forCellReuseIdentifier:SearchResultCellIdentifier];
   [self.playlistTableView registerNib:cellNib
                forCellReuseIdentifier:SearchResultCellIdentifier];
+  self.playlistTableView.tag = PlaylistTableViewTag;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
