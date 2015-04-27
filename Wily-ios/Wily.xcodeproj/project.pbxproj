@@ -18,6 +18,8 @@
 		69413A171ABDB5630003A7B8 /* WilyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 69413A161ABDB5630003A7B8 /* WilyPlayer.m */; };
 		69413A1A1ABDB5B30003A7B8 /* WilyMusicSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 69413A191ABDB5B30003A7B8 /* WilyMusicSystem.m */; };
 		69413A231ABE53320003A7B8 /* WilyPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 69413A221ABE53320003A7B8 /* WilyPlaylist.m */; };
+		695B10231AEE8A1D005B76F2 /* WilyYouTubeURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 695B10221AEE8A1D005B76F2 /* WilyYouTubeURLTests.m */; };
+		695B10271AEE8BE0005B76F2 /* WilyYouTubeURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 695B10261AEE8BE0005B76F2 /* WilyYouTubeURL.m */; };
 		697CAF831A97222200FC917F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF821A97222200FC917F /* main.m */; };
 		697CAF861A97222200FC917F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF851A97222200FC917F /* AppDelegate.m */; };
 		697CAF891A97222200FC917F /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697CAF881A97222200FC917F /* PlayerViewController.m */; };
@@ -71,6 +73,9 @@
 		69413A211ABE53320003A7B8 /* WilyPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WilyPlaylist.h; sourceTree = "<group>"; };
 		69413A221ABE53320003A7B8 /* WilyPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WilyPlaylist.m; sourceTree = "<group>"; };
 		69413A241ABE59BD0003A7B8 /* WilyPlaylist+MusicSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WilyPlaylist+MusicSystem.h"; sourceTree = "<group>"; };
+		695B10221AEE8A1D005B76F2 /* WilyYouTubeURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WilyYouTubeURLTests.m; sourceTree = "<group>"; };
+		695B10251AEE8BE0005B76F2 /* WilyYouTubeURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WilyYouTubeURL.h; sourceTree = "<group>"; };
+		695B10261AEE8BE0005B76F2 /* WilyYouTubeURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WilyYouTubeURL.m; sourceTree = "<group>"; };
 		697CAF7D1A97222200FC917F /* Wily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697CAF811A97222200FC917F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		697CAF821A97222200FC917F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -157,6 +162,8 @@
 				697CAF881A97222200FC917F /* PlayerViewController.m */,
 				697CAFA61A97335900FC917F /* WilyYouTube.h */,
 				697CAFA71A97335900FC917F /* WilyYouTube.m */,
+				695B10251AEE8BE0005B76F2 /* WilyYouTubeURL.h */,
+				695B10261AEE8BE0005B76F2 /* WilyYouTubeURL.m */,
 				69413A151ABDB5630003A7B8 /* WilyPlayer.h */,
 				69413A161ABDB5630003A7B8 /* WilyPlayer.m */,
 				69413A1E1ABDC4F60003A7B8 /* WilyPlayer+Playback.h */,
@@ -212,6 +219,7 @@
 			children = (
 				697CAF9C1A97222300FC917F /* WilyTests.m */,
 				6913D8F41AB9C4820012EE7D /* WilyDurationFormattingTests.m */,
+				695B10221AEE8A1D005B76F2 /* WilyYouTubeURLTests.m */,
 				697CAF9A1A97222300FC917F /* Supporting Files */,
 			);
 			path = WilyTests;
@@ -374,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				697CAF891A97222200FC917F /* PlayerViewController.m in Sources */,
+				695B10271AEE8BE0005B76F2 /* WilyYouTubeURL.m in Sources */,
 				697CAF861A97222200FC917F /* AppDelegate.m in Sources */,
 				697CAFA81A97335900FC917F /* WilyYouTube.m in Sources */,
 				6922E7021A9860D600F3344E /* NowPlayingInterface.m in Sources */,
@@ -398,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				695B10231AEE8A1D005B76F2 /* WilyYouTubeURLTests.m in Sources */,
 				6913D8F51AB9C4820012EE7D /* WilyDurationFormattingTests.m in Sources */,
 				697CAF9D1A97222300FC917F /* WilyTests.m in Sources */,
 			);
