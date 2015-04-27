@@ -13,4 +13,9 @@
   XCTAssertNil(WilyYouTubeSongFromURLString(@"http://youtube.com/z/123"));
 }
 
+- (void)testConstruction {
+  NSDictionary *song = @{@"id": @"123"};
+  XCTAssertEqualObjects(@"http://youtu.be/123", WilyYouTubeURLStringFromSong(song));
+}
+
 @end

@@ -13,3 +13,7 @@ NSDictionary *WilyYouTubeSongFromURLString(NSString *string) {
   }
   return nil;
 }
+
+NSString *WilyYouTubeURLStringFromSong(NSDictionary *song) {
+  return [@"http://youtu.be/" stringByAppendingString:song[@"id"]];
+}
