@@ -1,4 +1,5 @@
 #import "WilyPlayer.h"
+#import "WilyPlayer+Playback.h"
 @import AVKit;
 #import "NowPlayingInterface.h"
 
@@ -10,6 +11,7 @@
 @property (nonatomic) AVPlayer *player;
 @property(nonatomic, readwrite) WilyPlayerPlaybackState playbackState;
 @property (nonatomic) id playerTimeObserver;
+@property (nonatomic, weak) id<WilyPlayerPlaybackDelegate> playbackDelegate;
 
 @end
 
@@ -196,9 +198,13 @@
   [self.nowPlayingInterface asynchronouslySetImageFromThumbnailURL:thumbnailURL];
 }
 
+- (void)repeat {
+  [self.playerItem seekToTime:kCMTimeZero];
+}
+
 - (void)playerItemDidReachEnd:(NSNotification *)note {
-  if (self.shouldRepeat) {
-    [self.playerItem seekToTime:kCMTimeZero];
+  if ([self.playbackDelegate respondsToSelector:@selector(playerDidEndPlayingSong:)]) {
+    [self.playbackDelegate playerDidEndPlayingSong:self];
   }
 }
 

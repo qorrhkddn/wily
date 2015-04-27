@@ -1,5 +1,7 @@
 ## Unreleased
 
+* Provide both repeat-song and playlist mode.
+
 ## [1.2][]
 
 * Use the lowest available quality stream to reduce bandwidth and

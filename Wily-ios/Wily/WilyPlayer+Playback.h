@@ -1,5 +1,7 @@
 #import "WilyPlayer.h"
 
+@protocol WilyPlayerPlaybackDelegate;
+
 @interface WilyPlayer (Playback)
 
 /**
@@ -8,5 +10,15 @@
  */
 - (void)startPlayingItem;
 - (void)stopPlayingItem;
+
+@property (nonatomic, weak) id<WilyPlayerPlaybackDelegate> playbackDelegate;
+
+@end
+
+@protocol WilyPlayerPlaybackDelegate <NSObject>
+
+@optional
+
+- (void)playerDidEndPlayingSong:(WilyPlayer *)player;
 
 @end

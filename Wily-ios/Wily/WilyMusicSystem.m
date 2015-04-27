@@ -8,7 +8,7 @@
 #import "WilyPlaylist.h"
 #import "WilyPlaylist+MusicSystem.h"
 
-@interface WilyMusicSystem () <RemoteControlEventsDelegate, CacheableAVPlayerItemDelegate, WilyPlaylistDelegate>
+@interface WilyMusicSystem () <RemoteControlEventsDelegate, CacheableAVPlayerItemDelegate, WilyPlaylistDelegate, WilyPlayerPlaybackDelegate>
 
 @property (nonatomic, readonly) MXPersistentCache *mediaCache;
 @property (nonatomic, readonly) NSUserDefaults *store;
@@ -80,7 +80,7 @@
   self.currentlyDownloadingVideoId = nil;
   [self.player stopPlayingItem];
   self.player = player;
-  self.player.shouldRepeat = YES;
+  self.player.playbackDelegate = self;
   [self.player startPlayingItem];
 
   if ([self.delegate respondsToSelector:@selector(musicSystem:playerDidChange:)]) {
@@ -121,6 +121,10 @@
 
 - (void)remoteControlEventsDidPressNext:(RemoteControlEvents *)events {
   NSLog(@"Remote control: did press next");
+  [self playNext];
+}
+
+- (void)playNext {
   [self playSongAtIndex:[self.playlist nextSongIndex]];
 }
 
@@ -147,6 +151,18 @@
 
 - (void)playlist:(WilyPlaylist *)playlist didChangeCurrentlyPlayingIndex:(NSUInteger)index {
   [self playSongAtIndex:index];
+}
+
+- (void)playerDidEndPlayingSong:(WilyPlayer *)player {
+  if ([self.playlist shouldAutoplay]) {
+    [self playNext];
+  } else {
+    [self.player repeat];
+  }
+}
+
+- (void)playlistDidToggleAutoplay:(WilyPlaylist *)playlist {
+
 }
 
 @end

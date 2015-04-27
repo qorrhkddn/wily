@@ -10,6 +10,9 @@
 - (NSUInteger)nextSongIndex;
 - (NSUInteger)existingIndexForSong:(NSDictionary *)song;
 
+- (BOOL)shouldAutoplay;
+- (void)toggleAutoplay;
+
 - (void)moveSongAtIndex:(NSUInteger)index toIndex:(NSUInteger)toIndex;
 - (void)deleteSongAtIndex:(NSUInteger)index;
 
