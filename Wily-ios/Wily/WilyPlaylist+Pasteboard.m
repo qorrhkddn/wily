@@ -5,7 +5,7 @@
 
 @implementation WilyPlaylist (Pasteboard)
 
-- (void)copyYouTubeLinkToCurrentlyPlayingSong {
+- (void)copyYouTubeLinkOfCurrentlyPlayingSong {
   NSUInteger idx = [self currentlyPlayingIndex];
   if (idx == [self invalidIndex]) {
     return;

@@ -2,7 +2,7 @@
 
 @interface WilyPlaylist (Pasteboard)
 
-- (void)copyYouTubeLinkToCurrentlyPlayingSong;
+- (void)copyYouTubeLinkOfCurrentlyPlayingSong;
 - (void)playSongFromCopiedYouTubeLink;
 
 @end
