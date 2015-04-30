@@ -24,9 +24,9 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchBarHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *playControlsContainerView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingSpinner;
+@property (weak, nonatomic) IBOutlet UIView *coachmark;
 
 @property (nonatomic, strong) NSArray *searchResults;
-@property (nonatomic) BOOL hasShownInitialSearch;
 
 @end
 
@@ -49,10 +49,14 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
-  if (!self.hasShownInitialSearch) {
-    [self showSearchDisplay];
-    self.hasShownInitialSearch = YES;
-  }
+}
+
+- (void)hideCoachmark {
+  self.coachmark.hidden = YES;
+}
+
+- (IBAction)coachmarkTapped:(id)sender {
+  [self hideCoachmark];
 }
 
 - (NSString *)setRandomWallpaper {
@@ -95,6 +99,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (IBAction)swipeDownDetected:(UISwipeGestureRecognizer *)sender {
+  [self hideCoachmark];
   [self showSearchDisplay];
 }
 
@@ -192,6 +197,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
     if ([destinationViewController isKindOfClass:[PlaylistTableViewController class]]) {
       PlaylistTableViewController *playlistTableViewController = (PlaylistTableViewController *)destinationViewController;
       playlistTableViewController.playlist = self.musicSystem.playlist;
+      [self hideCoachmark];
     }
   }
 }

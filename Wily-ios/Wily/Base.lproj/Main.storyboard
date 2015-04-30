@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Player View Controller-->
@@ -119,6 +120,52 @@
                                     <constraint firstAttribute="trailing" secondItem="1Wb-VI-fJg" secondAttribute="trailing" id="vnY-5o-i4S"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XN6-76-rNt" userLabel="Coachmark">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipe-down" translatesAutoresizingMaskIntoConstraints="NO" id="y5t-Qg-pDR">
+                                        <rect key="frame" x="263" y="20" width="75" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="y5t-Qg-pDR" secondAttribute="height" multiplier="50:37" id="UB1-Ix-1yc"/>
+                                            <constraint firstAttribute="width" constant="75" id="oB9-Jx-PS7"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdr-k0-P9z">
+                                        <rect key="frame" x="248" y="84" width="105" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipe-left" translatesAutoresizingMaskIntoConstraints="NO" id="Iwt-up-47X">
+                                        <rect key="frame" x="532" y="263" width="48" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="DoU-BC-Ctg"/>
+                                            <constraint firstAttribute="width" secondItem="Iwt-up-47X" secondAttribute="height" multiplier="97:150" id="fuz-iQ-fMo"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Playlist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikl-lk-7ah">
+                                        <rect key="frame" x="428" y="290" width="96" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="Iwt-up-47X" firstAttribute="leading" secondItem="ikl-lk-7ah" secondAttribute="trailing" constant="8" symbolic="YES" id="49E-wS-aAY"/>
+                                    <constraint firstItem="cdr-k0-P9z" firstAttribute="top" secondItem="y5t-Qg-pDR" secondAttribute="bottom" constant="8" symbolic="YES" id="5x6-uY-edJ"/>
+                                    <constraint firstItem="y5t-Qg-pDR" firstAttribute="top" secondItem="XN6-76-rNt" secondAttribute="top" constant="20" symbolic="YES" id="ThW-vc-pU1"/>
+                                    <constraint firstAttribute="centerY" secondItem="ikl-lk-7ah" secondAttribute="centerY" id="hql-HO-DuS"/>
+                                    <constraint firstAttribute="trailing" secondItem="Iwt-up-47X" secondAttribute="trailing" constant="20" symbolic="YES" id="iRO-Jw-yrv"/>
+                                    <constraint firstAttribute="centerY" secondItem="Iwt-up-47X" secondAttribute="centerY" id="jax-G4-1ZO"/>
+                                    <constraint firstAttribute="centerX" secondItem="y5t-Qg-pDR" secondAttribute="centerX" id="sUd-AC-rxw"/>
+                                    <constraint firstAttribute="centerX" secondItem="cdr-k0-P9z" secondAttribute="centerX" id="u5M-0k-ngT"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Vt2-Wr-wYj" appends="YES" id="uBh-tK-Crn"/>
+                                </connections>
+                            </view>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="j5M-7D-R66">
                                 <rect key="frame" x="0.0" y="20" width="600" height="0.0"/>
                                 <constraints>
@@ -141,14 +188,18 @@
                             <constraint firstItem="dAq-gS-TyW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="E9m-JK-tyS"/>
                             <constraint firstAttribute="trailing" secondItem="j5M-7D-R66" secondAttribute="trailing" id="EtU-xo-Z4V"/>
                             <constraint firstItem="j5M-7D-R66" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="IQp-La-Ihj"/>
+                            <constraint firstAttribute="trailing" secondItem="XN6-76-rNt" secondAttribute="trailing" id="LF3-dt-U5J"/>
                             <constraint firstAttribute="trailing" secondItem="8HB-8H-OA6" secondAttribute="trailing" id="Rb7-Ye-jr0"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dAq-gS-TyW" secondAttribute="bottom" id="Twr-uV-Mwm"/>
                             <constraint firstItem="dIP-DL-htw" firstAttribute="top" secondItem="j5M-7D-R66" secondAttribute="bottom" constant="5" id="XAT-bL-lsF"/>
                             <constraint firstAttribute="trailing" secondItem="dAq-gS-TyW" secondAttribute="trailing" id="YC3-yh-Q4A"/>
                             <constraint firstItem="8HB-8H-OA6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="bA7-2y-ZiS"/>
                             <constraint firstItem="OwN-m9-EVv" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="c2z-GR-OaJ"/>
+                            <constraint firstItem="XN6-76-rNt" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="h74-Ir-bb4"/>
                             <constraint firstAttribute="bottom" secondItem="OwN-m9-EVv" secondAttribute="bottom" id="pHz-qM-Ud7"/>
                             <constraint firstItem="8HB-8H-OA6" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="puq-Id-vbt"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="XN6-76-rNt" secondAttribute="bottom" id="rB3-9X-zur"/>
+                            <constraint firstItem="XN6-76-rNt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="uEr-2J-kML"/>
                             <constraint firstItem="dIP-DL-htw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="uKw-ol-53G"/>
                             <constraint firstItem="dAq-gS-TyW" firstAttribute="top" secondItem="dIP-DL-htw" secondAttribute="bottom" id="ywY-V7-6PC"/>
                             <constraint firstItem="j5M-7D-R66" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="zYW-B4-Ntn"/>
@@ -160,6 +211,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="coachmark" destination="XN6-76-rNt" id="PPs-Fr-wH8"/>
                         <outlet property="currentPlaybackTimeLabel" destination="ydu-8C-JnR" id="Avl-Vi-Oht"/>
                         <outlet property="durationLabel" destination="yqy-op-okc" id="ZYn-0Y-NEs"/>
                         <outlet property="loadingSpinner" destination="7cX-mH-vBk" id="uWi-ul-5Aa"/>
@@ -197,6 +249,21 @@
                         <action selector="swipeDownDetected:" destination="vXZ-lx-hvc" id="mx8-ZU-Tma"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nOs-Wr-qUJ" userLabel="WilyIcon">
+                    <rect key="frame" x="0.0" y="0.0" width="24" height="47"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="wily-icon">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="wilyIconTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qHT-x8-uWA"/>
+                    </connections>
+                </button>
+                <tapGestureRecognizer id="Vt2-Wr-wYj">
+                    <connections>
+                        <action selector="coachmarkTapped:" destination="vXZ-lx-hvc" id="pDk-Ok-3VS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-221" y="-106"/>
         </scene>
@@ -261,6 +328,8 @@
     </scenes>
     <resources>
         <image name="play" width="77" height="77"/>
+        <image name="swipe-down" width="150" height="111"/>
+        <image name="swipe-left" width="97" height="150"/>
         <image name="wily-icon" width="24" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>
