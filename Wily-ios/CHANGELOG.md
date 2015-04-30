@@ -1,7 +1,10 @@
 ## Unreleased
 
+## [1.3][]
+
 * Provide both repeat-song and playlist mode.
 * Provide ability to copy/paste YouTube links.
+* Add coachmarks to help the user in discovering the playlist.
 
 ## [1.2][]
 
@@ -20,4 +23,5 @@
 Initial Hackathon Release. We won!
 
 [1.1]: https://github.com/mx4492/wily/releases/tag/1.1
-[1.1]: https://github.com/mx4492/wily/releases/tag/1.2
+[1.2]: https://github.com/mx4492/wily/releases/tag/1.2
+[1.3]: https://github.com/mx4492/wily/releases/tag/1.3
