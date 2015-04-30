@@ -1,5 +1,6 @@
 #import "PlaylistTableViewController.h"
 #import "WilyPlaylist.h"
+#import "WilyPlaylist+Pasteboard.h"
 
 @implementation PlaylistTableViewController
 
@@ -57,6 +58,13 @@
                           handler:^(UIAlertAction * action) {
                             [self.playlist toggleAutoplay];
                           }]];
+  [alert addAction:
+   [UIAlertAction actionWithTitle:@"Copy YouTube Link"
+                            style:UIAlertActionStyleDefault
+                          handler:^(UIAlertAction * action) {
+                            [self.playlist copyYouTubeLinkToCurrentlyPlayingSong];
+                          }]];
+
   [alert addAction:
    [UIAlertAction actionWithTitle:@"Cancel"
                             style:UIAlertActionStyleCancel
