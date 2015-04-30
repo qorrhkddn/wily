@@ -1,11 +1,14 @@
 #import "WilyPlaylist.h"
 #import "WilyPlaylist+MusicSystem.h"
 
+static NSString *const ShouldAutoplayKey = @"shouldAutoplay";
+
 @interface WilyPlaylist ()
 @property (nonatomic) NSUserDefaults *store;
 @property (nonatomic) NSMutableArray *mutableSongs;
 @property (nonatomic) NSUInteger currentlyPlayingIndex;
 @property (nonatomic, weak) id<WilyPlaylistDelegate> delegate;
+@property (nonatomic, setter = setAutoplay:) BOOL shouldAutoplay;
 @end
 
 @implementation WilyPlaylist
@@ -14,6 +17,7 @@
   self = [super init];
   if (self) {
     _store = store;
+    _shouldAutoplay = [store boolForKey:ShouldAutoplayKey];
     _mutableSongs = [self loadSongsFromStore:store];
     _currentlyPlayingIndex = self.invalidIndex;
   }
@@ -122,6 +126,11 @@
   [self.store setObject:song forKey:song[@"id"]];
   [self.mutableSongs addObject:song];
   [self savePlaylistToStore];
+}
+
+- (void)toggleAutoplay {
+  [self setAutoplay:!self.shouldAutoplay];
+  [self.store setBool:self.shouldAutoplay forKey:ShouldAutoplayKey];
 }
 
 @end

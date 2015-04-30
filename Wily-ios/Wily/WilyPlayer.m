@@ -1,4 +1,5 @@
 #import "WilyPlayer.h"
+#import "WilyPlayer+Playback.h"
 @import AVKit;
 #import "NowPlayingInterface.h"
 
@@ -10,6 +11,7 @@
 @property (nonatomic) AVPlayer *player;
 @property(nonatomic, readwrite) WilyPlayerPlaybackState playbackState;
 @property (nonatomic) id playerTimeObserver;
+@property (nonatomic, weak) id<WilyPlayerPlaybackDelegate> playbackDelegate;
 
 @end
 
@@ -191,14 +193,25 @@
 }
 
 - (void)updateNowPlayingInterface {
-  NSURL *thumbnailURL = [NSURL URLWithString:self.song[@"thumbnailURL"]];
-  [self.nowPlayingInterface setTitle:self.song[@"title"]];
-  [self.nowPlayingInterface asynchronouslySetImageFromThumbnailURL:thumbnailURL];
+  NSString *title = self.song[@"title"];
+  if (title) {
+    [self.nowPlayingInterface setTitle:title];
+  }
+
+  NSString *thumnailURLString = self.song[@"thumbnailURL"];
+  if (thumnailURLString) {
+    NSURL *thumbnailURL = [NSURL URLWithString:thumnailURLString];
+    [self.nowPlayingInterface asynchronouslySetImageFromThumbnailURL:thumbnailURL];
+  }
+}
+
+- (void)repeat {
+  [self.playerItem seekToTime:kCMTimeZero];
 }
 
 - (void)playerItemDidReachEnd:(NSNotification *)note {
-  if (self.shouldRepeat) {
-    [self.playerItem seekToTime:kCMTimeZero];
+  if ([self.playbackDelegate respondsToSelector:@selector(playerDidEndPlayingSong:)]) {
+    [self.playbackDelegate playerDidEndPlayingSong:self];
   }
 }
 

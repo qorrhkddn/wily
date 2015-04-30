@@ -1,5 +1,8 @@
 ## Unreleased
 
+* Provide both repeat-song and playlist mode.
+* Provide ability to copy/paste YouTube links.
+
 ## [1.2][]
 
 * Use the lowest available quality stream to reduce bandwidth and

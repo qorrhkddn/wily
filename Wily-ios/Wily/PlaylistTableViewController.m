@@ -1,10 +1,12 @@
 #import "PlaylistTableViewController.h"
 #import "WilyPlaylist.h"
+#import "WilyPlaylist+Pasteboard.h"
 
 @implementation PlaylistTableViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showAlert:)];
   self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
@@ -44,6 +46,40 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [self.playlist setCurrentlyPlayingIndex:indexPath.row];
+}
+
+- (void)showAlert:(id)sender {
+  UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil
+                                                                 message:nil
+                                                          preferredStyle:UIAlertControllerStyleActionSheet];
+  [alert addAction:
+   [UIAlertAction actionWithTitle:[self repeatAutoplayActionSheetTitle]
+                            style:UIAlertActionStyleDefault
+                          handler:^(UIAlertAction * action) {
+                            [self.playlist toggleAutoplay];
+                          }]];
+  [alert addAction:
+   [UIAlertAction actionWithTitle:@"Copy YouTube Link"
+                            style:UIAlertActionStyleDefault
+                          handler:^(UIAlertAction * action) {
+                            [self.playlist copyYouTubeLinkOfCurrentlyPlayingSong];
+                          }]];
+  [alert addAction:
+   [UIAlertAction actionWithTitle:@"Add Copied YouTube Link"
+                            style:UIAlertActionStyleDefault
+                          handler:^(UIAlertAction * action) {
+                            [self.playlist playSongFromCopiedYouTubeLink];
+                          }]];
+
+  [alert addAction:
+   [UIAlertAction actionWithTitle:@"Cancel"
+                            style:UIAlertActionStyleCancel
+                          handler:nil]];
+  [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (NSString *)repeatAutoplayActionSheetTitle {
+  return self.playlist.shouldAutoplay ? @"Repeat Song Mode" : @"Playlist Mode";
 }
 
 @end

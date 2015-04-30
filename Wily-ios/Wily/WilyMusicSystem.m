@@ -7,8 +7,10 @@
 #import "WilyYouTube.h"
 #import "WilyPlaylist.h"
 #import "WilyPlaylist+MusicSystem.h"
+#import "WallpaperManager.h"
+#import "NSDictionary+WilyExtensions.h"
 
-@interface WilyMusicSystem () <RemoteControlEventsDelegate, CacheableAVPlayerItemDelegate, WilyPlaylistDelegate>
+@interface WilyMusicSystem () <RemoteControlEventsDelegate, CacheableAVPlayerItemDelegate, WilyPlaylistDelegate, WilyPlayerPlaybackDelegate>
 
 @property (nonatomic, readonly) MXPersistentCache *mediaCache;
 @property (nonatomic, readonly) NSUserDefaults *store;
@@ -29,6 +31,7 @@
     _store = [NSUserDefaults standardUserDefaults];
     _remoteControlEvents = [[RemoteControlEvents alloc] init];
     _remoteControlEvents.delegate = self;
+    _wallpaperManager = [[WallpaperManager alloc] init];
 
     _playlist = [[WilyPlaylist alloc] initWithStore:_store];
     _playlist.delegate = self;
@@ -48,12 +51,21 @@
 }
 
 - (void)playSong:(NSDictionary *)song {
+  song = [self songByAttachingWallpaper:song];
   NSUInteger index = [self.playlist existingIndexForSong:song];
   if (index == self.playlist.invalidIndex) {
     [self fetchStreamURLForSong:song];
   } else {
     [self playSongAtIndex:index];
   }
+}
+
+- (NSDictionary *)songByAttachingWallpaper:(NSDictionary *)song {
+  if (song[@"wallpaperId"]) {
+    return song;
+  }
+  NSDictionary *wallpaperDict = @{@"wallpaperId": [self.wallpaperManager randomWallpaperId]};
+  return [song wily_dictionaryByMergingDictionary:wallpaperDict];
 }
 
 - (void)playSongAtIndex:(NSUInteger)index {
@@ -80,7 +92,7 @@
   self.currentlyDownloadingVideoId = nil;
   [self.player stopPlayingItem];
   self.player = player;
-  self.player.shouldRepeat = YES;
+  self.player.playbackDelegate = self;
   [self.player startPlayingItem];
 
   if ([self.delegate respondsToSelector:@selector(musicSystem:playerDidChange:)]) {
@@ -121,6 +133,10 @@
 
 - (void)remoteControlEventsDidPressNext:(RemoteControlEvents *)events {
   NSLog(@"Remote control: did press next");
+  [self playNext];
+}
+
+- (void)playNext {
   [self playSongAtIndex:[self.playlist nextSongIndex]];
 }
 
@@ -147,6 +163,18 @@
 
 - (void)playlist:(WilyPlaylist *)playlist didChangeCurrentlyPlayingIndex:(NSUInteger)index {
   [self playSongAtIndex:index];
+}
+
+- (void)playerDidEndPlayingSong:(WilyPlayer *)player {
+  if ([self.playlist shouldAutoplay]) {
+    [self playNext];
+  } else {
+    [self.player repeat];
+  }
+}
+
+- (void)playlist:(WilyPlaylist *)playlist shouldPlaySong:(NSDictionary *)song {
+  [self playSong:song];
 }
 
 @end
