@@ -18,13 +18,18 @@
 
   NSString *URLString = WilyYouTubeURLStringFromSong(song);
   NSLog(@"Setting pasteboard string = %@", URLString);
-  [UIPasteboard generalPasteboard].string = URLString;
+  [UIPasteboard generalPasteboard].URL = [NSURL URLWithString:URLString];
 }
 
 - (void)playSongFromCopiedYouTubeLink {
-  NSString *URLString = [UIPasteboard generalPasteboard].string;
+  NSURL *URL = [UIPasteboard generalPasteboard].URL;
+  if (URL == nil) {
+    return;
+  }
+
+  NSString *URLString = [URL absoluteString];
   NSDictionary *song = WilyYouTubeSongFromURLString(URLString);
-  NSLog(@"Parsed pasteboard string [song = %@]", song);
+  NSLog(@"Parsed pasteboard URL [string = %@, song = %@]", URLString, song);
 
   if ([self.delegate respondsToSelector:@selector(playlist:shouldPlaySong:)]) {
     [self.delegate playlist:self shouldPlaySong:song];
