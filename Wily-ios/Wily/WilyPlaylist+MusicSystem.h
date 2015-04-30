@@ -20,4 +20,6 @@
 
 - (void)playlistDidDeleteCurrentlyPlayingSong:(WilyPlaylist *)playlist;
 
+- (void)playlist:(WilyPlaylist *)playlist shouldPlaySong:(NSDictionary *)song;
+
 @end

@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Provide both repeat-song and playlist mode.
+* Provide ability to copy/paste YouTube links.
 
 ## [1.2][]
 

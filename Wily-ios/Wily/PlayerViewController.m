@@ -4,8 +4,8 @@
 #import "YouTubeSearcher.h"
 #import "WilySFXPlayback.h"
 #import "WilyDurationFormatting.h"
-#import "WallpaperManager.h"
 #import "PlaylistTableViewController.h"
+#import "WallpaperManager.h"
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
@@ -13,7 +13,6 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 
 @property (nonatomic) WilyMusicSystem *musicSystem;
 @property (nonatomic) YouTubeSearcher *searcher;
-@property (nonatomic) WallpaperManager *wallpaperManager;
 
 @property (weak, nonatomic) IBOutlet UIImageView *wallpaperImageView;
 @property (weak, nonatomic) IBOutlet UIProgressView *playProgressView;
@@ -38,7 +37,6 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
   self.musicSystem = [[WilyMusicSystem alloc] init];
   self.musicSystem.delegate = self;
   self.searcher = [[YouTubeSearcher alloc] init];
-  self.wallpaperManager = [[WallpaperManager alloc] init];
 
   [self setRandomWallpaper];
   self.playProgressView.transform = CGAffineTransformMakeScale(1, 3);
@@ -58,13 +56,13 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (NSString *)setRandomWallpaper {
-  NSString *wallpaperId = [self.wallpaperManager randomWallpaperId];
+  NSString *wallpaperId = [self.musicSystem.wallpaperManager randomWallpaperId];
   [self setWallpaperWithId:wallpaperId];
   return wallpaperId;
 }
 
 - (void)setWallpaperWithId:(NSString *)wallpaperId {
-  self.wallpaperImageView.image = [self.wallpaperManager wallpaperWithId:wallpaperId];
+  self.wallpaperImageView.image = [self.musicSystem.wallpaperManager wallpaperWithId:wallpaperId];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -128,15 +126,14 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 }
 
 - (void)playVideoWithId:(NSString *)videoId forSearchSuggestion:(NSString *)searchSuggestion {
-  NSString *wallpaperId = [self setRandomWallpaper];
-  NSDictionary *song = @{@"id": videoId, @"wallpaperId": wallpaperId, @"title": searchSuggestion};
+  NSDictionary *song = @{@"id": videoId, @"title": searchSuggestion};
   [self.musicSystem playSong:song];
 }
 
 - (void)musicSystem:(WilyMusicSystem *)musicSystem playerDidChange:(WilyPlayer *)player {
   if (player) {
     player.delegate = self;
-    self.titleLabel.text = player.song[@"title"];
+    self.titleLabel.text = player.song[@"title"] ?: @"--";
     [self setWallpaperWithId:player.song[@"wallpaperId"]];
   } else {
     self.titleLabel.text = @"";

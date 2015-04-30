@@ -2,12 +2,14 @@
 
 @class WilyPlayer;
 @class WilyPlaylist;
+@class WallpaperManager;
 @protocol WilyMusicSystemDelegate;
 
 @interface WilyMusicSystem : NSObject
 
 @property (nonatomic, readonly) WilyPlayer *player;
 @property (nonatomic, readonly) WilyPlaylist *playlist;
+@property (nonatomic, readonly) WallpaperManager *wallpaperManager;
 
 @property (nonatomic, weak) id<WilyMusicSystemDelegate> delegate;
 
