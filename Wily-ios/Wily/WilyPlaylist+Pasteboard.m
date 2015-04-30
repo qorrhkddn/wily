@@ -1,5 +1,6 @@
 #import "WilyPlaylist+Pasteboard.h"
 #import "WilyYouTubeURL.h"
+#import "WilyPlaylist+MusicSystem.h"
 @import UIKit;
 
 @implementation WilyPlaylist (Pasteboard)
@@ -18,6 +19,16 @@
   NSString *URLString = WilyYouTubeURLStringFromSong(song);
   NSLog(@"Setting pasteboard string = %@", URLString);
   [UIPasteboard generalPasteboard].string = URLString;
+}
+
+- (void)playSongFromCopiedYouTubeLink {
+  NSString *URLString = [UIPasteboard generalPasteboard].string;
+  NSDictionary *song = WilyYouTubeSongFromURLString(URLString);
+  NSLog(@"Parsed pasteboard string [song = %@]", song);
+
+  if ([self.delegate respondsToSelector:@selector(playlist:shouldPlaySong:)]) {
+    [self.delegate playlist:self shouldPlaySong:song];
+  }
 }
 
 @end

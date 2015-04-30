@@ -3,5 +3,6 @@
 @interface WilyPlaylist (Pasteboard)
 
 - (void)copyYouTubeLinkToCurrentlyPlayingSong;
+- (void)playSongFromCopiedYouTubeLink;
 
 @end

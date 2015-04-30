@@ -64,6 +64,12 @@
                           handler:^(UIAlertAction * action) {
                             [self.playlist copyYouTubeLinkToCurrentlyPlayingSong];
                           }]];
+  [alert addAction:
+   [UIAlertAction actionWithTitle:@"Add Copied YouTube Link"
+                            style:UIAlertActionStyleDefault
+                          handler:^(UIAlertAction * action) {
+                            [self.playlist playSongFromCopiedYouTubeLink];
+                          }]];
 
   [alert addAction:
    [UIAlertAction actionWithTitle:@"Cancel"

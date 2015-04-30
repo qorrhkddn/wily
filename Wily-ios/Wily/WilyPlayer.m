@@ -193,9 +193,16 @@
 }
 
 - (void)updateNowPlayingInterface {
-  NSURL *thumbnailURL = [NSURL URLWithString:self.song[@"thumbnailURL"]];
-  [self.nowPlayingInterface setTitle:self.song[@"title"]];
-  [self.nowPlayingInterface asynchronouslySetImageFromThumbnailURL:thumbnailURL];
+  NSString *title = self.song[@"title"];
+  if (title) {
+    [self.nowPlayingInterface setTitle:title];
+  }
+
+  NSString *thumnailURLString = self.song[@"thumbnailURL"];
+  if (thumnailURLString) {
+    NSURL *thumbnailURL = [NSURL URLWithString:thumnailURLString];
+    [self.nowPlayingInterface asynchronouslySetImageFromThumbnailURL:thumbnailURL];
+  }
 }
 
 - (void)repeat {

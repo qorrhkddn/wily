@@ -7,6 +7,8 @@
 #import "WilyYouTube.h"
 #import "WilyPlaylist.h"
 #import "WilyPlaylist+MusicSystem.h"
+#import "WallpaperManager.h"
+#import "NSDictionary+WilyExtensions.h"
 
 @interface WilyMusicSystem () <RemoteControlEventsDelegate, CacheableAVPlayerItemDelegate, WilyPlaylistDelegate, WilyPlayerPlaybackDelegate>
 
@@ -29,6 +31,7 @@
     _store = [NSUserDefaults standardUserDefaults];
     _remoteControlEvents = [[RemoteControlEvents alloc] init];
     _remoteControlEvents.delegate = self;
+    _wallpaperManager = [[WallpaperManager alloc] init];
 
     _playlist = [[WilyPlaylist alloc] initWithStore:_store];
     _playlist.delegate = self;
@@ -48,12 +51,21 @@
 }
 
 - (void)playSong:(NSDictionary *)song {
+  song = [self songByAttachingWallpaper:song];
   NSUInteger index = [self.playlist existingIndexForSong:song];
   if (index == self.playlist.invalidIndex) {
     [self fetchStreamURLForSong:song];
   } else {
     [self playSongAtIndex:index];
   }
+}
+
+- (NSDictionary *)songByAttachingWallpaper:(NSDictionary *)song {
+  if (song[@"wallpaperId"]) {
+    return song;
+  }
+  NSDictionary *wallpaperDict = @{@"wallpaperId": [self.wallpaperManager randomWallpaperId]};
+  return [song wily_dictionaryByMergingDictionary:wallpaperDict];
 }
 
 - (void)playSongAtIndex:(NSUInteger)index {
@@ -161,8 +173,8 @@
   }
 }
 
-- (void)playlistDidToggleAutoplay:(WilyPlaylist *)playlist {
-
+- (void)playlist:(WilyPlaylist *)playlist shouldPlaySong:(NSDictionary *)song {
+  [self playSong:song];
 }
 
 @end
