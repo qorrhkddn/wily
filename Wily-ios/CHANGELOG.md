@@ -1,6 +1,9 @@
 ## Unreleased
 
+## [1.4][]
+
 * Adaptation to YouTube API change.
+* Allow adding links from pasteboard text (apart from pasteboard URLs).
 
 ## [1.3][]
 
@@ -27,3 +30,4 @@ Initial Hackathon Release. We won!
 [1.1]: https://github.com/mx4492/wily/releases/tag/1.1
 [1.2]: https://github.com/mx4492/wily/releases/tag/1.2
 [1.3]: https://github.com/mx4492/wily/releases/tag/1.3
+[1.4]: https://github.com/mx4492/wily/releases/tag/1.4
