@@ -3,7 +3,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '7.0'
 
 target :Wily do
-  pod 'XCDYouTubeKit', '~> 2.1.1', :inhibit_warnings => true
+  #pod 'XCDYouTubeKit', '~> 2.1.3', :inhibit_warnings => true
+  pod 'XCDYouTubeKit', :git => 'https://github.com/0xced/XCDYouTubeKit.git', :commit => '6bb54dc069906f4ccc4692ba417577e215511f90'
   pod 'iOS-GTLYouTube', '~> 0.0', :inhibit_warnings => true
   pod 'AFNetworking', '~> 2.5'
   pod 'AFNetworkActivityLogger', '~> 2.0'

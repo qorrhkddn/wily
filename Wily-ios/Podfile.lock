@@ -2,31 +2,31 @@ PODS:
   - AFNetworkActivityLogger (2.0.4):
     - AFNetworking/NSURLConnection (~> 2.0)
     - AFNetworking/NSURLSession (~> 2.0)
-  - AFNetworking (2.5.1):
-    - AFNetworking/NSURLConnection (= 2.5.1)
-    - AFNetworking/NSURLSession (= 2.5.1)
-    - AFNetworking/Reachability (= 2.5.1)
-    - AFNetworking/Security (= 2.5.1)
-    - AFNetworking/Serialization (= 2.5.1)
-    - AFNetworking/UIKit (= 2.5.1)
-  - AFNetworking/NSURLConnection (2.5.1):
+  - AFNetworking (2.5.3):
+    - AFNetworking/NSURLConnection (= 2.5.3)
+    - AFNetworking/NSURLSession (= 2.5.3)
+    - AFNetworking/Reachability (= 2.5.3)
+    - AFNetworking/Security (= 2.5.3)
+    - AFNetworking/Serialization (= 2.5.3)
+    - AFNetworking/UIKit (= 2.5.3)
+  - AFNetworking/NSURLConnection (2.5.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.1):
+  - AFNetworking/NSURLSession (2.5.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.1)
-  - AFNetworking/Security (2.5.1)
-  - AFNetworking/Serialization (2.5.1)
-  - AFNetworking/UIKit (2.5.1):
+  - AFNetworking/Reachability (2.5.3)
+  - AFNetworking/Security (2.5.3)
+  - AFNetworking/Serialization (2.5.3)
+  - AFNetworking/UIKit (2.5.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - BRYSoundEffectPlayer (1.0.0)
   - iOS-GTLYouTube (0.0.4)
   - MXPersistentCache (0.1.0)
-  - XCDYouTubeKit (2.1.1)
+  - XCDYouTubeKit (2.1.2)
 
 DEPENDENCIES:
   - AFNetworkActivityLogger (~> 2.0)
@@ -34,14 +34,24 @@ DEPENDENCIES:
   - BRYSoundEffectPlayer (~> 1.0.0)
   - iOS-GTLYouTube (~> 0.0)
   - MXPersistentCache (~> 0.1)
-  - XCDYouTubeKit (~> 2.1.1)
+  - XCDYouTubeKit (from `https://github.com/0xced/XCDYouTubeKit.git`, commit `6bb54dc069906f4ccc4692ba417577e215511f90`)
+
+EXTERNAL SOURCES:
+  XCDYouTubeKit:
+    :commit: 6bb54dc069906f4ccc4692ba417577e215511f90
+    :git: https://github.com/0xced/XCDYouTubeKit.git
+
+CHECKOUT OPTIONS:
+  XCDYouTubeKit:
+    :commit: 6bb54dc069906f4ccc4692ba417577e215511f90
+    :git: https://github.com/0xced/XCDYouTubeKit.git
 
 SPEC CHECKSUMS:
   AFNetworkActivityLogger: 121486778117d53b3ab1c61d264b88081d0c3eee
-  AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
+  AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
   BRYSoundEffectPlayer: 62a1edd78e5f9f3c5598e689080beea691200a53
   iOS-GTLYouTube: a2d3c7acaf9249c51eec9b6ff418954a19f2fc16
   MXPersistentCache: 3187103ae50fb2250fcf80cdf22950498b9916a1
-  XCDYouTubeKit: 5f9bda3a51f2d8af80404b3377bc4696f650d856
+  XCDYouTubeKit: c7448118ffa5eee01d97f9ffbcfa4ba74161291e
 
 COCOAPODS: 0.36.4

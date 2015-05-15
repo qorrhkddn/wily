@@ -1,5 +1,7 @@
 ## Unreleased
 
+* Adaptation to YouTube API change.
+
 ## [1.3][]
 
 * Provide both repeat-song and playlist mode.
